@@ -62,6 +62,7 @@ header {
     position: fixed;
     top: 0;
     z-index: 500;
+    padding: 0 1.5rem;
     width: 100%;
     background: rgba(8, 8, 8, 0.75);
     transition: background .3s ease-in-out;
@@ -104,6 +105,17 @@ a, input::placeholder {
     font-weight: 600;
     background-color: transparent;
     color: #D98032;
+}
+
+ul a {
+  box-shadow: inset 0 0 0 0 #D98032;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+ul a:hover {
+  box-shadow: inset 300px 0 0 0 #D98032;
+  color: white;
 }
 
 button {
