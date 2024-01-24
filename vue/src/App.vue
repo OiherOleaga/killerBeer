@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-
+import HeaderPartial from './components/partials/HeaderPartial.vue';
 </script>
 
 <template>
@@ -8,4 +8,5 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
+
 </style>
