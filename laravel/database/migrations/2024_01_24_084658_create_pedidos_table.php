@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
+            $table->unsignedBigInteger('id_cliente');
+            $table->enum('estado', ['solicitado', 'preparacion', 'entrega', 'entregado'])->default('solicitado');
+            $table->date('fecha_entrega');
+            $table->float('precio');
             $table->timestamps();
+
+            $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
         });
     }
 

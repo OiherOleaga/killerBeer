@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('formatos_productos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_formatos');
+            $table->unsignedBigInteger('id_productos');
+            $table->float('precio');
+
+            $table->foreign('id_formatos')->references('id')->on('formatos')->onDelete('cascade');
+            $table->foreign('id_productos')->references('id')->on('productos')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
