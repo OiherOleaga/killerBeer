@@ -38,14 +38,14 @@ function entrar() {
 
 <template>
   <div class="container-fluid d-flex flex-row bg-gradient-custom">
-    <form class="p-5">
+    <div class="p-5">
       <div class="mb-3 d-flex flex-column">
         <label for="Codigo" class="form-label">Codigo</label>
-        <input type="password" class="form-control" id="Codigo">
+        <input type="password" class="form-control" id="Codigo" v-model="codigo">
       </div>
-      <button type="submit" class="btn btn-primary" @click="entrar">Iniciar sesion</button>
+      <button class="btn btn-primary" @click="entrar">Iniciar sesion</button>
       <p v-if="error">{{ error }}</p>
-    </form>
+    </div>
   </div>
 </template>
 
