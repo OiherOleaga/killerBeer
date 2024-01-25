@@ -34,7 +34,7 @@ function entrar() {
     })
 }
 function enviarRegistro() {
-  router.push("/registro");
+  router.push("/register");
 }
 </script>
 

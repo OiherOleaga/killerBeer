@@ -26,6 +26,7 @@ if (!sessionId) {
 </script>
 
 <template>
+  <HeaderPartial v-if="!['login', 'register'].includes($route.name)" />
   <main>
     <RouterView />
   </main>
