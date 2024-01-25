@@ -43,7 +43,7 @@ function entrar() {
         <label for="Codigo" class="form-label">Codigo</label>
         <input type="password" class="form-control" id="Codigo">
       </div>
-      <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+      <button type="submit" class="btn btn-primary" @click="entrar">Iniciar sesion</button>
       <p v-if="error">{{ error }}</p>
     </form>
   </div>
