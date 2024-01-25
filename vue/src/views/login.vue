@@ -1,8 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { watch } from 'vue';
 import { ref } from "vue";
+import router from '@/router';
 
 const codigo = ref("");
+const error = ref("");
+
+watch(codigo, () => {
+  error.value = "";
+})
 
 function entrar() {
   fetch(route("/login"), {
@@ -11,14 +18,17 @@ function entrar() {
     body: codigo.value
   })
     .then((res) => {
-      return res.text()
+      return res.text();
     })
     .then((res) => {
       if (res == "OK") {
-        console.log("logeado")
+        router.push("/");
+      } else {
+        error.value = "codigo no valido";
       }
     })
     .catch((error) => {
+      alert("ocurrio un error en el login");
       console.log(error);
     })
 }
@@ -34,6 +44,7 @@ function entrar() {
         <input type="password" class="form-control" id="Codigo">
       </div>
       <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+      <p v-if="error">{{ error }}</p>
     </form>
   </div>
 </template>
