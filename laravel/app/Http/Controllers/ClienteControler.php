@@ -13,7 +13,6 @@ class ClienteControler extends Controller
     function login(Request $request)
     {
         $id = Cliente::where("codigo", intval($request->getContent()))->value("id");
-
         if ($id == null) {
             $response = response("NO");
         } else {
@@ -27,7 +26,6 @@ class ClienteControler extends Controller
 
     public function registro(Request $request)
     {
-        // Valida la solicitud
         $datosValidados = $request->validate([
             'correo' => 'required|email',
             'direccion' => 'required|string',
@@ -35,7 +33,6 @@ class ClienteControler extends Controller
             'nombre' => 'required|string',
         ]);
 
-        // Crea una nueva instancia de Cliente y llénala con los datos validados
         $cliente = new Cliente($datosValidados);
 
         $cliente->save();
