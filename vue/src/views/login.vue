@@ -18,10 +18,11 @@ function entrar() {
     body: codigo.value
   })
     .then((res) => {
-      return res.text();
+      return res.json();
     })
     .then((res) => {
-      if (res == "OK") {
+      if (res.status == "OK") {
+        localStorage.setItem("sessionId", res.sessionId);
         router.push("/");
       } else {
         error.value = "codigo no valido";
