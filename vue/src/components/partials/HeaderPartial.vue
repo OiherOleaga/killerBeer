@@ -53,9 +53,7 @@ initMDB({ Collapse, Ripple });
                                         </svg></a>
                                 </li>
                             </ul>
-
                         </div>
-
                     </div>
                 </div>
             </div>

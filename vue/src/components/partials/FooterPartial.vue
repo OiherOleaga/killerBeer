@@ -7,12 +7,10 @@ initMDB({ Collapse, Ripple });
 
 <template>
 <footer class="text-center">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2023 Copyright:
+  <div class="text-center p-3">
+    © 2023 Todos los derechos estám reservados a
     <a class="text-body" href="/">KillerBeer.com</a>
   </div>
-  <!-- Copyright -->
 </footer>
 </template>
 
@@ -20,6 +18,8 @@ initMDB({ Collapse, Ripple });
 footer{
     background-color: #D98032 ;
     color:  #212226;
+    font-size: 18px;
+    font-weight: 500;
 }
 </style>
   
