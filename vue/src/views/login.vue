@@ -44,23 +44,33 @@ function entrar() {
         <input type="password" class="form-control" id="Codigo" v-model="codigo">
       </div>
       <button class="btn btn-primary" @click="entrar">Iniciar sesion</button>
-      <p v-if="error">{{ error }}</p>
+      <div class="error">
+        <p v-if="error">{{ error }}</p>
+      </div>
+
     </div>
   </div>
 </template>
 
 <style scoped>
 .bg-gradient-custom {
-  background: linear-gradient(45deg, #F2A74B, #D98032);
+  background: linear-gradient(45deg, #A65221, #D98032);
   height: 100vh;
 
+}
+
+.btn {
+  background-color: #F2A74B;
+  color: #212226;
+  border: none;
+  box-shadow: 0px 0px 4px #D98032;
 }
 
 .form-label {
   color: black;
 }
 
-form {
+.p-5 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,5 +80,13 @@ form {
   padding: 20px;
   text-align: center;
   box-shadow: 0px 0px 60px #A65221;
+  box-shadow: inset 0px 0px 20px #F2CC85;
+}
+
+p {
+  color: #A65221;
+  margin-top: 20px;
+  font-size: 1.1em;
+
 }
 </style>
