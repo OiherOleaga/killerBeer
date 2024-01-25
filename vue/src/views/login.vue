@@ -104,19 +104,8 @@ section {
   background-color: #212226;
   min-height: 100vh;
 }
-
-html {
-  background-color: #212226;
-
-}
-
 .gradient-custom-2 {
-
-
-  /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
 }
 
