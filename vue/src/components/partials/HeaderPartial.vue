@@ -68,28 +68,28 @@ header {
     transition: background .3s ease-in-out;
 }
 
-header:hover{
+header:hover {
     background: rgba(8, 8, 8, 1);
 }
 
-form{
+form {
     height: 25px;
 }
 
-form input{
+form input {
     background-color: #212226;
     border: 0;
     color: #D98032;
     padding: .5rem;
 }
 
-form input:focus{
+form input:focus {
     background-color: #212226;
     color: #D98032;
     border: none;
 }
 
-form input::placeholder{
+form input::placeholder {
     text-align: start;
 }
 
@@ -99,7 +99,8 @@ form input::placeholder{
     width: auto
 }
 
-a, input::placeholder {
+a,
+input::placeholder {
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 600;
@@ -108,14 +109,15 @@ a, input::placeholder {
 }
 
 ul a {
-  box-shadow: inset 0 0 0 0 #D98032;
-  margin: 0 -.25rem;
-  padding: 0 .25rem;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: inset 0 0 0 0 #D98032;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
+
 ul a:hover {
-  box-shadow: inset 300px 0 0 0 #D98032;
-  color: white;
+    box-shadow: inset 300px 0 0 0 #D98032;
+    color: white;
 }
 
 button {

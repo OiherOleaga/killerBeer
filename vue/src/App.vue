@@ -4,7 +4,10 @@ import HeaderPartial from './components/partials/HeaderPartial.vue';
 </script>
 
 <template>
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
+  
 </template>
 
 <style scoped>

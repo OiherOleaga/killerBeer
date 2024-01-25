@@ -5,10 +5,9 @@ import HeaderPartial from '../components/partials/HeaderPartial.vue';
 
 <template>
   <HeaderPartial />
-
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <section class="about">
+    
+  </section>
 </template>
 
 <style>
