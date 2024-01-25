@@ -38,7 +38,6 @@ function enviarRegistro() {
 }
 </script>
 
-
 <template>
   <section class="h-100 gradient-form">
     <div class="container py-5 h-100">
@@ -104,6 +103,7 @@ section {
   background-color: #212226;
   min-height: 100vh;
 }
+
 .gradient-custom-2 {
   background: -webkit-linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
   background: linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
