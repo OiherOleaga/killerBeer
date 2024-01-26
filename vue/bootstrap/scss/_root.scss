@@ -60,7 +60,7 @@
 
   --#{$prefix}body-color: #{$body-color};
   --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$prefix}body-bg:  #212226;
+  --#{$prefix}body-bg:  white;
   --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
   --#{$prefix}emphasis-color: #{$body-emphasis-color};
