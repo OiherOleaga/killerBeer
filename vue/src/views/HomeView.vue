@@ -1,5 +1,5 @@
 <script setup>
-
+GET("/session");
 </script>
 
 <template>
