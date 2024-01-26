@@ -6,7 +6,7 @@ import Footer from './components/partials/FooterPartial.vue';
 import router from './router';
 
 let sessionId = localStorage.getItem("sessionId");
-/*
+
 if (!sessionId) {
   router.push("/login");
 } else {
@@ -24,7 +24,7 @@ if (!sessionId) {
         router.push("/login");
       }
     })
-}*/
+}
 </script>
 
 <template>

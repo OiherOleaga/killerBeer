@@ -65,6 +65,7 @@
             </div>
           </div>
           <section class="beers pb-3">
+            <h1 class="display-2 text-center">DESTACADAS</h1>
             <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">
               <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
                 <img
@@ -121,23 +122,7 @@
                   class="card-img-top" alt="green iguana" />
                   <div class="gradient-overlay"></div>
                 <div class="card-body">
-                  <h4>Lizard</h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1.jpg"
-                  class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard</h4>
+                  <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
                   <p class="card-text">
                     Lizards are a widespread group of squamate reptiles, with over
                     6,000 species, ranging across all continents except Antarctica.
@@ -166,11 +151,17 @@
   background: linear-gradient(to top, rgba(255, 255, 255, 0)60%, rgb(255, 255, 255, .3));
   pointer-events: none; /* Asegura que el overlay no capture eventos del ratón */
 }
-.jumbotron p,
-h1 {
+.jumbotron p, h1 {
   font-weight: 600;
   transform: rotate(-.6deg);
   font-style: italic;
+}
+
+.beers h1{
+  color: #D98032;
+  transform: rotate(0deg);
+  text-decoration: underline;
+  text-shadow: 0px 0px 10px#A65221;
 }
 
 .jumbotron {
@@ -310,6 +301,10 @@ h1 {
   align-items: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+}
+
+.overlay h1{
+  transform: rotate(0deg);
 }
 
 .gallery-item:hover .overlay {
