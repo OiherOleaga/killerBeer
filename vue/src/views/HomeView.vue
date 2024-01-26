@@ -1,144 +1,262 @@
 <script setup>
-import HeaderPartial from '../components/partials/HeaderPartial.vue';
 
 </script>
 
 <template>
   <section class="home overflow-hidden">
     <div class="container-fluid m-0 p-0">
-      <div class="jumbotron">
-        <video id="video-background" preload muted autoplay loop>
-          <source src="../assets/videos/x2mate.com-EPIC BEER COMMERCIAL B-ROLL AT HOME 2022-(1080p).mp4" type="video/mp4">
-        </video>
-        <div class="container text-center">
-          <h1 class="display-1">DESCUBRE NUESTRAS CERVEZAS</h1>
-          <p class="display-6">
-            <cite title="Source Title"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-quote" viewBox="0 0 16 16">
-                <path
-                  d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
-              </svg>Forjada en un gran sabor, elaborada solo para valientes<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-quote"
-                viewBox="0 0 16 16">
-                <path
-                  d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
-              </svg></cite>
-          </p>
-          <a href="/beers"><span class="btn btn-lg">CATÁLOGO</span></a>
+      <div class="row">
+        <div class="col">
+          <div class="jumbotron">
+            <video id="video-background" preload muted autoplay loop>
+              <source src="../assets/videos/x2mate.com-EPIC BEER COMMERCIAL B-ROLL AT HOME 2022-(1080p).mp4"
+                type="video/mp4">
+            </video>
+            <div class="container text-center">
+              <h1 class="display-1">DESCUBRE NUESTRAS CERVEZAS</h1>
+              <p class="display-6">
+                <cite title="Source Title"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                    fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
+                    <path
+                      d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
+                  </svg>Forjada en un gran sabor, elaborada solo para valientes<svg xmlns="http://www.w3.org/2000/svg"
+                    width="30" height="30" fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
+                    <path
+                      d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
+                  </svg></cite>
+              </p>
+              <a href="/beers"><span class="btn btn-lg">CATÁLOGO</span></a>
+            </div>
+          </div>
+          <div class="gallery-item d-none d-xl-block">
+            <img src="../components/img/36792unnamed-2.jpg" class="img-fluid" alt="Gallery Item 1">
+            <div class="overlay">
+              <p>
+                En nuestras innovadoras fábricas de cerveza, donde el arte de destilar se encuentra con la
+                pasión por la perfección. Nuestro proceso de destilación es un ballet de precisión y maestría, donde cada
+                nota aromática y cada matiz de sabor se cuidan con esmero para crear una experiencia cervecera
+                inigualable.
+                </p>
+                Nuestro viaje comienza con los ingredientes cuidadosamente seleccionados, desde las maltas más finas hasta
+                los lúpulos más aromáticos. Estos elementos de calidad se combinan en una danza armoniosa en nuestros
+                enormes tanques de maceración, donde la magia comienza a tomar forma. El maestro cervecero, con su
+                experiencia única, guía este proceso para extraer los sabores más ricos y complejos.
+                <p>
+                Después de la fermentación, llega el momento crucial de la destilación. En nuestros alambiques de última
+                generación, el líquido resultante se somete a un delicado proceso de destilación que eleva la cerveza a
+                nuevas alturas. Este paso fundamental destila la esencia de cada ingrediente, purificando y refinando la
+                mezcla hasta alcanzar su máxima expresión.
+                </p>
+                Nuestros destiladores expertos ajustan cuidadosamente los parámetros, capturando los matices que hacen que
+                cada cerveza sea única. Los alambiques, relucientes y majestuosos, destilan la pasión y el arte que
+                nuestros maestros cerveceros han vertido en cada lote.
+                <p>
+                Finalmente, el resultado es una cerveza destilada de calidad incomparable, donde los sabores se entrelazan
+                en una sinfonía de notas complejas y armoniosas. Cada sorbo es una experiencia sensorial que deleita los
+                sentidos y refleja el compromiso inquebrantable con la excelencia de nuestras fábricas de cerveza.
+                </p>
+                <p>
+                En nuestras instalaciones, la destilación de la cerveza es más que un proceso; es una expresión artística
+                que busca cautivar a los amantes de la cerveza con cada gota. Descubre la magia detrás de nuestras
+                cervezas destiladas y sumérgete en la perfección de la destilación cervecera en cada sorbo.
+                <br>
+                <h1>¡Salud a la innovación, al arte y a la cerveza excepcional!</h1>
+              </p>
+            </div>
+          </div>
+          <section class="beers pb-3">
+            <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img
+                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (1).jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn btn-sm" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img
+                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (2).jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img
+                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (2).jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img
+                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img
+                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img
+                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img
+                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
+                  class="card-img-top" alt="green iguana" />
+                  <div class="gradient-overlay"></div>
+                <div class="card-body">
+                  <h4>Lizard</h4>
+                  <p class="card-text">
+                    Lizards are a widespread group of squamate reptiles, with over
+                    6,000 species, ranging across all continents except Antarctica.
+                  </p>
+                  <hr class="hr">
+                  <div class="botones d-flex gap-2 justify-content-center">
+                    <button class="btn" type="button">Comprar</button>
+                  </div>
+                </div>
+              </div>
+            
+            </section>
+          </section>
         </div>
       </div>
-      <section class="beers mb-4">
-        <h1 class="text-center display-3 ">DESTACADAS</h1>
-        <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center">
-          <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-            <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (1).jpg"
-              class="card-img-top" alt="green iguana" />
-            <div class="card-body">
-              <h4>Lizard <span class="badge bg-danger">Nueva</span></h4>
-              <p class="card-text">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica.
-              </p>
-              <hr class="hr">
-              <div class="botones d-flex gap-2 justify-content-center">
-                <button class="btn btn-sm" type="button">Comprar</button>
-              </div>
-            </div>
-          </div>
-          <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-            <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (2).jpg"
-              class="card-img-top" alt="green iguana" />
-            <div class="card-body">
-              <h4>Lizard</h4>
-              <p class="card-text">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica.
-              </p>
-              <hr class="hr">
-              <div class="botones d-flex gap-2 justify-content-center">
-                <button class="btn" type="button">Comprar</button>
-              </div>
-            </div>
-          </div>
-          <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-            <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
-              class="card-img-top" alt="green iguana" />
-            <div class="card-body">
-              <h4>Lizard</h4>
-              <p class="card-text">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica.
-              </p>
-              <hr class="hr">
-              <div class="botones d-flex gap-2 justify-content-center">
-                <button class="btn" type="button">Comprar</button>
-              </div>
-            </div>
-          </div>
-          <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-            <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (2).jpg"
-              class="card-img-top" alt="green iguana" />
-            <div class="card-body">
-              <h4>Lizard <span class="badge bg-danger">Nueva</span></h4>
-              <p class="card-text">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica.
-              </p>
-              <hr class="hr">
-              <div class="botones d-flex gap-2 justify-content-center">
-                <button class="btn" type="button">Comprar</button>
-              </div>
-            </div>
-          </div>
-          <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-            <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
-              class="card-img-top" alt="green iguana" />
-            <div class="card-body">
-              <h4>Lizard</h4>
-              <p class="card-text">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica.
-              </p>
-              <hr class="hr">
-              <div class="botones d-flex gap-2 justify-content-center">
-                <button class="btn" type="button">Comprar</button>
-              </div>
-            </div>
-          </div>
-          <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-            <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_2.jpg"
-              class="card-img-top" alt="green iguana" />
-            <div class="card-body">
-              <h4>Lizard <span class="badge bg-danger">Nueva</span></h4>
-              <p class="card-text">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica.
-              </p>
-              <hr class="hr">
-              <div class="botones d-flex gap-2 justify-content-center">
-                <button class="btn" type="button">Comprar</button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
     </div>
   </section>
 </template>
 
 <style scoped>
-.home {
-  background-color: #212226;
+.gradient-overlay {
+  position: absolute;
+  bottom: 1;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0)60%, rgb(255, 255, 255, .3));
+  pointer-events: none; /* Asegura que el overlay no capture eventos del ratón */
 }
-
-.jumbotron,
-.beers,
+.jumbotron p,
 h1 {
-  color: #A65221;
-  font-weight: 500;
-}
-
-.jumbotron p {
-  font-weight: 400;
+  font-weight: 600;
+  transform: rotate(-.6deg);
+  font-style: italic;
 }
 
 .jumbotron {
@@ -149,11 +267,25 @@ h1 {
 }
 
 .card {
-  background-color: transparent;
+  background-color: #212226;
   color: #D98032;
   gap: 10px;
+  width: 350px;
   border: 3px solid #D98032;
   box-shadow: 0px 0px 30px #A65221;
+}
+
+.beers {
+  overflow-y: scroll;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .7)) 100%, url(../components/img/hermosa-foto-campo-afilar-cielo-nublado.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.card img {
+  object-fit: cover;
+  width: 100%;
 }
 
 .container {
@@ -231,4 +363,45 @@ h1 {
     }
   }
 }
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  background-color: black;
+}
+
+.gallery-item img {
+  opacity: .8;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.2);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  font-weight: 600;
+  font-size: 150%;
+  color: #D98032;
+  padding: 0 5%;
+  display: flex;
+  text-align: justify;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
 </style>

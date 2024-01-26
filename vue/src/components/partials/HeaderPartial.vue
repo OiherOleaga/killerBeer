@@ -1,7 +1,6 @@
 <!-- HeaderPartial.vue -->
 <script>
 import { Collapse, Ripple, initMDB } from "mdb-ui-kit";
-
 initMDB({ Collapse, Ripple });
 </script>
 
@@ -34,7 +33,7 @@ initMDB({ Collapse, Ripple });
                         <div class="block block-tb-megamenu block-tb-megamenu-menu-blockmain">
                             <ul class="tb-megamenu-nav nav level-0 items-6">
                                 <li class="tb-megamenu-item level-1 mega px-2">
-                                    <a href="/beer">Nuestras Cervezas</a>
+                                    <a href="/beer">Cervezas</a>
                                 </li>
                                 <li class="tb-megamenu-item level-2 mega px-2">
                                     <a href="/about">Sobre Nosotros</a>
@@ -66,7 +65,7 @@ header {
     z-index: 500;
     font-size: 20px;
     padding: 0 1rem;
-    background: rgba(8, 8, 8, 0.85);
+    background: rgba(8, 8, 8, 0.70);
     transition: background .3s ease-in-out;
 }
 
@@ -114,12 +113,13 @@ ul a {
     box-shadow: inset 0 0 0 0 #D98032;
     margin: 0 -.25rem;
     padding: 0 .25rem;
+    border-radius: 5px;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
 ul a:hover {
     box-shadow: inset 300px 0 0 0 #D98032;
-    color: white;
+    color:  #212226;
 }
 
 button {
