@@ -33,17 +33,17 @@ initMDB({ Collapse, Ripple });
                         <div class="block block-tb-megamenu block-tb-megamenu-menu-blockmain">
                             <ul class="tb-megamenu-nav nav level-0 items-6">
                                 <li class="tb-megamenu-item level-1 mega px-2">
-                                    <a href="/beer">Cervezas</a>
+                                    <a href="/beer">Bebidas</a>
                                 </li>
                                 <li class="tb-megamenu-item level-2 mega px-2">
                                     <a href="/about">Sobre Nosotros</a>
                                 </li>
-                                <li class="tb-megamenu-item level-4 mega px-2">
+                                <!-- <li class="tb-megamenu-item level-4 mega px-2">
                                     <form class="d-flex justify-content-center align-items-center">
                                         <input class="form-control me-2 " type="search" placeholder="Buscar"
                                             aria-label="Search">
                                     </form>
-                                </li>
+                                </li> -->
                                 <li class="tb-megamenu-item level-3 mega px-2">
                                     <a href="/pedido"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-cart2" viewBox="0 2 16 16">
@@ -119,7 +119,7 @@ ul a {
 
 ul a:hover {
     box-shadow: inset 300px 0 0 0 #D98032;
-    color:  #212226;
+    color: #212226;
 }
 
 button {
