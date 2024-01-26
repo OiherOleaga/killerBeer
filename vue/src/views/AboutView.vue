@@ -27,7 +27,7 @@ import FooterPartial from '../components/partials/FooterPartial.vue';
               alt="..." /></div>
         </div>
         <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
+          <div class="p-5 texto">
             <h2 class="display-4">Nuestra historia</h2>
             <hr>
             <p>En 1974, nace KillerBeer, una marca de cervezas artesanales en España. Desde su inicio en un taller
@@ -47,7 +47,7 @@ import FooterPartial from '../components/partials/FooterPartial.vue';
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="p-5">
+          <div class="p-5 texto">
             <h2 class="display-4">Nuestras Sucursales</h2>
             <hr>
             <p>Las sucursales de KillerBeer se extienden por todo el mundo, desde las calles empedradas de Madrid hasta
@@ -68,7 +68,7 @@ import FooterPartial from '../components/partials/FooterPartial.vue';
               alt="..." /></div>
         </div>
         <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
+          <div class="p-5 texto">
             <h2 class="display-4">Nuestros empleados</h2>
             <hr>
             <p>Los trabajadores de KillerBeer son el corazón y el alma de la empresa, dedicados a perfeccionar el arte de
@@ -107,6 +107,7 @@ main {
 }
 
 .img-fluid {
+  border: 1px solid #F2A74B;
   box-shadow: 0px 0px 20px #F2A74B;
 }
 
@@ -117,5 +118,12 @@ hr {
 
 .img3 {
   margin-bottom: 3em;
+}
+
+.texto {
+  border: 1px solid #F2A74B;
+
+  box-shadow: inset 0px 0px 15px #F2A74B, 0px 0px 15px #D98032;
+  border-radius: 10px;
 }
 </style>
