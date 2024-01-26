@@ -11,27 +11,13 @@ watch(codigo, () => {
   error.value = "";
 })
 
-function entrar() {
-  fetch(route("/login"), {
-    method: "POST",
-    headers: { "Content-type": "plain/text" },
-    body: codigo.value
-  })
-    .then((res) => {
-      return res.json();
-    })
-    .then((res) => {
-      if (res.status == "OK") {
-        localStorage.setItem("sessionId", res.sessionId);
-        router.push("/");
-      } else {
-        error.value = "codigo no valido";
-      }
-    })
-    .catch((error) => {
-      alert("ocurrio un error en el login");
-      console.log(error);
-    })
+async function entrar() {
+  res = await POST("/login", {codigo: codigo.value});
+  if (res.logged) {
+    router.push("/");
+  } else {
+    error.value = "codigo no valido";
+  }
 }
 function enviarRegistro() {
   router.push("/registro");
