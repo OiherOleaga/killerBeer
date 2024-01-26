@@ -68,6 +68,10 @@ import FooterPartial from '../components/partials/FooterPartial.vue';
 </template>
 
 <style>
+body {
+  background-color: #212226;
+}
+
 .display-4 {
   color: #D98032;
   text-align: center;
