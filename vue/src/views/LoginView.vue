@@ -12,10 +12,12 @@ watch(codigo, () => {
 })
 
 function entrar() {
+  const data = { codigo: codigo.value };
+
   fetch(route("/login"), {
     method: "POST",
-    headers: { "Content-type": "plain/text" },
-    body: codigo.value
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
   })
     .then((res) => {
       return res.json();
@@ -25,13 +27,13 @@ function entrar() {
         localStorage.setItem("sessionId", res.sessionId);
         router.push("/");
       } else {
-        error.value = "codigo no valido";
+        error.value = "Código no válido";
       }
     })
     .catch((error) => {
-      alert("ocurrio un error en el login");
+      alert("Ocurrió un error en el login");
       console.log(error);
-    })
+    });
 }
 function enviarRegistro() {
   router.push("/register");

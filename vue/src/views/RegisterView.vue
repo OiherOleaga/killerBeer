@@ -20,7 +20,7 @@ function registrar() {
     };
 
 
-    fetch(route("/registro"), {
+    fetch(route("/register"), {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(datos)
@@ -30,7 +30,9 @@ function registrar() {
         })
         .then((res) => {
             if (res == "OK") {
-                error.value = "hola"
+                console.log(res.sessionId);
+                localStorage.setItem("sessionId", res.sessionId);
+                router.push("/");
             } else {
                 error.value = "Los datos no son validos";
             }
@@ -89,7 +91,7 @@ function enviarLogin() {
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"
                                             @click="registrar">Crear Cuenta</button>
                                     </div>
-
+                                    <p v-if="error" class="error">{{ error }}</p>
                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                         <p class="mb-0 me-2">¿Ya tienes una cuenta?</p>
                                         <button type="button" class="btn btn-outline-danger" @click="enviarLogin">Iniciar
@@ -127,8 +129,8 @@ function enviarLogin() {
 }
 
 .gradient-custom-2 {
-    background: -webkit-linear-gradient(to right, #A65221, #D98032, #F2A74B, #F2CC85);
-    background: linear-gradient(to right, #A65221, #D98032, #F2A74B, #F2CC85);
+    background: -webkit-linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
+    background: linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
 }
 
 
