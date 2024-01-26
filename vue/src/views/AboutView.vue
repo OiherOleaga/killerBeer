@@ -1,6 +1,5 @@
 <script setup>
-import HeaderPartial from '../components/partials/HeaderPartial.vue';
-import FooterPartial from '../components/partials/FooterPartial.vue';
+
 </script>
 
 <template>

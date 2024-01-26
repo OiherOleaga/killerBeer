@@ -1,5 +1,25 @@
 <script setup>
 GET("/session");
+async function obtenerFilasAleatorias() {
+  try {
+    const response = await fetch('/cervezasMain', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al obtener filas aleatorias');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Hubo un error:', error.message);
+    return null;
+  }
+}
 </script>
 
 <template>
@@ -25,7 +45,7 @@ GET("/session");
                       d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
                   </svg></cite>
               </p>
-              <a href="/beers"><span class="btn btn-lg">CATÁLOGO</span></a>
+              <a href="/beer"><span class="btn btn-lg">CATÁLOGO</span></a>
             </div>
           </div>
           <div class="gallery-item d-none d-xl-block">
@@ -36,31 +56,31 @@ GET("/session");
                 pasión por la perfección. Nuestro proceso de destilación es un ballet de precisión y maestría, donde cada
                 nota aromática y cada matiz de sabor se cuidan con esmero para crear una experiencia cervecera
                 inigualable.
-                </p>
-                Nuestro viaje comienza con los ingredientes cuidadosamente seleccionados, desde las maltas más finas hasta
-                los lúpulos más aromáticos. Estos elementos de calidad se combinan en una danza armoniosa en nuestros
-                enormes tanques de maceración, donde la magia comienza a tomar forma. El maestro cervecero, con su
-                experiencia única, guía este proceso para extraer los sabores más ricos y complejos.
-                <p>
+              </p>
+              Nuestro viaje comienza con los ingredientes cuidadosamente seleccionados, desde las maltas más finas hasta
+              los lúpulos más aromáticos. Estos elementos de calidad se combinan en una danza armoniosa en nuestros
+              enormes tanques de maceración, donde la magia comienza a tomar forma. El maestro cervecero, con su
+              experiencia única, guía este proceso para extraer los sabores más ricos y complejos.
+              <p>
                 Después de la fermentación, llega el momento crucial de la destilación. En nuestros alambiques de última
                 generación, el líquido resultante se somete a un delicado proceso de destilación que eleva la cerveza a
                 nuevas alturas. Este paso fundamental destila la esencia de cada ingrediente, purificando y refinando la
                 mezcla hasta alcanzar su máxima expresión.
-                </p>
-                Nuestros destiladores expertos ajustan cuidadosamente los parámetros, capturando los matices que hacen que
-                cada cerveza sea única. Los alambiques, relucientes y majestuosos, destilan la pasión y el arte que
-                nuestros maestros cerveceros han vertido en cada lote.
-                <p>
+              </p>
+              Nuestros destiladores expertos ajustan cuidadosamente los parámetros, capturando los matices que hacen que
+              cada cerveza sea única. Los alambiques, relucientes y majestuosos, destilan la pasión y el arte que
+              nuestros maestros cerveceros han vertido en cada lote.
+              <p>
                 Finalmente, el resultado es una cerveza destilada de calidad incomparable, donde los sabores se entrelazan
                 en una sinfonía de notas complejas y armoniosas. Cada sorbo es una experiencia sensorial que deleita los
                 sentidos y refleja el compromiso inquebrantable con la excelencia de nuestras fábricas de cerveza.
-                </p>
-                <p>
+              </p>
+              <p>
                 En nuestras instalaciones, la destilación de la cerveza es más que un proceso; es una expresión artística
                 que busca cautivar a los amantes de la cerveza con cada gota. Descubre la magia detrás de nuestras
                 cervezas destiladas y sumérgete en la perfección de la destilación cervecera en cada sorbo.
                 <br>
-                <h1>¡Salud a la innovación, al arte y a la cerveza excepcional!</h1>
+              <h1>¡Salud a la innovación, al arte y a la cerveza excepcional!</h1>
               </p>
             </div>
           </div>
@@ -71,7 +91,7 @@ GET("/session");
                 <img
                   src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (1).jpg"
                   class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
+                <div class="gradient-overlay"></div>
                 <div class="card-body">
                   <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
                   <p class="card-text">
@@ -88,7 +108,7 @@ GET("/session");
                 <img
                   src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (2).jpg"
                   class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
+                <div class="gradient-overlay"></div>
                 <div class="card-body">
                   <h4>Lizard</h4>
                   <p class="card-text">
@@ -104,7 +124,7 @@ GET("/session");
               <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
                 <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
                   class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
+                <div class="gradient-overlay"></div>
                 <div class="card-body">
                   <h4>Lizard</h4>
                   <p class="card-text">
@@ -120,7 +140,7 @@ GET("/session");
               <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
                 <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_2.jpg"
                   class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
+                <div class="gradient-overlay"></div>
                 <div class="card-body">
                   <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
                   <p class="card-text">
@@ -149,15 +169,18 @@ GET("/session");
   width: 100%;
   height: 100%;
   background: linear-gradient(to top, rgba(255, 255, 255, 0)60%, rgb(255, 255, 255, .3));
-  pointer-events: none; /* Asegura que el overlay no capture eventos del ratón */
+  pointer-events: none;
+  /* Asegura que el overlay no capture eventos del ratón */
 }
-.jumbotron p, h1 {
+
+.jumbotron p,
+h1 {
   font-weight: 600;
   transform: rotate(-.6deg);
   font-style: italic;
 }
 
-.beers h1{
+.beers h1 {
   color: #D98032;
   transform: rotate(0deg);
   text-decoration: underline;
@@ -303,12 +326,11 @@ GET("/session");
   transition: opacity 0.3s ease-in-out;
 }
 
-.overlay h1{
+.overlay h1 {
   transform: rotate(0deg);
 }
 
 .gallery-item:hover .overlay {
   opacity: 1;
 }
-
 </style>
