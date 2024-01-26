@@ -123,6 +123,11 @@ function enviarLogin() {
 </template>
   
 <style scoped>
+input,
+input:focus {
+    color: #D98032;
+}
+
 .container-fluid {
     background-color: #212226;
     min-height: 100vh;

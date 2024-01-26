@@ -101,6 +101,11 @@ function enviarRegistro() {
 
 
 <style scoped>
+input,
+input:focus {
+  color: #D98032;
+}
+
 section {
   background-color: #212226;
   min-height: 100vh;
