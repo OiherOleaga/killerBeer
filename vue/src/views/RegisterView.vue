@@ -129,8 +129,8 @@ function enviarLogin() {
 }
 
 .gradient-custom-2 {
-    background: -webkit-linear-gradient(to right, #A65221, #D98032, #F2A74B, #F2CC85);
-    background: linear-gradient(to right, #A65221, #D98032, #F2A74B, #F2CC85);
+    background: -webkit-linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
+    background: linear-gradient(to right, #F2CC85, #F2A74B, #D98032, #A65221);
 }
 
 
