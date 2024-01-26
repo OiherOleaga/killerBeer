@@ -78,7 +78,7 @@
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: white;
+  --bs-body-color: #212529;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg: white;
   --bs-body-bg-rgb: 255, 255, 255;
@@ -2046,7 +2046,7 @@ progress {
 .form-text {
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: var(--bs-secondary-color);
+  color: #e69b50;
 }
 
 .form-control {
