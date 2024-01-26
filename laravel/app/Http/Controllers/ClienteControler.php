@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Response;
 
@@ -10,35 +11,56 @@ use Response;
 
 class ClienteControler extends Controller
 {
+    function sessionCheck() {
+        session_start();
+        return (isset($_SESSION["logged"]) && $_SESSION["logged"]);
+    }
+    function index() {
+
+        if (!$this->sessionCheck()) {
+            return response()->json(["logged" => false]);
+        }
+
+        return response()->json(["logged" => true]);
+    }
     function login(Request $request)
     {
-        $id = Cliente::where("codigo", intval($request->getContent()))->value("id");
+        $id = Cliente::where("codigo", intval($request->codigo))->value("id");
                     
         if ($id == null) {
             return response()->json(["logged" => false]);
         }
 
         session_start();
-        $_SESSION["id"] = $id;
+        $_SESSION["logged"] = true;
 
         return response()->json(["logged" => true]);
     }
 
     public function registro(Request $request)
     {
-        $datosValidados = $request->validate([
-            'correo' => 'required|email',
-            'direccion' => 'required|string',
-            'telefono' => 'required|string',
-            'nombre' => 'required|string',
-        ]);
+        $logged = true;
+        try {
+            $datosValidados = $request->validate([
+                'correo' => 'required|email',
+                'direccion' => 'required|string',
+                'telefono' => 'required|string',
+                'nombre' => 'required|string',
+            ]);
+            $cliente = new Cliente($datosValidados);
 
-        $cliente = new Cliente($datosValidados);
+            if (!$cliente->save()) {
+                $logged = false;
+            }
+            
+        } catch (\Exception $e) {
+            $logged = false;
+        }
+        if ($logged) {
+            session_start();
+            $_SESSION["logged"] = true;
+        }
 
-        $cliente->save();
-        $response = response("OK");
-        // Devuelve una respuesta indicando éxito
-        $response->headers->set("Conten-type", "plain/text");
-        return $response;
+        return response()->json(["logged" => $logged]); 
     }
 }

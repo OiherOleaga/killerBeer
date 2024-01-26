@@ -23,4 +23,4 @@ Route::post("/login", [ClienteControler::class, "login"]);
 
 Route::post("/registro", [ClienteControler::class, "registro"]);
 
-Route::post("/session", [ClienteControler::class, "checkSession"]);
+Route::post("/", [ClienteControler::class, "index"]);

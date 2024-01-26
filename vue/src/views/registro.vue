@@ -10,7 +10,7 @@ const telefono = ref("");
 const nombre = ref("");
 const error = ref("");
 
-function registrar() {
+async function registrar() {
 
     const datos = {
         correo: correo.value,
@@ -19,28 +19,17 @@ function registrar() {
         nombre: nombre.value
     };
 
+    res = await POST("/registro", datos);
 
-    fetch(route("/registro"), {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(datos)
-    })
-        .then((res) => {
-            return res.text();
-        })
-        .then((res) => {
-            if (res == "OK") {
-                error.value = "hola"
-            } else {
-                error.value = "Los datos no son validos";
-            }
-        })
-        .catch((error) => {
-            alert("ocurrio un error en el registro");
-            console.log(error);
-        })
+    if (res.logged) {
+        // informar de que llegara un codigo al email
+        enviarLogin();
+    } else {
+        error.value = "Los datos no son validos";
+   }
 }
-function enviarLogin() {
+   
+    function enviarLogin() {
     router.push("/login");
 }
 </script>
