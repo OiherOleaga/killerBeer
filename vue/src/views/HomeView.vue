@@ -117,7 +117,7 @@
                 </div>
               </div>
               <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
+                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_2.jpg"
                   class="card-img-top" alt="green iguana" />
                   <div class="gradient-overlay"></div>
                 <div class="card-body">
@@ -133,7 +133,7 @@
                 </div>
               </div>
               <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
+                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1.jpg"
                   class="card-img-top" alt="green iguana" />
                   <div class="gradient-overlay"></div>
                 <div class="card-body">
@@ -148,92 +148,6 @@
                   </div>
                 </div>
               </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img
-                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (2).jpg"
-                  class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img
-                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
-                  class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard</h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img
-                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
-                  class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard</h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img
-                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
-                  class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard</h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img
-                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (1).jpg"
-                  class="card-img-top" alt="green iguana" />
-                  <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard</h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-            
             </section>
           </section>
         </div>
@@ -276,8 +190,6 @@ h1 {
 }
 
 .beers {
-  overflow-y: scroll;
-  height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .7)) 100%, url(../components/img/hermosa-foto-campo-afilar-cielo-nublado.jpg);
   background-size: cover;
   background-position: bottom;

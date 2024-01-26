@@ -4,23 +4,8 @@ import FooterPartial from '../components/partials/FooterPartial.vue';
 </script>
 
 <template>
-  <HeaderPartial />
-
-
-
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container px-5">
-
-      </div>
-    </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
-  </header>
-  <section id="scroll">
-    <div class="container px-5">
+  <section>
+    <div class="container px-5 tp-1">
       <div class="row gx-5 align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5"><img class="img1 img-fluid rounded-circle" src="../components/img/beers/tradicional.jpg"
