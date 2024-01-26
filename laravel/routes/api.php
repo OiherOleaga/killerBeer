@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClienteControler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::post("/login", [ClienteControler::class, "login"]);
 Route::post("/register", [ClienteControler::class, "registro"]);
 
 Route::post("/session", [ClienteControler::class, "checkSession"]);
+
+Route::post("/cervezasMain", [ProductoController::class, "cargar"]);
