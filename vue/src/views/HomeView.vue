@@ -1,5 +1,5 @@
 <script setup>
-GET("/session");
+//GET("/session");
 async function obtenerFilasAleatorias() {
   try {
     const response = await fetch('/cervezasMain', {

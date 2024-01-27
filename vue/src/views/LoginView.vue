@@ -19,6 +19,7 @@ async function entrar() {
     error.value = "codigo no valido";
   }
 }
+
 function enviarRegistro() {
   router.push("/register");
 }
