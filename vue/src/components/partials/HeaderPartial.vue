@@ -6,6 +6,7 @@ initMDB({ Collapse, Ripple });
 
 <template>
     <header class="fixed-top">
+
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid m-0 p-0 d-flex align-items-center">
                 <div class="region region-nav-branding">
@@ -32,18 +33,22 @@ initMDB({ Collapse, Ripple });
                     <div class="region region-nav-main">
                         <div class="block block-tb-megamenu block-tb-megamenu-menu-blockmain">
                             <ul class="tb-megamenu-nav nav level-0 items-6">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        CUENTA
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
+                                        <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+                                    </ul>
+                                </li>
                                 <li class="tb-megamenu-item level-1 mega px-2">
                                     <a href="/beer">Bebidas</a>
                                 </li>
                                 <li class="tb-megamenu-item level-2 mega px-2">
                                     <a href="/about">Sobre Nosotros</a>
                                 </li>
-                                <!-- <li class="tb-megamenu-item level-4 mega px-2">
-                                    <form class="d-flex justify-content-center align-items-center">
-                                        <input class="form-control me-2 " type="search" placeholder="Buscar"
-                                            aria-label="Search">
-                                    </form>
-                                </li> -->
                                 <li class="tb-megamenu-item level-3 mega px-2">
                                     <a href="/pedido"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-cart2" viewBox="0 2 16 16">
@@ -57,6 +62,27 @@ initMDB({ Collapse, Ripple });
                 </div>
             </div>
         </nav>
+        <div class="collapse" id="navbarSupportedContent">
+            <div class="bg-dark p-4">
+                <ul class="tb-megamenu-nav nav level-0 items-6">
+                    <li class="tb-megamenu-item level-2 mega px-2">
+                        <a href="/about">Cesta</a>
+                    </li>
+                    <li class="tb-megamenu-item level-1 mega px-2">
+                        <a href="/beer">Bebidas</a>
+                    </li>
+                    <li class="tb-megamenu-item level-2 mega px-2">
+                        <a href="/about">Sobre Nosotros</a>
+                    </li>
+                    <li class="tb-megamenu-item level-2 mega px-2">
+                        <a href="/about">Mis pedidos</a>
+                    </li>
+                    <li class="tb-megamenu-item level-2 mega px-2">
+                        <a href="/about">Mi cuenta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
 </template>
 
@@ -67,6 +93,22 @@ header {
     padding: 0 1rem;
     background: rgba(8, 8, 8, 0.70);
     transition: background .3s ease-in-out;
+}
+
+@media all and (min-width: 992px) {
+    .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu,
+    .dropdown-item {
+        padding: .4rem;
+        background-color: #212226;
+    }
+}
+
+.nav-link {
+    color: #D98032;
 }
 
 header:hover {
