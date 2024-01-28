@@ -11,6 +11,12 @@
 
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href={{ route("pedidos.index") }}>pedidos</a></li>
+                <li><a href={{ route("productos.index") }}>productos</a></li>
+            </ul>
+        </nav>
         <h1>index</h1>
     </body>
 </html>
