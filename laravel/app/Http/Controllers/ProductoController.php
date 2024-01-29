@@ -25,6 +25,7 @@ class ProductoController extends Controller
             'foto' => 'required'
         ]);
 
+        //$datos["foto"] = ImgController::descargarImagen($datos["foto"], __DIR__ . "/../../../public/fotosProducto/". bcrypt($datos["nombre"]));
 
         print_r($datos);
         exit;

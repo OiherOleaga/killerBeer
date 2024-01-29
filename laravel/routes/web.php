@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteControler;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PedidoCotroller;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
@@ -31,11 +32,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
+
+Route::post("/categorias", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
+
+Route::post("/categoriaDestroy/{categoria}", [CategoriaController::class, "destroy"])->middleware([])->name("categorias.destroy");
+
+Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
+
+
 Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
 
 Route::post("/productos", [ProductoController::class, "store"])->middleware([])->name("productos.store");
 
-Route::get("/pedidos", [PedidoCotroller::class, "index"])->name("pedidos.index");
+Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
+
+
 
 Route::get("pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
 
