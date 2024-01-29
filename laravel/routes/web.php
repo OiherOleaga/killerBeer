@@ -6,6 +6,7 @@ use App\Http\Controllers\PedidoCotroller;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormatosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,7 @@ Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name(
 
 
 
-
-
+Route::get("/formatos", [FormatosController::class, "index"])->middleware([])->name("formato.index");
+Route::post("/formatos", [FormatosController::class, "store"])->middleware([])->name("formato.store");
+Route::post("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->middleware([])->name("formato.destroy");
 require __DIR__ . '/auth.php';
