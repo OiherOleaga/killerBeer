@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Formato;
 
-class formatos extends Seeder
+class Formatos extends Seeder
 {
     /**
      * Run the database seeds.

@@ -1,9 +1,9 @@
-<header class="border-b-2">
-    <nav class="bg-dark-100 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+<header class="bg-lightdark sticky top-0 border-b-2 border-b-third">
+    <nav class="border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png') }}" alt="Descripción de la imagen" height="70px" width="70px">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Gestión de
+                <span class="self-center text-2xl font-semibold whitespace-nowrap text-fourth">Gestión de
                     KillerBeer</span>
             </a>
             <button data-collapse-toggle="navbar-multi-level" type="button"
@@ -18,22 +18,22 @@
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
                 <ul
-                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-lightdark dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a href="/clientes"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clientes</a>
+                            class="block py-2 px-3 text-fourth  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-third md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clientes</a>
                     </li>
                     <li>
                         <a href="/pedidos"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pedidos</a>
+                            class="block py-2 px-3 text-fourth  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-third md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pedidos</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Productos</a>
+                            class="block py-2 px-3 text-fourth  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-third md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Productos</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Estadisticas</a>
+                            class="block py-2 px-3 text-fourth rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-third md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Estadisticas</a>
                     </li>
                 </ul>
             </div>

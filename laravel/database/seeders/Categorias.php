@@ -8,11 +8,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Categoria;
 
 
-class categorias extends Seeder
+class Categorias extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Categoria::create([
