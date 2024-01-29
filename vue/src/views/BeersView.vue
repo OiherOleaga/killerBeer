@@ -1,5 +1,7 @@
 <script setup>
 
+
+
 </script>
 
 <template>
@@ -342,14 +344,16 @@
 
 <style scoped>
 .gradient-overlay {
-  position: absolute;
-  bottom: 1;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0)60%, rgb(255, 255, 255, .3));
-  pointer-events: none; /* Asegura que el overlay no capture eventos del ratón */
+    position: absolute;
+    bottom: 1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0)60%, rgb(255, 255, 255, .3));
+    pointer-events: none;
+    /* Asegura que el overlay no capture eventos del ratón */
 }
+
 .store {
     padding: 8rem 0rem;
 }
@@ -375,7 +379,7 @@
 }
 
 .store {
-    background:linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .7)) 100%, url(../components/img/hermosa-foto-campo-afilar-cielo-nublado.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .7)) 100%, url(../components/img/hermosa-foto-campo-afilar-cielo-nublado.jpg);
     background-size: cover;
     background-position: bottom;
 }

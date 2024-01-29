@@ -7,14 +7,17 @@ use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
+
 class ProductoController extends Controller
 {
 
-    public function index() {
+    public function index()
+    {
         return view("productos.index", ["productos" => Producto::all(), "categorias" => Categoria::all()]);
     }
 
-    public function store(Request $request) { 
+    public function store(Request $request)
+    {
         $datos = $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
@@ -22,7 +25,7 @@ class ProductoController extends Controller
             'foto' => 'required'
         ]);
 
-        $datos["foto"] = ImgController::descargarImagen($datos["foto"], __DIR__ . "/../../../public/fotosProducto/". bcrypt($datos["nombre"]));
+        //$datos["foto"] = ImgController::descargarImagen($datos["foto"], __DIR__ . "/../../../public/fotosProducto/". bcrypt($datos["nombre"]));
 
         print_r($datos);
         exit;
@@ -32,13 +35,20 @@ class ProductoController extends Controller
         }
 
         Producto::create($datos);
-    
+
         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente');
     }
-    public function obtenerFilasAleatorias()
+    public function cargar()
     {
+        if (!ClienteControler::sessionCheck()) {
+            return response()->json(["logged" => false]);
+        }
+
         $filas = Producto::inRandomOrder()->limit(4)->get();
 
-        return response()->json($filas);
+        return response()->json([
+            "logged" => true,
+            "productos" => $filas
+        ]);
     }
 }
