@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteControler;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PedidoCotroller;
 use App\Http\Controllers\ProductoController;
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-})->middleware(['auth', 'verified'])->name('home');
+})->middleware(['auth'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,7 +32,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
+
+Route::middleware('auth')->group(function () {
+    Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
+    Route::post("/categorias", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
+    Route::post("/categoriaDestroy/{categoria}", [CategoriaController::class, "destroy"])->middleware([])->name("categorias.destroy");
+    Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
+    
+    
+    Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
+    Route::post("/productos", [ProductoController::class, "store"])->middleware([])->name("productos.store");
+    
+    Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
+    Route::get("pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
+    
+    Route::get("/clientes", [ClienteControler::class, "index"])->middleware([])->name("clientes.index");
+    Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
+    Route::get('/clientes/create', [ClienteControler::class, 'create'])->name('clientes.create');
+    Route::delete("/clientes/{cliente}", [ClienteControler::class, "destroy"])->middleware([])->name("clientes.destroy");
+    Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
 
 Route::post("/categorias", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
 
@@ -50,9 +69,12 @@ Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"]
 
 
 Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
+});
 
 
 
-Route::get("pedidos/{filtro}", [PedidoCotroller::class,"filtro"]);
 
-require __DIR__.'/auth.php';
+
+
+
+require __DIR__ . '/auth.php';
