@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteControler;
 use App\Http\Controllers\PedidoCotroller;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
@@ -36,6 +37,11 @@ Route::post("/productos", [ProductoController::class, "store"])->middleware([])-
 
 Route::get("/pedidos", [PedidoCotroller::class, "index"])->name("pedidos.index");
 
-Route::get("pedidos/{filtro}", [PedidoCotroller::class,"filtro"]);
+Route::get("pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
 
-require __DIR__.'/auth.php';
+Route::get("/clientes", [ClienteControler::class, "index"])->middleware([])->name("clientes.index");
+Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
+
+
+
+require __DIR__ . '/auth.php';
