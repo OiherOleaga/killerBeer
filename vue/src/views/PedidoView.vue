@@ -13,7 +13,7 @@
                     </div>
                     <hr class="hr">
                     <div class="col">
-                        <div class="row ">
+                        <div class="row">
                             <div class="row">
                                 <div class="col d-flex flex-wrap gap-4 align-items-center">
                                     <div>
@@ -38,12 +38,14 @@
                                         <div class="row">
                                             <h4 class="h4 text-end">58.99€</h4>
                                         </div>
+                                        <div class="row p-2 justify-content-end"> <button class="btn">Quitar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <hr class="hr">
                             <div class="row">
-                                <div class="col d-flex gap-4 align-items-center">
+                                <div class="col d-flex flex-wrap gap-4 align-items-center">
                                     <div>
                                         <input type="checkbox">
                                     </div>
@@ -66,33 +68,7 @@
                                         <div class="row">
                                             <h4 class="h4 text-end">58.99€</h4>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="hr">
-                            <div class="row">
-                                <div class="col d-flex gap-4 align-items-center">
-                                    <div>
-                                        <input type="checkbox">
-                                    </div>
-                                    <div>
-                                        <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (2).jpg"
-                                            alt="">
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <h1>Carpe</h1>
-                                            <p>Envio <span class="h6">GRATIS</span> disponible</p>
-                                        </div>
-                                        <div class="row">
-                                            <p>Lizards are a widespread group of squamate reptiles, with over 6,000 species,
-                                                ranging
-                                                across
-                                                all
-                                                continents except Antarctica.</p>
-                                        </div>
-                                        <div class="row">
-                                            <h4 class="h4 text-end">58.99€</h4>
+                                        <div class="row p-2 justify-content-end"> <button class="btn">Quitar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 0;
+    padding: 8rem 0;
     min-height: 100vh;
 }
 
@@ -136,7 +112,14 @@
     width: 160px;
 }
 
-.btn {
+.cesta button {
+    color: #D98032;
+    text-align: center;
+    width: fit-content;
+    text-decoration: underline;
+}
+
+.comprar .btn {
     cursor: pointer;
     position: relative;
     padding: 5px 10px;
