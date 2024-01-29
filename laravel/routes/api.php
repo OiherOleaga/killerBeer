@@ -26,4 +26,4 @@ Route::post("/register", [ClienteControler::class, "registro"]);
 
 Route::get("/session", [ClienteControler::class, "session"]);
 
-Route::post("/cervezasMain", [ProductoController::class, "cargar"]);
+Route::get("/cervezasMain", [ProductoController::class, "cargar"]);

@@ -11,19 +11,22 @@ use Illuminate\Support\Str;
 
 class ClienteControler extends Controller
 {
-    function sessionCheck() {
+    static function sessionCheck()
+    {
         session_start();
         return (isset($_SESSION["logged"]) && $_SESSION["logged"]);
     }
 
-    function session() {
+    function session()
+    {
         if (!$this->sessionCheck()) {
             return response()->json(["logged" => false]);
         }
 
         return response()->json(["logged" => true]);
     }
-    function index() {
+    function index()
+    {
 
         if (!$this->sessionCheck()) {
             return response()->json(["logged" => false]);
@@ -34,7 +37,7 @@ class ClienteControler extends Controller
     function login(Request $request)
     {
         $id = Cliente::where("codigo", intval($request->codigo))->value("id");
-                    
+
         if ($id == null) {
             return response()->json(["logged" => false]);
         }
@@ -69,7 +72,6 @@ class ClienteControler extends Controller
             if (!$cliente->save()) {
                 $logged = false;
             }
-                
         } catch (\Exception $e) {
             $logged = false;
         }
@@ -79,6 +81,6 @@ class ClienteControler extends Controller
             $_SESSION["logged"] = true;
         }
 
-        return response()->json(["logged" => $logged]); 
+        return response()->json(["logged" => $logged]);
     }
 }
