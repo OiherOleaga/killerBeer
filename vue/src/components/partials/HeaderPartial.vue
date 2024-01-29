@@ -32,8 +32,8 @@ initMDB({ Collapse, Ripple });
                 <div class="collapse navbar-collapse justify-content-md-end">
                     <div class="region region-nav-main">
                         <div class="block block-tb-megamenu block-tb-megamenu-menu-blockmain">
-                            <ul class="tb-megamenu-nav nav level-0 items-6">
-                                <li class="nav-item dropdown">
+                            <ul class="tb-megamenu-nav nav level-1 items-6">
+                                <li class="nav-item dropdown px-2">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         CUENTA
@@ -43,13 +43,13 @@ initMDB({ Collapse, Ripple });
                                         <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
                                     </ul>
                                 </li>
-                                <li class="tb-megamenu-item level-1 mega px-2">
+                                <li class="tb-megamenu-item level-2 mega px-2">
                                     <a href="/beer">Bebidas</a>
                                 </li>
-                                <li class="tb-megamenu-item level-2 mega px-2">
+                                <li class="tb-megamenu-item level-3 mega px-2">
                                     <a href="/about">Sobre Nosotros</a>
                                 </li>
-                                <li class="tb-megamenu-item level-3 mega px-2">
+                                <li class="tb-megamenu-item level-4 mega px-2">
                                     <a href="/pedido"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-cart2" viewBox="0 2 16 16">
                                             <path
@@ -66,7 +66,7 @@ initMDB({ Collapse, Ripple });
             <div class="bg-dark p-4">
                 <ul class="tb-megamenu-nav nav level-0 items-6">
                     <li class="tb-megamenu-item level-2 mega px-2">
-                        <a href="/about">Cesta</a>
+                        <a href="/pedido">Cesta</a>
                     </li>
                     <li class="tb-megamenu-item level-1 mega px-2">
                         <a href="/beer">Bebidas</a>
@@ -75,10 +75,10 @@ initMDB({ Collapse, Ripple });
                         <a href="/about">Sobre Nosotros</a>
                     </li>
                     <li class="tb-megamenu-item level-2 mega px-2">
-                        <a href="/about">Mis pedidos</a>
+                        <a href="/pedidos">Mis pedidos</a>
                     </li>
                     <li class="tb-megamenu-item level-2 mega px-2">
-                        <a href="/about">Mi cuenta</a>
+                        <a href="/cuenta">Mi cuenta</a>
                     </li>
                 </ul>
             </div>
@@ -104,6 +104,10 @@ header {
     .dropdown-item {
         padding: .4rem;
         background-color: #212226;
+    }
+
+    .dropdown-item {
+        margin: .3rem 0;
     }
 }
 
