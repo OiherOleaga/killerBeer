@@ -13,7 +13,14 @@
     </head>
     <body>
         @include('partials.header')
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
+        <section class="text-fourth">
+            <div class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-4">
+                <h1
+                    class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                    Tabla de Clientes</h1>
+            </div>
+        </section>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2 mx-12">
             <table class="w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400 text-center">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -33,6 +40,9 @@
                             Email
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Codigo
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Acción
                         </th>
                     </tr>
@@ -46,6 +56,7 @@
                             <td class="px-6 py-4">{{ $cliente->direccion }}</td>
                             <td class="px-6 py-4">{{ $cliente->telefono }}</td>
                             <td class="px-6 py-4">{{ $cliente->correo }}</td>
+                            <td class="px-6 py-4">{{ $cliente->codigo }}</td>
                             <td class="flex items-center justify-center gap-2 m-2">
                                 <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
                                     @csrf
