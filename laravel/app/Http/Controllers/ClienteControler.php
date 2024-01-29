@@ -88,7 +88,7 @@ class ClienteControler extends Controller
 
     public function store(Request $request)
     {
-
+    
         $datosValidados = $request->validate([
             'correo' => 'required|email',
             'direccion' => 'required|string',
@@ -96,10 +96,10 @@ class ClienteControler extends Controller
             'nombre' => 'required|string',
             'codigo' => 'required|string|min:9|max:9'
         ]);
-
-
-        Cliente::create($request->all());
-        return redirect()->route('clientes.index');
+    
+        $cliente = Cliente::create($datosValidados);
+    
+        return redirect()->route('clientes.index')->with('success', 'Cliente creada correctamente');;
     }
 
     public function show($id)

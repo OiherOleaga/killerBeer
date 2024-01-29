@@ -56,7 +56,6 @@ Route::get("pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
 
 Route::get("/clientes", [ClienteControler::class, "index"])->middleware([])->name("clientes.index");
 Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
-Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
 Route::get('/clientes/create', [ClienteControler::class, 'create'])->name('clientes.create');
 Route::delete("/clientes/{cliente}", [ClienteControler::class, "destroy"])->middleware([])->name("clientes.destroy");
 
