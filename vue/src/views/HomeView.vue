@@ -1,24 +1,21 @@
 <script setup>
 //GET("/session");
-async function obtenerFilasAleatorias() {
-  try {
-    const response = await fetch('/cervezasMain', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+import { ref } from "vue";
+import router from '@/router';
 
-    if (!response.ok) {
-      throw new Error('Error al obtener filas aleatorias');
-    }
+const objeto = ref(null);
 
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Hubo un error:', error.message);
-    return null;
-  }
+async function selectProductos() {
+  objeto.value = (await GET("/cervezasMain")).productos;
+  console.log("hola");
+  console.log(objeto.value);
+}
+selectProductos();
+
+
+function enviarCervezas() {
+  router.push("/Beer");
+
 }
 </script>
 
@@ -87,69 +84,16 @@ async function obtenerFilasAleatorias() {
           <section class="beers pb-3">
             <h1 class="display-2 text-center">DESTACADAS</h1>
             <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img
-                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (1).jpg"
-                  class="card-img-top" alt="green iguana" />
+              <div v-for="(producto, index) in objeto" :key="index"
+                class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
+                <img :src="producto.foto" class="card-img-top" :alt="producto.nombre" />
                 <div class="gradient-overlay"></div>
                 <div class="card-body">
-                  <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
+                  <h4>{{ producto.nombre }}</h4>
+                  <p class="card-text">{{ producto.descripcion }}</p>
                   <hr class="hr">
                   <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn btn-sm" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img
-                  src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (2).jpg"
-                  class="card-img-top" alt="green iguana" />
-                <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard</h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0.jpg"
-                  class="card-img-top" alt="green iguana" />
-                <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard</h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_2.jpg"
-                  class="card-img-top" alt="green iguana" />
-                <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>Lizard <span class="badge bg-danger">NEW</span></h4>
-                  <p class="card-text">
-                    Lizards are a widespread group of squamate reptiles, with over
-                    6,000 species, ranging across all continents except Antarctica.
-                  </p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
-                    <button class="btn" type="button">Comprar</button>
+                    <button class="btn btn-sm" type="button" @click="enviarCervezas">Comprar</button>
                   </div>
                 </div>
               </div>
