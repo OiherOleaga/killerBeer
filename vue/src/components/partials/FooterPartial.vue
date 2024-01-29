@@ -8,7 +8,7 @@ initMDB({ Collapse, Ripple });
 <template>
 <footer class="text-center">
   <div class="text-center p-3">
-    © 2023 Todos los derechos están reservados a
+    © 2024 Todos los derechos están reservados a
     <a class="text-body" href="/">KillerBeer.com</a>
   </div>
 </footer>
