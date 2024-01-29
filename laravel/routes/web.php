@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-})->middleware(['auth', 'verified'])->name('home');
+})->middleware([])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,7 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
 Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
+
 
 Route::post("/categorias", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
 
@@ -53,6 +56,9 @@ Route::get("pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
 
 Route::get("/clientes", [ClienteControler::class, "index"])->middleware([])->name("clientes.index");
 Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
+Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
+Route::get('/clientes/create', [ClienteControler::class, 'create'])->name('clientes.create');
+Route::delete("/clientes/{cliente}", [ClienteControler::class, "destroy"])->middleware([])->name("clientes.destroy");
 
 
 

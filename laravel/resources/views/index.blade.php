@@ -25,59 +25,7 @@
                 </p>
             </div>
         </section>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2">
-            <table class="w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400 text-center">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            ID
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nombre
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Localización
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Teléfono
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Email
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Acción
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($clientes as $cliente)
-                        <tr
-                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <td class="px-6 py-4">{{ $cliente->id }}</td>
-                            <td class="px-6 py-4">{{ $cliente->nombre }}</td>
-                            <td class="px-6 py-4">{{ $cliene->email }}</td>
-                            <td class="px-6 py-4">{{ $cliente->direccion }}</td>
-                            <td class="px-6 py-4">{{ $cliente->telefono }}</td>
-                            <td class="px-6 py-4">{{ $cliente->telefono }}</td>
-                            <td class="flex items-center justify-center gap-2 m-2">
-                                <a href="/bodegas/bodega/{{ $bodega->id }}"
-                                    class="px-5 py-2.5 font-medium bg-blue-50 hover:bg-blue-100 hover:text-blue-600 text-blue-500 rounded-lg text-sm">
-                                    Entrar
-                                </a>
-                                <form action="{{ route('bodegas.destroy', $bodega->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="px-5 py-2.5 font-medium bg-red-50 hover:bg-red-100 hover:text-red-600 text-red-500 rounded-lg text-sm">
-                                        Borrar
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        
     </main>
 </body>
 
