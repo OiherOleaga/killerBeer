@@ -60,11 +60,21 @@
 
         @foreach ($productos as $producto)
             <tr>
-                <td>{{$producto["id"]}}</td>
-                <td>{{$producto["nombre"]}}</td>
-                <td>{{$producto["descripcion"]}}</td>
-                <td>{{$producto["id_categoria"]}}</td>
-                <td> <img src={{$producto["foto"]}}></td>
+                <form action={{route("productos.update", $producto["id"])}} method="POST">
+                    @csrf
+                    <td><input type="text" value={{$producto["id"]}} ></td>
+                    <td><input type="text" value={{$producto["nombre"]}} ></td>
+                    <td><textarea>value={{$producto["descripcion"]}} </textarea></td>
+                    <td>{{$producto["id_categoria"]}}</td>
+                    <td><img src={{$producto["foto"]}} /></td>
+                    <td><input type="submit" value="Guardar"></td>
+                </form>
+                <td>
+                    <form action={{route("productos.destroy", $producto["id"])}} method="POST">
+                        @csrf
+                        <input type="submit" value="Borra">
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table> 

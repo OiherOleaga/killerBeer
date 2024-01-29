@@ -25,11 +25,11 @@ class ProductoController extends Controller
             'foto' => 'required'
         ]);
 
-        //$datos["foto"] = ImgController::descargarImagen($datos["foto"], __DIR__ . "/../../../public/fotosProducto/". bcrypt($datos["nombre"]));
+//       die($datos["id_categoria"]);
 
-        print_r($datos);
-        exit;
-        if ($datos["foto"]) {
+        $ruta = "/fotosProducto/" . md5($datos["nombre"]);
+        
+        if (!($datos["foto"] = ImgController::descargarImagen($datos["foto"], $ruta))) {
             // error
             //return redirect()->route('productos.index')->with('error', $e->getMessage());
         }
@@ -38,6 +38,7 @@ class ProductoController extends Controller
 
         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente');
     }
+
     public function cargar()
     {
         if (!ClienteControler::sessionCheck()) {
@@ -51,4 +52,14 @@ class ProductoController extends Controller
             "productos" => $filas
         ]);
     }
+
+    public function destroy(Producto $producto) {
+
+        $producto->delete();
+        return redirect(route("productos.index"));
+    }
+
+    public function update(Producto $producto, Request $request) {
+        //$producto->
+    } 
 }

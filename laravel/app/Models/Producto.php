@@ -14,6 +14,7 @@ class Producto extends Model
     protected $fillable = [ // Define los campos que pueden ser asignados en masa
         'id',
         'nombre',
+        'id_categoria',
         'descripcion',
         'foto'
         // Agrega más campos si es necesario

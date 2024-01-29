@@ -42,7 +42,12 @@ Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update
 
 Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
 
-Route::post("/productos", [ProductoController::class, "store"])->middleware([])->name("productos.store");
+Route::post("/productosStore", [ProductoController::class, "store"])->middleware([])->name("productos.store");
+
+Route::post("/productosDestroy/{producto}", [ProductoController::class, "destroy"])->middleware([])->name("productos.destroy");
+
+Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");
+
 
 Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
 
