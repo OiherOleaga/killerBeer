@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("telefono");
             $table->string("nombre");
             $table->bigInteger("codigo");
+            $table->enum('estado', ['en cola', 'aceptado'])->default('en cola');
             $table->timestamps();
         });
     }

@@ -96,6 +96,9 @@
                                 Codigo
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Acción
                             </th>
                         </tr>
@@ -109,7 +112,8 @@
                                 <td class="px-6 py-4">{{ $cliente->telefono }}</td>
                                 <td class="px-6 py-4">{{ $cliente->correo }}</td>
                                 <td class="px-6 py-4">{{ $cliente->codigo }}</td>
-                                <td>
+                                <td class="px-6 py-4">{{ $cliente->estado }}</td>
+                                <td class="flex items-center justify-center gap-2 m-2">
                                     <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -118,6 +122,16 @@
                                             Borrar
                                         </button>
                                     </form>
+                                    @if($cliente->estado == 'en cola')
+                                    <form id="aceptarClienteForm{{ $cliente->id }}" action="{{ route('clientes.aceptar', $cliente->id) }}" method="POST">
+                                        @csrf
+                                           <button type="submit" class="px-5 py-2.5 hover:bg-green-500 hover:text-green-900 text-green-500 rounded-lg text-sm font-semibold">
+                                                Aceptar Cliente
+                                            </button>
+                                    </form>
+                                    @endif
+
+                                    
                                 </td>
                             </tr>
                         @endforeach
