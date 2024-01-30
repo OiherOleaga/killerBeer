@@ -22,9 +22,9 @@
             @endforeach
         </select>
 
-        <input type="file" accept="image/*" id="fotoInput">
-        <canvas id="insertCanvas" style="border: 1px solid black"></canvas>
-        <input type="hidden" id="foto" name="foto">
+        <input type="file" accept="image/*" class="fotoInput">
+        <canvas class="insertCanvas" style="border: 1px solid black"></canvas>
+        <input type="hidden" id="foto" class="foto">
 
         <input type="submit" value="Crear">
     </form>
@@ -62,11 +62,21 @@
             <tr>
                 <form action={{route("productos.update", $producto["id"])}} method="POST">
                     @csrf
-                    <td><input type="text" value={{$producto["id"]}} ></td>
-                    <td><input type="text" value={{$producto["nombre"]}} ></td>
-                    <td><textarea>value={{$producto["descripcion"]}} </textarea></td>
-                    <td>{{$producto["id_categoria"]}}</td>
-                    <td><img src={{$producto["foto"]}} /></td>
+                    <td>{{$producto["id"]}}</td>
+                    <td><input type="text" value={{$producto["nombre"]}} name="nombre"></td>
+                    <td><textarea name="descripcion" >{{$producto["descripcion"]}} </textarea></td>
+                    <td>
+                        <select name="id_categoria" > 
+                            @foreach ($categorias as $categoria)
+                                <option value={{$categoria["id"]}} {{$categoria["id"] == $producto["id_categoria"]? "selected" : "" }}>{{ $categoria["nombre"] }}</option> 
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="file" class="fotoInput">
+                        <canvas class="insertCanvas" style="border: 1px solid black" src={{$producto["foto"]}}></canvas>
+                        <input type="hidden" class="foto" id="foto" name="foto">
+                    </td>
                     <td><input type="submit" value="Guardar"></td>
                 </form>
                 <td>
@@ -78,6 +88,6 @@
             </tr>
         @endforeach
     </table> 
-    <script type="module" src="/js/productos.js"></script>
+    <script type="module" src="/js/productos.js" defer></script>
 </body>
 </html>

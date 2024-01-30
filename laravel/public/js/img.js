@@ -1,7 +1,16 @@
-function initializeCanvas(inputFoto, canvas, outputFoto, width, height, cambioFoto) {
-    inputFoto = document.querySelector(inputFoto);
-    canvas = document.querySelector(canvas);
-    outputFoto = document.querySelector(outputFoto);
+function initializeCanvas(inputFoto, canvas, outputFoto, width, height) {
+
+    if (typeof inputFoto == "string") {
+        inputFoto = document.querySelector(inputFoto);
+    }
+
+    if (typeof canvas == "string") {
+        canvas = document.querySelector(canvas);
+    }
+
+    if (typeof outputFoto == "string") {
+        outputFoto = document.querySelector(outputFoto);
+    }
 
     if (!height) {
         height = width;
@@ -112,9 +121,6 @@ function initializeCanvas(inputFoto, canvas, outputFoto, width, height, cambioFo
             let extension = inputFoto.value.substring(inputFoto.value.lastIndexOf(".") + 1, inputFoto.value.length);
             outputFoto.value = canvas.toDataURL('image/' + extension);
             outputFoto.setAttribute("name", outputFoto.id);
-            if (cambioFoto) {
-                cambioFoto.setAttribute("name", cambioFoto.id);
-            }
         }
     }
 }

@@ -19,7 +19,7 @@ class ImgController extends Controller
         $url = "http://localhost";
         return $url . $rutaImg;
     }
-    public static function analizarImg(&$img) {
+    private static function analizarImg(&$img) {
         $extension = "";
         if ($img[10] != "/") {
             return false;

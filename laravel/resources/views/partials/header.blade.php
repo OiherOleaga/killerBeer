@@ -1,4 +1,4 @@
-<header class="bg-lightdark sticky top-0 border-b-2 border-b-third">
+<header class="bg-lightdark z-50 sticky top-0 border-b-2 border-b-third">
     <nav class="border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -30,6 +30,10 @@
                     <li>
                         <a href="#"
                             class="block py-2 px-3 text-fourth  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-third md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Productos</a>
+                    </li>
+                    <li>
+                        <a href="/categorias"
+                            class="block py-2 px-3 text-fourth rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-third md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Categorias</a>
                     </li>
                     <li>
                         <a href="#"
