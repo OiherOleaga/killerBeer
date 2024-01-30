@@ -26,10 +26,15 @@ class ClienteControler extends Controller
 
         return response()->json(["logged" => true]);
     }
-    function index()
+    function index(Request $request)
     {
+        $search = $request->input('search');
 
-        return view("clientes.index", ["clientes" => Cliente::all()]);
+        $clientes = Cliente::query()
+            ->where(function ($query) use ($search) {
+                $query->where('nombre', 'LIKE', "%$search%");
+            })->paginate(5);
+        return view("clientes.index", ["clientes" => $clientes]);
     }
     function login(Request $request)
     {

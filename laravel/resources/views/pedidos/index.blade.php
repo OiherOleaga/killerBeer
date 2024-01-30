@@ -42,13 +42,6 @@
                 </ol>
             </nav>
         </section>
-        <section>
-            <div class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-4">
-                <h1
-                    class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-fourth md:text-5xl lg:text-6xl dark:text-white">
-                    Tabla de Pedidos</h1>
-            </div>
-        </section>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2 mx-12 border-2 border-third">
             <table class="w-full text-sm rtl:text-right  text-second dark:text-gray-400 text-center">
                 <thead class="text-xs text-fourth uppercase bg-lightdark dark:bg-gray-700 dark:text-gray-400">
