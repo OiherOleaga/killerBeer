@@ -35,15 +35,17 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
+
     Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
     Route::post("/categorias", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
     Route::post("/categoriaDestroy/{categoria}", [CategoriaController::class, "destroy"])->middleware([])->name("categorias.destroy");
     Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
-
-
+    
     Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
-    Route::post("/productos", [ProductoController::class, "store"])->middleware([])->name("productos.store");
-
+    Route::post("/productosStore", [ProductoController::class, "store"])->middleware([])->name("productos.store");
+    Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");
+    Route::post("/productosDestroy/{producto}", [ProductoController::class, "destroy"])->middleware([])->name("productos.destroy");
+    
     Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
     Route::get("/pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
     Route::post("/pedidos", [PedidoCotroller::class, "store"])->middleware([])->name("pedidos.store");
@@ -57,10 +59,9 @@ Route::middleware('auth')->group(function () {
     Route::delete("/clientes/{cliente}", [ClienteControler::class, "destroy"])->middleware([])->name("clientes.destroy");
     
 
-    Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
-    Route::post("/productosStore", [ProductoController::class, "store"])->middleware([])->name("productos.store");
-    Route::post("/productosDestroy/{producto}", [ProductoController::class, "destroy"])->middleware([])->name("productos.destroy");
-    Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");
+    Route::get("/formatos", [FormatosController::class, "index"])->middleware([])->name("formato.index");
+    Route::post("/formatos", [FormatosController::class, "store"])->middleware([])->name("formato.store");
+    Route::post("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->middleware([])->name("formato.destroy");
 
 });
 
@@ -68,7 +69,4 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get("/formatos", [FormatosController::class, "index"])->middleware([])->name("formato.index");
-Route::post("/formatos", [FormatosController::class, "store"])->middleware([])->name("formato.store");
-Route::post("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->middleware([])->name("formato.destroy");
 require __DIR__ . '/auth.php';
