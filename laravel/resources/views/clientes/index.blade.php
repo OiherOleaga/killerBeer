@@ -1,14 +1,16 @@
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="es">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>KillerBeer</title>
-        <link rel="icon" href="{{ asset('img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png') }}">
+        <link rel="icon"
+            href="{{ asset('img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png') }}">
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
         <link rel="preconnect" href="https://fonts.bunny.net">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         @vite('resources/css/app.css')
     </head>
@@ -45,16 +47,35 @@
                     </ol>
                 </nav>
             </section>
-            <section>
-                <div class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-4">
-                    <h1
-                        class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-fourth md:text-5xl lg:text-6xl dark:text-white">
-                        Tabla de Clientes</h1>
-                </div>
-            </section>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2 mx-12 border-2 border-third">
-                <table class="w-full text-sm rtl:text-right  text-second dark:text-gray-400 text-center">
-                    <thead class="text-xs text-fourth uppercase bg-lightdark dark:bg-gray-700 dark:text-gray-400">
+                <form action="{{ route('clientes.index') }}" method="GET" class="m-4 text-third flex items-center justify-start ">
+                    <div class="relative max-w-full">
+                        <input
+                            class="appearance-none bg-lightdark border-2 placeholder-third pl-10 border-third hover:border-fourth transition-colors rounded-md w-full py-2 px-3 text-third leading-tight focus:outline-none focus:ring-third focus:border-fourth focus:shadow-outline"
+                            id="username" type="text" placeholder="Buscar cliente..." name="search" />
+                        <div class="absolute right-0 inset-y-0 flex items-center">
+                            <button type="reset">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="-ml-1 mr-3 h-5 w-5 text-third hover:text-fourth" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="absolute left-0 inset-y-0 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 ml-3 text-third hover:text-fourth" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                </form>
+                <table class="w-full text-sm rtl:text-right  text-second  text-center ">
+                    <thead class="text-lg text-fourth uppercase bg-lightdark  border-y-2 border-fourth">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 ID
@@ -75,19 +96,23 @@
                                 Codigo
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Acción
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($clientes as $cliente)
-                            <tr class=" bg-lightdark">
+                            <tr class="hover:bg-black">
                                 <td class="px-6 py-4">{{ $cliente->id }}</td>
                                 <td class="px-6 py-4">{{ $cliente->nombre }}</td>
                                 <td class="px-6 py-4">{{ $cliente->direccion }}</td>
                                 <td class="px-6 py-4">{{ $cliente->telefono }}</td>
                                 <td class="px-6 py-4">{{ $cliente->correo }}</td>
                                 <td class="px-6 py-4">{{ $cliente->codigo }}</td>
+                                <td class="px-6 py-4">{{ $cliente->estado }}</td>
                                 <td class="flex items-center justify-center gap-2 m-2">
                                     <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
                                         @csrf
@@ -97,11 +122,23 @@
                                             Borrar
                                         </button>
                                     </form>
+                                    @if($cliente->estado == 'en cola')
+                                    <form id="aceptarClienteForm{{ $cliente->id }}" action="{{ route('clientes.aceptar', $cliente->id) }}" method="POST">
+                                        @csrf
+                                           <button type="submit" class="px-5 py-2.5 hover:bg-green-500 hover:text-green-900 text-green-500 rounded-lg text-sm font-semibold">
+                                                Aceptar Cliente
+                                            </button>
+                                    </form>
+                                    @endif
+
+                                    
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div class="m-2">{{ $clientes->links() }}
+                </div>
             </div>
             <div class=" w-full flex items-center justify-center mb-4">
                 <a href="{{ route('clientes.create') }}" class="relative inline-block text-lg group">
@@ -119,7 +156,6 @@
             </div>
         </main>
         @include('partials.footer')
-
     </body>
 
     </html>
