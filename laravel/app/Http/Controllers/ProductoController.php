@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Categoria;
+use App\Models\Cliente;
 use App\Models\Producto;
 use DB;
 use Illuminate\Http\Request;
+use Mockery\Undefined;
 
 
 class ProductoController extends Controller
@@ -34,8 +36,7 @@ class ProductoController extends Controller
         $ruta = "/fotosProducto/" . md5($datos["nombre"]);
         
         if (!($datos["foto"] = ImgController::descargarImagen($datos["foto"], $ruta))) {
-            // error
-            //return redirect()->route('productos.index')->with('error', $e->getMessage());
+            return redirect(route('productos.index'))->withErrors(["Error al subir la foto"]);
         }
 
         Producto::create($datos);
@@ -77,8 +78,7 @@ class ProductoController extends Controller
 
         if ($request["foto"]) {
             if (!($datos["foto"] = ImgController::descargarImagen($request["foto"], "/fotosProducto/" . md5($datos["nombre"])))) {
-                // error
-                // return redirect()->route('productos.index')->with('error', $e->getMessage());
+                return redirect(route('productos.index'))->withErrors(["Error al subir la foto"]);
             }
         }
 
@@ -88,4 +88,22 @@ class ProductoController extends Controller
         
         return redirect(route("productos.index"));
     } 
+
+    public function categoriasProducto() {
+        if (!ClienteControler::sessionCheck()) {
+            return response()->json(["logged" => false]);
+        }
+
+        $categorias = Categoria::all();
+
+        $filas = [];
+        foreach ($categorias as $categoria) {
+            array_push($filas, ["categoria" => $categoria["nombre"], "productos" => Producto::inRandomOrder()->limit(4)->where("id_categoria", "=", $categoria["id"])->get()]);
+        }
+
+        return response()->json([
+            "logged" => true,
+            "categoriasProducto" => $filas
+        ]);
+    }
 }

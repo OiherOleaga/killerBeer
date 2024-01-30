@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="./src/components/img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png">
+  <link rel="icon"
+    href="./src/components/img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
@@ -16,19 +17,24 @@
     }
 
     async function GET(uri) {
-
       try {
-        res = await (await fetch(route(uri), {
+        let res = await fetch(route(uri), {
           method: "GET",
           credentials: "include",
+        })
 
-        })).json();
+        if (res.headers.get("Content-Type") != 'application/json') {
+          console.log(await res.text());
+          return false;
+        }
 
-        if (!res.logged) {
+        json = await res.json();
+
+        if (!json.logged) {
           window.location.pathname = "/login";
         }
 
-        return res;
+        return json;
       } catch (error) {
         alert("Error en " + uri + " GET");
         console.log(error)

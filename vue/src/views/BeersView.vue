@@ -1,15 +1,22 @@
 <script setup>
-
-
+import {ref} from 'vue';
+const categorias = ref("");
+GET("/categoriasProducto").then((res) => {
+    categorias.value = res.categoriasProducto;       
+    console.log(categorias.value)
+})
 
 </script>
 
 <template>
     <section class="store overflow-hidden">
+        <!--<div v-for="(categoria in categorias)" class="row"> o section ?? -->
         <div class="row">
             <div class="col">
                 <div class="col beers">
                     <h1 class="display-2 text-center">CERVEZAS</h1>
+                    
+                    <!--<section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">-->
                     <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">
                         <div class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
                             <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_0 (1).jpg"
