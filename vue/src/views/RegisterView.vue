@@ -25,16 +25,14 @@ function registrar() {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(datos)
     })
+
+        .then((res) => res.json())
         .then((res) => {
-            return res.text();
-        })
-        .then((res) => {
-            if (res == "OK") {
-                console.log(res.sessionId);
-                localStorage.setItem("sessionId", res.sessionId);
-                router.push("/");
+            if (res.logged) {
+                router.push("/login");
+
             } else {
-                error.value = "Los datos no son validos";
+                console.log("Error en el registro");
             }
         })
         .catch((error) => {

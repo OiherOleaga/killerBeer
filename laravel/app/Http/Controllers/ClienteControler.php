@@ -88,7 +88,7 @@ class ClienteControler extends Controller
 
     public function store(Request $request)
     {
-    
+
         $datosValidados = $request->validate([
             'correo' => 'required|email',
             'direccion' => 'required|string',
@@ -96,9 +96,9 @@ class ClienteControler extends Controller
             'nombre' => 'required|string',
             'codigo' => 'required|string|min:9|max:9'
         ]);
-    
+
         $cliente = Cliente::create($datosValidados);
-    
+
         return redirect()->route('clientes.index')->with('success', 'Cliente creada correctamente');;
     }
 
@@ -125,5 +125,16 @@ class ClienteControler extends Controller
     {
         $cliente->delete();
         return redirect()->route('clientes.index')->with('success', 'Cliente eliminado correctamente');
+    }
+
+    public function aceptar($id)
+    {
+
+        $cliente = Cliente::findOrFail($id);
+        $cliente->estado = 'aceptado';
+        $cliente->save();
+
+        emailController::enviarCodigo($cliente->codigo, $cliente->correo);
+        return redirect()->route('clientes.index')->with('success', 'Cliente aceptado correctamente');
     }
 }
