@@ -5,15 +5,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use DB;
 use Illuminate\Http\Request;
 
 
 class ProductoController extends Controller
 {
 
-    public function index()
-    {
-        return view("productos.index", ["productos" => Producto::all(), "categorias" => Categoria::all()]);
+    public function index() {
+
+        return view("productos.index", [
+            //"productos" => DB::select("SELECT p.id, p.nombre, p.descripcion, p.foto, c.nombre as categoria FROM productos p JOIN categorias c on p.id_categoria = c.id"),
+            "productos" => Producto::all(),
+            "categorias" => Categoria::all()
+        ]);
+
     }
 
     public function store(Request $request)
@@ -24,8 +30,6 @@ class ProductoController extends Controller
             'id_categoria' => 'required',
             'foto' => 'required'
         ]);
-
-//       die($datos["id_categoria"]);
 
         $ruta = "/fotosProducto/" . md5($datos["nombre"]);
         
@@ -60,6 +64,28 @@ class ProductoController extends Controller
     }
 
     public function update(Producto $producto, Request $request) {
-        //$producto->
+        $datos = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'id_categoria' => 'required',
+        ]);
+
+        $producto->nombre = $datos["nombre"];
+        $producto->descripcion = $datos["descripcion"];
+        $producto->id_categoria = $datos["id_categoria"];
+        
+
+        if ($request["foto"]) {
+            if (!($datos["foto"] = ImgController::descargarImagen($request["foto"], "/fotosProducto/" . md5($datos["nombre"])))) {
+                // error
+                // return redirect()->route('productos.index')->with('error', $e->getMessage());
+            }
+        }
+
+        $producto->foto = $datos["foto"];
+
+        $producto->save();
+        
+        return redirect(route("productos.index"));
     } 
 }
