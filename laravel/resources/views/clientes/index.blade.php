@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>KillerBeer</title>
+        <link rel="icon" href="{{ asset('img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png') }}">
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -13,6 +14,7 @@
     </head>
 
     <body class="bg-lightdark">
+
         @include('partials.header')
         <main class="h-screen">
             <section class="breadcrumb">
@@ -116,7 +118,6 @@
                 </a>
             </div>
         </main>
-
         @include('partials.footer')
 
     </body>

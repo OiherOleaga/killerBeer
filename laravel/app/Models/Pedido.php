@@ -10,5 +10,6 @@ class Pedido extends Model
     use HasFactory;
 
     protected $table = "pedidos";
-    //protected $fillable = 
+    protected $fillable = ['id_cliente', 'estado', 'fecha_entrega', 'precio'];
+
 }

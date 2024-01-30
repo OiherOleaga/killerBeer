@@ -1,4 +1,4 @@
-<header class="bg-lightdark sticky top-0 border-b-2 border-b-third">
+<header class="bg-lightdark z-50 sticky top-0 border-b-2 border-b-third">
     <nav class="border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
