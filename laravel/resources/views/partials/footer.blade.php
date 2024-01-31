@@ -1,4 +1,8 @@
-<footer class="z-20 w-full p-4 bg-lighdark border-t-2 border-t-third shadow md:flex md:items-center md:justify-center md:p-6 dark:bg-gray-800 dark:border-gray-600">
-    <span class="text-md text-fourth text-center dark:text-gray-400">© 2024 <a href="/" class="hover:underline">KillerBeer™</a>. Todos los derechos reservados.
+
+
+<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800 ">
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-center ">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="/" class="hover:underline">KillerBeer</a>. Todos los derechos reservados.
     </span>
+    </div>
 </footer>
