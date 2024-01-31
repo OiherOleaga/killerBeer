@@ -49,7 +49,6 @@
         </div>
     </div>
     <div class="relative overflow-x-auto shadow-xl mx-2 p-2">
-
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase text-center bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
