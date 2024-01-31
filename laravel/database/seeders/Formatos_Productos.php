@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\formato_producto;
 
 
-class formatos_productos extends Seeder
+class Formatos_Productos extends Seeder
 {
     /**
      * Run the database seeds.
