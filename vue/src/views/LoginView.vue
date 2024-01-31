@@ -6,6 +6,15 @@ import router from '@/router';
 
 const codigo = ref("");
 const error = ref("");
+fetch(route("/session"))
+  .then((res) => {
+    return res.json();
+  })
+  .then(res => {
+    if (res.logged) {
+      router.push("/");
+    }
+  })
 
 watch(codigo, () => {
   error.value = "";

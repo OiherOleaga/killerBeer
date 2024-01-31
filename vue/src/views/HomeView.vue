@@ -7,8 +7,6 @@ const objeto = ref(null);
 
 async function selectProductos() {
   objeto.value = (await GET("/cervezasMain")).productos;
-  console.log("hola");
-  console.log(objeto.value);
 }
 selectProductos();
 
