@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pedido');
             $table->unsignedBigInteger('id_formato_producto');
             $table->float('precio');
-
+            $table->integer('cantidad')->default(1);
             $table->foreign('id_pedido')->references('id')->on('pedidos')->onDelete('cascade');
             $table->foreign('id_formato_producto')->references('id')->on('formatos_productos')->onDelete('cascade');
             $table->timestamps();
