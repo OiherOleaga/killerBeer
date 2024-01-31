@@ -20,7 +20,7 @@ class ClienteControler extends Controller
 
     function session()
     {
-        if (!$this->sessionCheck()) {
+        if (ClienteControler::sessionCheck()) {
             return response()->json(["logged" => false]);
         }
 
