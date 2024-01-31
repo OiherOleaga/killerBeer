@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormatosController;
 use App\Http\Controllers\emailController;
+use App\Http\Controllers\ProductoCotroller;
 
 /*
 |--------------------------------------------------------------------------

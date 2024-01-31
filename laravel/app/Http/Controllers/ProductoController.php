@@ -10,13 +10,13 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 {
 
-    public function index() {
+    public function index()
+    {
 
         return view("productos.index", [
             "productos" => Producto::all(),
             "categorias" => Categoria::all()
         ]);
-
     }
 
     public function store(Request $request)
@@ -29,7 +29,7 @@ class ProductoController extends Controller
         ]);
 
         $ruta = "/fotosProducto/" . md5($datos["nombre"]);
-        
+
         if (!($datos["foto"] = ImgController::descargarImagen($datos["foto"], $ruta))) {
             return redirect(route('productos.index'))->withErrors(["Error al subir la foto"]);
         }
@@ -53,13 +53,15 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function destroy(Producto $producto) {
+    public function destroy(Producto $producto)
+    {
 
         $producto->delete();
         return redirect(route("productos.index"));
     }
 
-    public function update(Producto $producto, Request $request) {
+    public function update(Producto $producto, Request $request)
+    {
         $datos = $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
@@ -69,7 +71,7 @@ class ProductoController extends Controller
         $producto->nombre = $datos["nombre"];
         $producto->descripcion = $datos["descripcion"];
         $producto->id_categoria = $datos["id_categoria"];
-        
+
 
         if ($request["foto"]) {
             if (!($datos["foto"] = ImgController::descargarImagen($request["foto"], "/fotosProducto/" . md5($datos["nombre"])))) {
@@ -80,11 +82,12 @@ class ProductoController extends Controller
         $producto->foto = $datos["foto"];
 
         $producto->save();
-        
-        return redirect(route("productos.index"));
-    } 
 
-    public function categoriasProducto() {
+        return redirect(route("productos.index"));
+    }
+
+    public function categoriasProducto()
+    {
         if (!ClienteControler::sessionCheck()) {
             return response()->json(["logged" => false]);
         }

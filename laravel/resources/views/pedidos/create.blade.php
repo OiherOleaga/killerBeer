@@ -61,6 +61,57 @@
                                                 placeholder="" />
                                         </div>
 
+                                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                            <div class="md:col-span-5">
+                                                <div class="flex items-center space-x-4 pb-6">
+                                                    <div class="flex-grow">
+                                                        <label for="producto">Productos</label>
+                                                        <select id="producto" name="producto" class="h-10 text-fourth border mt-1 rounded px-4 bg-lightdark">
+                                                            @foreach($productos as $producto)
+                                                                <option value="{{ $producto->id }}">{{ $producto->nombre }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        
+                                                            <select id="formato" name="formato_id" class="h-10 text-fourth border mt-1 rounded px-4 bg-lightdark">
+                                                                
+                                                                @endforeach
+                                                            </select>
+                                                        
+                                                        
+
+                                                        
+                                                    </div>
+                                                    <div class="md:col-span-5"> 
+                                                        <label for="id_unidades">Unidades</label>
+                                                        <input id="unidades" type="number" class="h-8 w-24 text-fourth border mt-1 rounded px-3 bg-lightdark">
+                                                    </div>
+                                                    <button id="agregarBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded mt-6">Agregar</button>
+                                                </div>
+                                                
+                                                
+                                                
+                                                <table id="pedidoTable" class=" text-sm rtl:text-right  text-second dark:text-gray-400 text-center">
+                                                    <thead class="text-xs text-fourth uppercase bg-lightdark dark:bg-gray-700 dark:text-gray-400">
+                                                        <tr>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Producto
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Formato
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Unidades
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Acciones
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                                
+
+                                            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                            
                                         <div class="md:col-span-5">
                                             <div class="inline-flex items-center">
                                                 <input type="checkbox" name="billing_same" id="billing_same"
@@ -72,7 +123,7 @@
                                         <div class="md:col-span-5 text-right">
                                             <div class="inline-flex items-end gap-2">
                                                 <button type="submit"
-                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Agregar</button>
+                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Insertar</button>
                                                 <a href="/clientes"
                                                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                                     Cancelar
@@ -89,6 +140,8 @@
         </form>
     </main>
     @include('partials.footer')
-</body>
 
+    <script src="/js/tabla_insert_pedidos.js"></script>
+</body>
 </html>
+

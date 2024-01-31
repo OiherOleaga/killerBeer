@@ -14,11 +14,11 @@
 
 <body>
     @include('partials.header')
-    <main class="h-dvh">
+    <main class="h-screen flex justify-center items-center max-w-full">
         <form action="{{ route('clientes.store') }}" method="POST">
             @csrf
             <div class="flex items-center justify-center">
-                <div class="container max-w-screen-lg mx-auto">
+                <div class="container max-w-screen-lg" style="width: 900px">
                     <div>
                         <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
@@ -64,10 +64,21 @@
                                         </div>
 
                                         <div class="md:col-span-5">
+                                            <label for="estado">Estado</label>
+                                            <select name="estado"
+                                                class="h-10 border mt-1 rounded px-4 w-full">
+                                                <option value="en cola" selected>En cola</option>
+                                                <option value="en cola">Aceptado</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="md:col-span-5">
                                             <div class="inline-flex items-center">
                                                 <input type="checkbox" name="billing_same" id="billing_same"
                                                     class="form-checkbox" required />
-                                                <label for="billing_same" class="ml-2">Acepto los <span class="text-blue-700">terminos y condiciones.</span></label>
+                                                <label for="billing_same" class="ml-2">Acepto los <span
+                                                        class="text-blue-700">terminos y condiciones.</span></label>
                                             </div>
                                         </div>
 

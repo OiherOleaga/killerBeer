@@ -4,20 +4,46 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedido;
 use App\Models\Cliente;
+use App\Models\Producto;
+use App\Models\Formato;
+use App\Models\formato_producto;
+
+use Database\Seeders\Formatos;
 
 use Illuminate\Http\Request;
 
 class PedidoCotroller extends Controller
 {
-    public function index() {
-        return view("pedidos.index", ["pedidos" => Pedido::all()]);
+    public function index(Request $request)
+    {
+        $estado = $request->input('estado');
+
+        $pedidos = Pedido::query();
+
+        if (!empty($estado)) {
+            $estado = ucwords(strtolower($estado));
+            $pedidos->where('estado', $estado);
+        }
+
+        $pedidos = $pedidos->paginate(3);
+
+        return view('pedidos.index', compact('pedidos', 'estado'));
     }
+
 
     public function create()
     {
-        $clientes = Cliente::all(); // Assuming you have a 'clientes' table
-        return view('pedidos.create', compact('clientes'));
+        $clientes = Cliente::all();
+        $productos = Producto::all();
+        $formatos = formato_producto::all();
+
+        return view('pedidos.create', compact('clientes', 'productos', 'formatos'));
     }
+
+
+
+
+
 
     public function store(Request $request)
     {
@@ -26,8 +52,7 @@ class PedidoCotroller extends Controller
             'id_cliente' => 'required|exists:clientes,id',
             'estado' => 'required|string|max:255',
             'fecha_entrega' => 'required|date',
-            'precio' => 'required|numeric',
-            // Add more validation rules for other fields
+            'precio' => 'required|numeric|max:8',
         ]);
 
         // Create a new Pedido record
@@ -69,7 +94,8 @@ class PedidoCotroller extends Controller
         return redirect()->route('pedidos.index')->with('success', 'Pedido deleted successfully');
     }
 
-    public function filtro(string $filtro) {
+    public function filtro(string $filtro)
+    {
         Pedido::where("name", $filtro)->delete();
     }
 }
