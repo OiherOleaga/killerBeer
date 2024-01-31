@@ -1,51 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+@section('content')
+    <div
+        class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <div class="w-full mb-1">
+            <div class="mb-4">
+                <nav class="flex mb-5" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
+                        <li class="inline-flex items-center">
+                            <a href="/"
+                                class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white">
+                                <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                    </path>
+                                </svg>
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="/categorias"
+                                    class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Categorias</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500" aria-current="page">Lista</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Todas las categorias
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="relative overflow-x-auto shadow-xl mx-2 p-2">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KillerBeer</title>
-    <link rel="icon"
-        href="{{ asset('img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png') }}">
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    @vite('resources/css/app.css')
-</head>
-
-<body class="bg-lightdark">
-    @include('partials.header')
-    <section class="breadcrumb">
-        <nav class="flex px-5 py-3 text-fourth dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                <li class="inline-flex items-center">
-                    <a href="/"
-                        class="inline-flex items-center text-lg font-medium text-fourth hover:text-third dark:text-gray-400 dark:hover:text-white">
-                        <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                        </svg>
-                        Inicio
-                    </a>
-                </li>
-                <li aria-current="page">
-                    <div class="flex items-center">
-                        <svg class="rtl:rotate-180 w-3 h-3 mx-1 text-fourth" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 9 4-4-4-4" />
-                        </svg>
-                        <span class="ms-1 text-md font-medium text-fourth md:ms-2 dark:text-gray-400">Categorias</span>
-                    </div>
-                </li>
-            </ol>
-        </nav>
-    </section>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-2 mx-12 border-2 border-third">
-        <table class="w-full text-sm rtl:text-right  text-second  text-center">
-            <thead class="text-xs text-fourth uppercase bg-lightdark ">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase text-center bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         ID
@@ -54,16 +60,19 @@
                         Nombre
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Acción
+                        Accion
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 @foreach ($categorias as $categoria)
-                    <tr class=" bg-lightdark">
-                        <td class="px-6 py-4">{{ $categoria->id }}</td>
-                        <form action={{ route('categorias.update', $categoria['id']) }} method="POST">
-                            <td class="px-6 py-4"><input type="text" class="bg-lightdark border-0 text-center"
+                    <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $categoria->id }}
+                        </td>
+                        <form action={{ route('categorias.update', $categoria['id']) }} method="POST" hidden>
+                            <td class="px-6 py-4"><input type="text" class="border-1 rounded-lg text-center"
                                     value="{{ $categoria['nombre'] }}" name="nombre">
                             </td>
                             <td class="flex items-center justify-center gap-2 m-2">
@@ -80,7 +89,6 @@
                                 Borrar
                             </button>
                         </form>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -96,6 +104,4 @@
             </ul>
         </div>
     @endif
-</body>
-
-</html>
+@endsection

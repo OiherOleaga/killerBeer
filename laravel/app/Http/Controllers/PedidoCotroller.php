@@ -14,9 +14,20 @@ use Illuminate\Http\Request;
 
 class PedidoCotroller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view("pedidos.index", ["pedidos" => Pedido::all()]);
+        $estado = $request->input('estado');
+
+        $pedidos = Pedido::query();
+
+        if (!empty($estado)) {
+            $estado = ucwords(strtolower($estado));
+            $pedidos->where('estado', $estado);
+        }
+
+        $pedidos = $pedidos->paginate(3);
+
+        return view('pedidos.index', compact('pedidos', 'estado'));
     }
 
 

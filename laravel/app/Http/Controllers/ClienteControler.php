@@ -20,7 +20,7 @@ class ClienteControler extends Controller
 
     function session()
     {
-        if (!$this->sessionCheck()) {
+        if (ClienteControler::sessionCheck()) {
             return response()->json(["logged" => false]);
         }
 
@@ -29,12 +29,23 @@ class ClienteControler extends Controller
     function index(Request $request)
     {
         $search = $request->input('search');
+        $estado = $request->input('estado');
+    
+        $clientes = Cliente::query();
+    
+        if (!empty($search)) {
+            $clientes->where('nombre', 'LIKE', "%$search%");
+        }
+    
+        if (!empty($estado)) {
+            $estado = ucwords(strtolower($estado));
+            $clientes->where('estado', $estado);
+        }
+    
+        $clientes = $clientes->paginate(3);
 
-        $clientes = Cliente::query()
-            ->where(function ($query) use ($search) {
-                $query->where('nombre', 'LIKE', "%$search%");
-            })->paginate(5);
-        return view("clientes.index", ["clientes" => $clientes]);
+
+        return view('clientes.index', compact('clientes', 'search', 'estado'));
     }
     function login(Request $request)
     {
@@ -99,12 +110,14 @@ class ClienteControler extends Controller
             'direccion' => 'required|string',
             'telefono' => 'required|string|min:9|max:9',
             'nombre' => 'required|string',
-            'codigo' => 'required|string|min:9|max:9'
+            'codigo' => 'required|string|min:9|max:9',
+            'estado' => 'required|string',
         ]);
 
         $cliente = Cliente::create($datosValidados);
 
-        return redirect()->route('clientes.index')->with('success', 'Cliente creada correctamente');;
+        return redirect()->route('clientes.index')->with('success', 'Cliente creada correctamente');
+        ;
     }
 
     public function show($id)
