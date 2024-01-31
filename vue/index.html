@@ -28,8 +28,9 @@
           return false;
         }
 
-        json = await res.json();
+        let json = await res.json();
 
+        console.log(json);
         if (!json.logged) {
           window.location.pathname = "/login";
         }
@@ -48,21 +49,27 @@
       }
 
       try {
-        res = await (await fetch(route(uri), {
+        res = await fetch(route(uri), {
           method: "POST",
           credentials: "include",
           headers: {
             "Content-type": "application/json"
           },
           body: json
-        })).json();
+        })
 
-        if (uri != "/login" && uri != "/resgistro" && !res.logged) {
+        if (res.headers.get("Content-Type") != 'application/json') {
+          console.log(await res.text());
+          return false;
+        }
+
+        json = await res.json();
+
+        if (uri != "/login" && uri != "/resgistro" && !json.logged) {
           window.location.pathname = "/login";
         }
 
-        console.log(res);
-        return res;
+        return json;
       } catch (error) {
         alert("Error en " + uri + " POST");
         console.log(error)
@@ -75,6 +82,7 @@
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
 </body>
+
 <style>
   #app {
     background-color: #212226;

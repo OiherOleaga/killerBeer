@@ -5,10 +5,9 @@ import router from '@/router';
 
 const objeto = ref(null);
 
-async function selectProductos() {
-  objeto.value = (await GET("/cervezasMain")).productos;
-}
-selectProductos();
+GET("/cervezasMain").then(res => {
+  objeto.value = res.productos
+})
 
 
 function enviarCervezas() {

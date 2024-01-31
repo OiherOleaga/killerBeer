@@ -1,16 +1,17 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { watch } from 'vue';
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import router from '@/router';
 
 const codigo = ref("");
 const error = ref("");
-fetch(route("/session"))
+fetch(route("/session"), {
+  credentials: "include"
+})
   .then((res) => {
     return res.json();
   })
   .then(res => {
+    console.log(res)
     if (res.logged) {
       router.push("/");
     }

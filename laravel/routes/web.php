@@ -53,35 +53,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/pedidos/view/create', [PedidoCotroller::class, 'create'])->name('pedidos.create');
     Route::delete("/pedidos/{pedido}", [PedidoCotroller::class, "destroy"])->middleware([])->name("pedidos.destroy");
 
-
     Route::get("/clientes", [ClienteControler::class, "index"])->middleware([])->name("clientes.index");
     Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
     Route::get('/clientes/create', [ClienteControler::class, 'create'])->name('clientes.create');
     Route::delete("/clientes/{cliente}", [ClienteControler::class, "destroy"])->middleware([])->name("clientes.destroy");
     Route::post("/clientes/aceptar/{cliente}", [ClienteControler::class, "aceptar"])->middleware([])->name("clientes.aceptar");
 
-    Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
-
-    Route::post("/categorias", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
-
-    Route::post("/categoriaDestroy/{categoria}", [CategoriaController::class, "destroy"])->middleware([])->name("categorias.destroy");
-
-    Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
-
-
-    Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
-
-    Route::post("/productosStore", [ProductoController::class, "store"])->middleware([])->name("productos.store");
-
-    Route::post("/productosDestroy/{producto}", [ProductoController::class, "destroy"])->middleware([])->name("productos.destroy");
-
-    Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");
-
     Route::get("/formatos", [FormatosController::class, "index"])->middleware([])->name("formato.index");
     Route::post("/formatos", [FormatosController::class, "store"])->middleware([])->name("formato.store");
     Route::post("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->middleware([])->name("formato.destroy");
-
-    Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
 });
 
 require __DIR__ . '/auth.php';

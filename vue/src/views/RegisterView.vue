@@ -1,6 +1,4 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { watch } from 'vue';
 import { ref } from "vue";
 import router from '@/router';
 
