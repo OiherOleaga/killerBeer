@@ -21,6 +21,6 @@ class Producto extends Model
 
     public function formatos()
     {
-        return $this->hasMany(formato_producto::class, 'id_productos');
+        return $this->belongsToMany(Formato::class, 'formatos_productos', 'id_productos', 'id_formatos');
     }
 }

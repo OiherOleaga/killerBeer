@@ -35,5 +35,35 @@ document.addEventListener('DOMContentLoaded', function () {
         tablaPedido.appendChild(fila);
     });
 
-    id_producto = document.getElementById("producto")
+    function cargarFormatos() {
+        let id_producto = document.getElementById("producto").value;
+        let selectFormato = document.getElementById("formato");
+
+        fetch('/productos/filtrar/' + id_producto)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('La red respondió con un error.');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                selectFormato.innerHTML = '';
+                console.log(data.formatos[0]);
+
+                data.formatos.forEach(function (formato) {
+                    let option = document.createElement('option');
+                    option.value = formato.id;
+                    option.textContent = formato.tipo;
+                    selectFormato.appendChild(option);
+                });
+            })
+            .catch(function (error) {
+                console.error('Hubo un problema con la solicitud fetch:', error.message);
+            });
+    }
+
+    cargarFormatos();
+    document.getElementById("producto").addEventListener("change", cargarFormatos);
+
+
 })
