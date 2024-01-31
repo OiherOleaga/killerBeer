@@ -3,6 +3,13 @@ import { ref } from 'vue';
 
 const pedido = ref("");
 
+function quitar(index, id) {
+    pedido.value.splice(index, 1);
+    /*let pedido = JSON.parse(localStorage.getItem("pedido"));
+
+    for (let i = 0; i < )*/
+}
+
 POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res => {
     pedido.value = res.pedido;
     console.log(pedido.value);
@@ -21,7 +28,7 @@ POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res =
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div v-for="producto in pedido" class="row">
+                            <div v-for="(producto, index) in pedido" :key="index" class="row">
                                 <hr class="hr">
                                 <div class="col d-flex flex-wrap gap-4 align-items-center">
                                     <div>
@@ -42,7 +49,7 @@ POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res =
                                         <div class="row">
                                             <h4 class="h4 text-end">58.99€</h4>
                                         </div>
-                                        <div class="row p-2 justify-content-end"> <button class="btn">Quitar</button>
+                                        <div class="row p-2 justify-content-end"> <button class="btn" @click="quitar(index, id)">Quitar</button>
                                         </div>
                                     </div>
                                 </div>

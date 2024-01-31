@@ -18,7 +18,7 @@ class Productos extends Seeder
             'nombre' => 'Killer 0’0%',
             'descripcion' => 'Killer 0’0% es una cerveza sin alcohol que desafía las expectativas y redefine el sabor de la autenticidad.',
             'id_categoria' => '1',
-            'foto' => '/src/components/img/beers/Killer_00.jpg'
+            'foto' => "{{ asset('jalknardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png') }}"
         ]);
 
         Producto::create([
