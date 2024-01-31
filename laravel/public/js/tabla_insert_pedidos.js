@@ -1,4 +1,10 @@
+let precioProducto;
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
+    cargarFormatos();
+
     const agregarBtn = document.querySelector('#agregarBtn');
     const tablaPedido = document.querySelector('#pedidoTable');
 
@@ -23,6 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
         celdaUnidades.textContent = unidades;
         fila.appendChild(celdaUnidades);
 
+        const celdaPrecio = document.createElement('td');
+        console.log(precioProducto);
+        celdaPrecio.textContent = precioProducto * unidades;
+        fila.appendChild(celdaPrecio);
+
         const celdaEliminar = document.createElement('td');
         const botonEliminar = document.createElement('button');
         botonEliminar.textContent = 'Eliminar';
@@ -35,5 +46,35 @@ document.addEventListener('DOMContentLoaded', function () {
         tablaPedido.appendChild(fila);
     });
 
-    id_producto = document.getElementById("producto")
+    function cargarFormatos() {
+        let id_producto = document.getElementById("producto").value;
+        let selectFormato = document.getElementById("formato");
+
+        fetch('/productos/filtrar/' + id_producto)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('La red respondió con un error.');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                selectFormato.innerHTML = '';
+                console.log(data.formatos[0]);
+
+                data.formatos.forEach(function (formato) {
+                    let option = document.createElement('option');
+                    option.value = formato.id;
+                    option.textContent = formato.tipo;
+                    selectFormato.appendChild(option);
+                    precioProducto = formato.precio;
+                });
+            })
+            .catch(function (error) {
+                console.error('Hubo un problema con la solicitud fetch:', error.message);
+            });
+    }
+
+    document.getElementById("producto").addEventListener("change", cargarFormatos);
+
+
 })

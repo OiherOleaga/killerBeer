@@ -60,6 +60,16 @@ class ProductoController extends Controller
         return redirect(route("productos.index"));
     }
 
+    public function filtrar(Producto $producto)
+    {
+
+
+        return response()->json([
+            "formatos" => $producto->formatos
+        ]);
+    }
+
+
     public function update(Producto $producto, Request $request)
     {
         $datos = $request->validate([

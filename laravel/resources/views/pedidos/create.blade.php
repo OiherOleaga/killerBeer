@@ -73,8 +73,11 @@
                                                         </select>
                                                         
                                                             <select id="formato" name="formato_id" class="h-10 text-fourth border mt-1 rounded px-4 bg-lightdark">
-                                                                
-                                                                @endforeach
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+
                                                             </select>
                                                         
                                                         
@@ -101,6 +104,9 @@
                                                             </th>
                                                             <th scope="col" class="px-6 py-3">
                                                                 Unidades
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
+                                                                Precio
                                                             </th>
                                                             <th scope="col" class="px-6 py-3">
                                                                 Acciones
