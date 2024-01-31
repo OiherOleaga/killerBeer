@@ -10,12 +10,21 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
 
-        return view("productos.index", [
+        $productos = Producto::query();
+
+        if (!empty($search)) {
+            $productos->where('nombre', 'LIKE', "%$search%");
+        }
+
+        $productos = $productos->paginate(5);
+
+        return view("productos.index",  compact('productos', 'search'), [
             "productos" => Producto::all(),
-            "categorias" => Categoria::all()
+            "categorias" => Categoria::all(),
         ]);
     }
 

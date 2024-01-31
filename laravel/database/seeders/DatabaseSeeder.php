@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Producto::create([
-            'nombre' => 'Killer Cásica',
+            'nombre' => 'Killer Clásica',
             'descripcion' => 'Killer Cásica personifica la esencia atemporal de la cerveza tradicional, honrando la rica herencia cervecera con cada gota.',
             'id_categoria' => '2',
             'foto' => $this->dominio.'KillerCásica.jpg'

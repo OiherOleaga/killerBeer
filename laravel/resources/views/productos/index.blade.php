@@ -75,10 +75,34 @@
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Todas los productos
                 </h1>
             </div>
+            <div class="sm:flex">
+                <div class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
+                    <form action="{{ route('productos.index') }}" method="GET" class="filter-form">
+                        <label for="users-search" class="sr-only">Search</label>
+                        <div class="relative mt-1 lg:w-64 xl:w-96">
+                            <input type="text" name="search"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Buscar productos">
+                        </div>
+                    </form>
+                </div>
+                {{-- <div class="flex items-center ml-auto space-x-2 sm:space-x-3">
+                    <a href="{{ route('productos.create') }}">
+                        <button type="button" data-modal-toggle="add-user-modal"
+                            class="bg-blue-700 inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            Añadir Producto
+                        </button>
+                    </a>
+                </div> --}}
+            </div>
         </div>
     </div>
-
-
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-2 p-2 text-center">
         <table class="w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400 text-center">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -91,16 +115,15 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Nombre
-
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Descripcion
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        id_categoria
+                        Categoria
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Action
+                        Accion
                     </th>
                 </tr>
             </thead>
@@ -114,13 +137,12 @@
                             {{ $producto->id }}
                         </td>
                         <td class="px-6 py-4 flex items-center flex-col gap-2 font-semibold w-100 text-gray-900 dark:text-white">
-                            <canvas class="insertCanvas" src={{ $producto['foto'] }} style="width:200px; heigth:300px;"></canvas>
+                            <canvas class="insertCanvas" src={{ $producto['foto'] }} style="width:150px; border-radius:10px; object-fit:contain;"></canvas>
                             <input type="file" class="fotoInput">
-
                             <input type="hidden" class="foto" id="foto" name="foto">
                         </td>
                         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
-                            <input type="text" value={{ $producto['nombre'] }} name="nombre">
+                            <input type="text" value="{{ $producto['nombre'] }}" name="nombre">
                         </td>
 
                         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
@@ -143,6 +165,9 @@
 
             </tbody>
         </table>
+        <div class="m-2">
+            {{ $productos->appends(['search' => $search])->links() }}
+        </div>
     </div>
 
     <script type="module" src="/js/productos.js" defer></script>
