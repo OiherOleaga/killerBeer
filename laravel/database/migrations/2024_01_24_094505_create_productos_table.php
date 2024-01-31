@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('descripcion');
             $table->unsignedBigInteger('id_categoria');
             $table->string('foto');
+            $table->boolean("envioGratis");
+            $table->boolean("new");
             $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade');
             $table->timestamps();
         });

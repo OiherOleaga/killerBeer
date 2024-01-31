@@ -6,6 +6,15 @@ GET("/categoriasProducto").then((res) => {
     console.log(categorias.value)
 })
 
+function annadirAlPedido(idProducto) {
+
+    let pedido = JSON.parse(localStorage.getItem("pedido")) ?? [];
+    if (pedido.indexOf(idProducto) == -1) {
+        pedido.push(idProducto);
+        localStorage.setItem("pedido", JSON.stringify(pedido));
+    }
+}
+
 </script>
 
 <template>
@@ -26,7 +35,7 @@ GET("/categoriasProducto").then((res) => {
                                 </p>
                                 <hr class="hr">
                                 <div class="botones d-flex gap-2 justify-content-center">
-                                    <button class="btn btn-sm" type="button">Comprar</button>
+                                    <button class="btn btn-sm" type="button" @click="annadirAlPedido(producto.id)">Comprar</button>
                                 </div>
                             </div>
                         </div>

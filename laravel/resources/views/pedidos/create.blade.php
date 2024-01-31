@@ -106,6 +106,9 @@
                                                                 Unidades
                                                             </th>
                                                             <th scope="col" class="px-6 py-3">
+                                                                Precio
+                                                            </th>
+                                                            <th scope="col" class="px-6 py-3">
                                                                 Acciones
                                                             </th>
                                                         </tr>

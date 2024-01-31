@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Categoria;
-use App\Models\Cliente;
 use App\Models\Producto;
-use DB;
 use Illuminate\Http\Request;
-use Mockery\Undefined;
-
 
 class ProductoController extends Controller
 {
@@ -18,7 +14,6 @@ class ProductoController extends Controller
     {
 
         return view("productos.index", [
-            //"productos" => DB::select("SELECT p.id, p.nombre, p.descripcion, p.foto, c.nombre as categoria FROM productos p JOIN categorias c on p.id_categoria = c.id"),
             "productos" => Producto::all(),
             "categorias" => Categoria::all()
         ]);
@@ -117,6 +112,22 @@ class ProductoController extends Controller
         return response()->json([
             "logged" => true,
             "categoriasProducto" => $filas
+        ]);
+    }
+
+    public function pedido(Request $request) {
+
+        if (!ClienteControler::sessionCheck()) {
+            return response()->json(["logged" => false]);
+        }
+
+        $consulta = Producto::query();
+        
+        $consulta->whereIn("id", $request["pedido"]);
+
+        return response()->json([
+            "logged" => true,
+            "pedido" => $consulta->get()
         ]);
     }
 }

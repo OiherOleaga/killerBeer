@@ -1,4 +1,19 @@
 <script setup>
+import { ref } from 'vue';
+
+const pedido = ref("");
+
+function quitar(index, id) {
+    pedido.value.splice(index, 1);
+    /*let pedido = JSON.parse(localStorage.getItem("pedido"));
+
+    for (let i = 0; i < )*/
+}
+
+POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res => {
+    pedido.value = res.pedido;
+    console.log(pedido.value);
+})
 
 </script>
 
@@ -11,64 +26,30 @@
                     <div class="row">
                         <h2>Cesta</h2>
                     </div>
-                    <hr class="hr">
                     <div class="col">
                         <div class="row">
-                            <div class="row">
+                            <div v-for="(producto, index) in pedido" :key="index" class="row">
+                                <hr class="hr">
                                 <div class="col d-flex flex-wrap gap-4 align-items-center">
                                     <div>
                                         <input type="checkbox">
                                     </div>
                                     <div>
-                                        <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (2).jpg"
-                                            alt="">
+                                        <img :src="producto.foto"
+                                            alt="foto producto">
                                     </div>
                                     <div class="col">
                                         <div class="row">
-                                            <h1>Carpe</h1>
-                                            <p>Envio <span class="h6">GRATIS</span> disponible</p>
+                                            <h1>{{ producto.nombre}}</h1>
+                                            <p v-if="pedido.envioGratis">Envio <span  class="h6">GRATIS</span> disponible</p>
                                         </div>
                                         <div class="row">
-                                            <p>Lizards are a widespread group of squamate reptiles, with over 6,000 species,
-                                                ranging
-                                                across
-                                                all
-                                                continents except Antarctica.</p>
+                                            <p>{{ producto.descripcion }}</p>
                                         </div>
                                         <div class="row">
                                             <h4 class="h4 text-end">58.99€</h4>
                                         </div>
-                                        <div class="row p-2 justify-content-end"> <button class="btn">Quitar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="hr">
-                            <div class="row">
-                                <div class="col d-flex flex-wrap gap-4 align-items-center">
-                                    <div>
-                                        <input type="checkbox">
-                                    </div>
-                                    <div>
-                                        <img src="../components/img/beers/Leonardo_Diffusion_XL_crea_una_lata_de_cerveza_llamada_KillerB_1 (2).jpg"
-                                            alt="">
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <h1>Carpe</h1>
-                                            <p>Envio <span class="h6">GRATIS</span> disponible</p>
-                                        </div>
-                                        <div class="row">
-                                            <p>Lizards are a widespread group of squamate reptiles, with over 6,000 species,
-                                                ranging
-                                                across
-                                                all
-                                                continents except Antarctica.</p>
-                                        </div>
-                                        <div class="row">
-                                            <h4 class="h4 text-end">58.99€</h4>
-                                        </div>
-                                        <div class="row p-2 justify-content-end"> <button class="btn">Quitar</button>
+                                        <div class="row p-2 justify-content-end"> <button class="btn" @click="quitar(index, id)">Quitar</button>
                                         </div>
                                     </div>
                                 </div>

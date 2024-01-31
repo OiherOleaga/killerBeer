@@ -1,4 +1,10 @@
+let precioProducto;
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
+    cargarFormatos();
+
     const agregarBtn = document.querySelector('#agregarBtn');
     const tablaPedido = document.querySelector('#pedidoTable');
 
@@ -22,6 +28,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const celdaUnidades = document.createElement('td');
         celdaUnidades.textContent = unidades;
         fila.appendChild(celdaUnidades);
+
+        const celdaPrecio = document.createElement('td');
+        console.log(precioProducto);
+        celdaPrecio.textContent = precioProducto * unidades;
+        fila.appendChild(celdaPrecio);
 
         const celdaEliminar = document.createElement('td');
         const botonEliminar = document.createElement('button');
@@ -55,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     option.value = formato.id;
                     option.textContent = formato.tipo;
                     selectFormato.appendChild(option);
+                    precioProducto = formato.precio;
                 });
             })
             .catch(function (error) {
@@ -62,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    cargarFormatos();
     document.getElementById("producto").addEventListener("change", cargarFormatos);
 
 

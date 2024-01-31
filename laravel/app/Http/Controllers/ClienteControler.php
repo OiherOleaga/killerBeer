@@ -3,24 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
-use Response;
-use Illuminate\Support\Str;
-
 
 
 class ClienteControler extends Controller
 {
-    static function sessionCheck()
-    {
+
+    public static function sessionCheck() {
         session_start();
         return (isset($_SESSION["logged"]) && $_SESSION["logged"]);
     }
-
     function session()
     {
-        if (ClienteControler::sessionCheck()) {
+        if (!self::sessionCheck()) {
             return response()->json(["logged" => false]);
         }
 
