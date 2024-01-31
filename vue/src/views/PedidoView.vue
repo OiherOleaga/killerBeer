@@ -4,15 +4,27 @@ import { ref } from 'vue';
 const pedido = ref("");
 
 function quitar(index, id) {
-    pedido.value.splice(index, 1);
-    /*let pedido = JSON.parse(localStorage.getItem("pedido"));
 
-    for (let i = 0; i < )*/
+    pedido.value.splice(index, 1);
+    let pedido2 = JSON.parse(localStorage.getItem("pedido"));
+
+    index = undefined;
+    for (let i = 0; i < pedido2.length; i++) {
+        if (pedido2[i] == id) {
+            index = i;
+            i = pedido2.length;
+        }
+    }
+
+    if (index !== undefined) {
+        pedido2.splice(index, 1);
+    }
+
+    localStorage.setItem("pedido", JSON.stringify(pedido2));
 }
 
 POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res => {
     pedido.value = res.pedido;
-    console.log(pedido.value);
 })
 
 </script>
@@ -49,7 +61,7 @@ POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res =
                                         <div class="row">
                                             <h4 class="h4 text-end">58.99€</h4>
                                         </div>
-                                        <div class="row p-2 justify-content-end"> <button class="btn" @click="quitar(index, id)">Quitar</button>
+                                        <div class="row p-2 justify-content-end"> <button class="btn" @click="quitar(index, producto.id)">Quitar</button>
                                         </div>
                                     </div>
                                 </div>
