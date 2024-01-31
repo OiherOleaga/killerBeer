@@ -11,12 +11,16 @@ class Producto extends Model
 
     protected $table = 'productos';
 
-    protected $fillable = [ // Define los campos que pueden ser asignados en masa
+    protected $fillable = [
         'id',
         'nombre',
         'id_categoria',
         'descripcion',
         'foto'
-        // Agrega más campos si es necesario
     ];
+
+    public function formatos()
+    {
+        return $this->belongsToMany(Formato::class, 'formatos_productos', 'id_productos', 'id_formatos');
+    }
 }

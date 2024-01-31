@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormatosController;
 use App\Http\Controllers\emailController;
+use App\Http\Controllers\ProductoCotroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
 Route::middleware('auth')->group(function () {
 
     Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
@@ -43,9 +45,11 @@ Route::middleware('auth')->group(function () {
     Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
 
     Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
+    Route::get("/productos/filtrar/{producto}", [ProductoController::class, "filtrar"])->middleware([])->name("productos.filtar");
     Route::post("/productosStore", [ProductoController::class, "store"])->middleware([])->name("productos.store");
     Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");
     Route::post("/productosDestroy/{producto}", [ProductoController::class, "destroy"])->middleware([])->name("productos.destroy");
+    Route::get("/productos/filtrar/{producto}", [ProductoController::class, "filtrar"])->name("productos.filtrar");
 
     Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
     Route::get("/pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
