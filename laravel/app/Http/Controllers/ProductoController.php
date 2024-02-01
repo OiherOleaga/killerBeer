@@ -8,8 +8,7 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProductoController extends Controller
-{
+class ProductoController extends Controller {
 
     public function index(Request $request)
     {
@@ -28,10 +27,12 @@ class ProductoController extends Controller
             "categorias" => Categoria::all(),
         ]);
     }
+
     public function create()
     {
         return view('productos.create', ["categorias" => Categoria::all() ]);
     }
+
     public function store(Request $request)
     {
         $datos = $request->validate([
@@ -140,7 +141,7 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function getPedido(Request $request) {
+    public function getPedido(Request $request)
     {
 
         if (!ClienteControler::sessionCheck()) {
