@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
 
-     private $dominio= 'http://localhost:8000/fotosProducto/';
+     private $dominio= 'http://localhost/fotosProducto/';
     public function run(): void
     {
         Formato::create([

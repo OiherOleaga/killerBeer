@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
 
     Route::get("/productos", [ProductoController::class, "index"])->middleware([])->name("productos.index");
+    Route::get("/productos/view/create", [ProductoController::class, "create"])->middleware([])->name("productos.create");
     Route::get("/productos/filtrar/{producto}", [ProductoController::class, "filtrar"])->middleware([])->name("productos.filtar");
     Route::post("/productosStore", [ProductoController::class, "store"])->middleware([])->name("productos.store");
     Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");

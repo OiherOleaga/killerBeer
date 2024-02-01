@@ -86,7 +86,6 @@
                             d="m1 1 4 4 4-4" />
                     </svg>
                 </button>
-                <!-- Dropdown menu -->
                 <form action="{{ route('clientes.index') }}" method="GET" class="filter-form">
                     <div id="dropdownRadio"
                         class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -197,7 +196,6 @@
     <div class="m-2">
         {{ $clientes->appends(['search' => $search, 'estado' => $estado])->links() }}
     </div>
-
     <script>
         $(document).ready(function() {
             // Manejar clic en elementos de la lista de estados

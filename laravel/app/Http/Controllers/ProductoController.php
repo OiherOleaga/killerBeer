@@ -27,7 +27,10 @@ class ProductoController extends Controller
             "categorias" => Categoria::all(),
         ]);
     }
-
+    public function create()
+    {
+        return view('productos.create', ["categorias" => Categoria::all() ]);
+    }
     public function store(Request $request)
     {
         $datos = $request->validate([
@@ -115,7 +118,7 @@ class ProductoController extends Controller
 
         $filas = [];
         foreach ($categorias as $categoria) {
-            array_push($filas, ["categoria" => $categoria["nombre"], "productos" => Producto::inRandomOrder()->limit(4)->where("id_categoria", "=", $categoria["id"])->get()]);
+            array_push($filas, ["categoria" => $categoria["nombre"], "productos" => Producto::inRandomOrder()->where("id_categoria", "=", $categoria["id"])->get()]);
         }
 
         return response()->json([

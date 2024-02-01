@@ -30,7 +30,7 @@
                                         <label for="direccion">Direccion</label>
                                         <input type="text" name="direccion"
                                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:text-gray-900" value=""
-                                            placeholder="" />
+                                            placeholder=""/>
                                     </div>
 
                                     <div class="md:col-span-5">
@@ -51,7 +51,7 @@
                                         <label for="estado">Estado</label>
                                         <select name="estado" class="h-10 border mt-1 rounded px-4 w-full dark:text-gray-900">
                                             <option value="en cola" class="dark:bg-gray-800 dark:text-white" selected>En cola</option>
-                                            <option value="en cola" class="dark:bg-gray-800 dark:text-white">Aceptado</option>
+                                            <option value="aceptado" class="dark:bg-gray-800 dark:text-white ">Aceptado</option>
 
                                         </select>
                                     </div>
