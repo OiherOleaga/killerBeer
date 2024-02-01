@@ -96,9 +96,9 @@ class ProductoController extends Controller
             if (!($datos["foto"] = ImgController::descargarImagen($request["foto"], "/fotosProducto/" . md5($datos["nombre"])))) {
                 return redirect(route('productos.index'))->withErrors(["Error al subir la foto"]);
             }
+        $producto->foto = $datos["foto"];
         }
 
-        $producto->foto = $datos["foto"];
 
         $producto->save();
 

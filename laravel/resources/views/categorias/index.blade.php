@@ -71,7 +71,7 @@
                             {{ $categoria->id }}
                         </td>
                         <form action={{ route('categorias.update', $categoria['id']) }} method="POST" hidden>
-                            <td class="px-6 py-4"><input type="text" class="border-1 rounded-lg text-center"
+                            <td class="px-6 py-4"><input type="text" class="border-1 rounded-lg text-center text-gray-950"
                                     value="{{ $categoria['nombre'] }}" name="nombre">
                             </td>
                             <td class="flex items-center justify-center gap-2 m-2">
@@ -79,7 +79,7 @@
                                 <button type="submit" value="Cambiar"
                                     class="px-5 py-2.5 hover:bg-blue-500 hover:text-blue-900 text-blue-500 rounded-lg text-sm font-semibold">
                                     Cambiar
-                                </button>
+                                </button> 
                         </form>
                         <form action={{ route('categorias.destroy', $categoria['id']) }} method="POST">
                             @csrf
