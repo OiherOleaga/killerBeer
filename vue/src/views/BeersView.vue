@@ -3,14 +3,16 @@ import {ref} from 'vue';
 const categorias = ref("");
 GET("/categoriasProducto").then((res) => {
     categorias.value = res.categoriasProducto;       
-    console.log(categorias.value)
 })
+
+const emit = defineEmits("changeCarrito");
 
 function annadirAlPedido(idProducto) {
 
     let pedido = JSON.parse(localStorage.getItem("pedido")) ?? [];
     if (pedido.indexOf(idProducto) == -1) {
         pedido.push(idProducto);
+        emit("changeCarrito", pedido.length);
         localStorage.setItem("pedido", JSON.stringify(pedido));
     }
 }
@@ -97,7 +99,7 @@ function annadirAlPedido(idProducto) {
     font-weight: 700;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    transition: all .5s;
+    transition: hover, before, after .5s;
 
     &:after,
     &:before {
@@ -135,6 +137,11 @@ function annadirAlPedido(idProducto) {
             height: 52px;
             border-color: #A65221;
         }
+    }
+
+    &:active {
+        background: #A65221;
+        color: black;
     }
 }
 </style>

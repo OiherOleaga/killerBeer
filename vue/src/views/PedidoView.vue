@@ -1,6 +1,17 @@
 <script setup>
 import { ref } from 'vue';
 
+let pedidoJson = localStorage.getItem("pedido");
+
+if (pedidoJson && pedidoJson !== '[]') {
+
+    POST("/getPedido", `{ "pedido" : ${pedidoJson} }`).then(res => {
+        pedido.value = res.pedido;
+    })
+}
+
+const emit = defineEmits("changeCarrito");
+
 const pedido = ref("");
 
 function quitar(index, id) {
@@ -20,12 +31,9 @@ function quitar(index, id) {
         pedido2.splice(index, 1);
     }
 
+    emit("changeCarrito", pedido2.length);
     localStorage.setItem("pedido", JSON.stringify(pedido2));
 }
-
-POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res => {
-    pedido.value = res.pedido;
-})
 
 </script>
 
@@ -40,7 +48,8 @@ POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res =
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div v-for="(producto, index) in pedido" :key="index" class="row">
+                            <div v-if="!(pedido.length)">No hay productos en el pedido</div>
+                            <div v-else v-for="(producto, index) in pedido" :key="index" class="row">
                                 <hr class="hr">
                                 <div class="col d-flex flex-wrap gap-4 align-items-center">
                                     <div>
@@ -50,7 +59,7 @@ POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res =
                                         <img :src="producto.foto"
                                             alt="foto producto">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-5">
                                         <div class="row">
                                             <h1>{{ producto.nombre}}</h1>
                                             <p v-if="pedido.envioGratis">Envio <span  class="h6">GRATIS</span> disponible</p>
@@ -58,6 +67,13 @@ POST("/getPedido", `{ "pedido" : ${localStorage.getItem("pedido")}}`).then(res =
                                         <div class="row">
                                             <p>{{ producto.descripcion }}</p>
                                         </div>
+                                    </div>
+                                    <div class="col">
+                                        <select name="" id="">
+                                            <option value="">ee</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
                                         <div class="row">
                                             <h4 class="h4 text-end">58.99€</h4>
                                         </div>

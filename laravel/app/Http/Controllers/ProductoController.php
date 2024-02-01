@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -124,19 +125,22 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function pedido(Request $request) {
+    public function getPedido(Request $request) {
 
         if (!ClienteControler::sessionCheck()) {
             return response()->json(["logged" => false]);
         }
 
-        $consulta = Producto::query();
-        
-        $consulta->whereIn("id", $request["pedido"]);
+
+        $pedido = DB::select(
+            "SELECT p.*, f.* FROM productos p
+            JOIN formato_producto fp ON p.id = fp.id_producto
+            JOIN formatos f on f.id = fp.id_formato
+        ");
 
         return response()->json([
             "logged" => true,
-            "pedido" => $consulta->get()
+            "pedido" => $pedido
         ]);
     }
 }

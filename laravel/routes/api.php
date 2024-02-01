@@ -30,4 +30,4 @@ Route::get("/cervezasMain", [ProductoController::class, "cargar"]);
 
 Route::get("/categoriasProducto", [ProductoController::class, "categoriasProducto"]);
 
-Route::post("/getPedido", [ProductoController::class, "pedido"]);
+Route::post("/getPedido", [ProductoController::class, "getPedido"]);
