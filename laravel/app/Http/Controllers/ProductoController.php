@@ -148,12 +148,28 @@ class ProductoController extends Controller {
             return response()->json(["logged" => false]);
         }
 
+        $conditions = "";
+        $length = count($request["pedido"]);
+
+        for ($i = 0; $i < $length; $i++) {
+            $conditions .= "p.id = ?" . ($length - 1 !== $i ? " OR " : "");
+        }
 
         $pedido = DB::select(
-            "SELECT p.*, f.* FROM productos p
-            JOIN formato_producto fp ON p.id = fp.id_producto
-            JOIN formatos f on f.id = fp.id_formato
-        ");
+            "SELECT p.*,
+            JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'tipo', f.tipo,
+                    'precio', fp.precio
+                )
+            ) AS formatos,
+            \"1\" as unidades
+            FROM productos p
+            LEFT JOIN formatos_productos fp ON p.id = fp.id_productos
+            LEFT JOIN formatos f ON f.id = fp.id_formatos
+            WHERE $conditions
+            GROUP BY p.id"
+        , $request["pedido"]);
 
         return response()->json([
             "logged" => true,

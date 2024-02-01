@@ -1,5 +1,19 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+
+
+const emit = defineEmits("changeCarrito");
+const pedido = ref("");
+
+const precioTotal = computed(() => {
+    let total = 0;
+    
+    for (let producto of pedido.value) {
+        total += producto.precio * producto.unidades;
+    }
+
+    return total.toFixed(2);
+})
 
 let pedidoJson = localStorage.getItem("pedido");
 
@@ -7,12 +21,22 @@ if (pedidoJson && pedidoJson !== '[]') {
 
     POST("/getPedido", `{ "pedido" : ${pedidoJson} }`).then(res => {
         pedido.value = res.pedido;
+        console.log(pedido.value)
+        setTimeout(() => {
+            for (let i = 0; pedido.value.length; i++) {
+                setPrecio(i);
+            }
+        }, 100);
     })
 }
 
-const emit = defineEmits("changeCarrito");
 
-const pedido = ref("");
+
+
+function setPrecio(index) {
+    let select = document.getElementById("selectFormatos" + index);
+    pedido.value[index].precio = select.options[select.selectedIndex].value;
+}
 
 function quitar(index, id) {
 
@@ -62,20 +86,25 @@ function quitar(index, id) {
                                     <div class="col-5">
                                         <div class="row">
                                             <h1>{{ producto.nombre}}</h1>
-                                            <p v-if="pedido.envioGratis">Envio <span  class="h6">GRATIS</span> disponible</p>
+                                            <p v-if="producto.envioGratis">Envio <span  class="h6">GRATIS</span> disponible</p>
                                         </div>
                                         <div class="row">
                                             <p>{{ producto.descripcion }}</p>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <select name="" id="">
-                                            <option value="">ee</option>
-                                        </select>
+                                        <div class="row">
+                                            <select @change="setPrecio(index)" :id="'selectFormatos' + index">
+                                                <option v-for="formato in JSON.parse(producto.formatos)" :value="formato.precio">{{ formato.tipo }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <input type="number" v-model="producto.unidades" min="1" />
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <div class="row">
-                                            <h4 class="h4 text-end">58.99€</h4>
+                                            <h4 class="h4 text-end">{{ (producto.precio * producto.unidades).toFixed(2)}} €</h4>
                                         </div>
                                         <div class="row p-2 justify-content-end"> <button class="btn" @click="quitar(index, producto.id)">Quitar</button>
                                         </div>
@@ -87,7 +116,7 @@ function quitar(index, id) {
                 </div>
                 <div class="col-10 col-md-2 comprar">
                     <h1>Pedido</h1>
-                    <p>Subtotal (*Nº de productos*): <span class="h5">1000€</span></p>
+                    <p>Subtotal (de {{pedido.length}} productos): <span class="h5">{{ precioTotal }}</span></p>
                     <button class="btn w-100 mb-2">Tramitar pedido</button>
                 </div>
             </div>
