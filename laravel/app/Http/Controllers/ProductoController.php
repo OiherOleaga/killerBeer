@@ -28,7 +28,10 @@ class ProductoController extends Controller
             "categorias" => Categoria::all(),
         ]);
     }
-
+    public function create()
+    {
+        return view('productos.create', ["categorias" => Categoria::all() ]);
+    }
     public function store(Request $request)
     {
         $datos = $request->validate([
@@ -70,14 +73,26 @@ class ProductoController extends Controller
         return redirect(route("productos.index"));
     }
 
+
     public function filtrar(Producto $producto)
     {
+        $formatosConPrecio = $producto->formatos()->withPivot('precio')->get();
 
+        $data = [];
 
+        foreach ($formatosConPrecio as $formato) {
+            $data[] = [
+                'id' => $formato->id,
+                'tipo' => $formato->tipo,
+                'precio' => $formato->pivot->precio
+            ];
+        }
         return response()->json([
-            "formatos" => $producto->formatos
+            "formatos" => $data
         ]);
     }
+
+
 
 
     public function update(Producto $producto, Request $request)
@@ -97,9 +112,9 @@ class ProductoController extends Controller
             if (!($datos["foto"] = ImgController::descargarImagen($request["foto"], "/fotosProducto/" . md5($datos["nombre"])))) {
                 return redirect(route('productos.index'))->withErrors(["Error al subir la foto"]);
             }
+            $producto->foto = $datos["foto"];
         }
 
-        $producto->foto = $datos["foto"];
 
         $producto->save();
 
@@ -116,7 +131,7 @@ class ProductoController extends Controller
 
         $filas = [];
         foreach ($categorias as $categoria) {
-            array_push($filas, ["categoria" => $categoria["nombre"], "productos" => Producto::inRandomOrder()->limit(4)->where("id_categoria", "=", $categoria["id"])->get()]);
+            array_push($filas, ["categoria" => $categoria["nombre"], "productos" => Producto::inRandomOrder()->where("id_categoria", "=", $categoria["id"])->get()]);
         }
 
         return response()->json([
@@ -126,6 +141,7 @@ class ProductoController extends Controller
     }
 
     public function getPedido(Request $request) {
+    {
 
         if (!ClienteControler::sessionCheck()) {
             return response()->json(["logged" => false]);

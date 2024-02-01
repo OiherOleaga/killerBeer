@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 const categorias = ref("");
 GET("/categoriasProducto").then((res) => {
     categorias.value = res.categoriasProducto;       
@@ -21,30 +21,39 @@ function annadirAlPedido(idProducto) {
 
 <template>
     <section class="store overflow-hidden">
-        <div v-for="categoria in categorias" class="row">
-            <div class="col">
-                <div class="col beers">
-                    <h1 class="display-2 text-center">{{ categoria.categoria }}</h1>
-                    <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">
-                        <div v-for="producto in categoria.productos" class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                            <img :src="producto.foto"
-                                class="card-img-top" alt="green iguana" />
-                            <div class="gradient-overlay"></div>
-                            <div class="card-body">
-                                <h4>{{ producto.nombre }}<span v-if="producto.new" class="badge bg-danger">NEW</span></h4>
-                                <p class="card-text">
-                                    {{ producto.descripcion }}
-                                </p>
-                                <hr class="hr">
-                                <div class="botones d-flex gap-2 justify-content-center">
-                                    <button class="btn btn-sm" type="button" @click="annadirAlPedido(producto.id)">Comprar</button>
+        <section class="container-fluid">
+            <div v-for="categoria in categorias" class="row">
+                <div class="col">
+                    <div class="col beers">
+                        <h1 class="display-2 text-center">{{ categoria.categoria }}</h1>
+                        <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">
+                            <div v-for="producto in categoria.productos"
+                                class="card col-10 col-lg-3 d-flex justify-content-center align-items-center"
+                                style="width: 350px; height: 730px; overflow: hidden;">
+                                <div class="img"
+                                    style="width: 400px; height: 400px; padding-top: 390px; position: relative;">
+                                    <img :src="producto.foto" class="card-img-top" :alt="producto.nombre"
+                                        style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;" />
+                                </div>
+                                <div class="gradient-overlay"></div>
+                                <div class="card-body"
+                                    style="max-height: 400px; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; align-items: center; justify-content: center;">
+                                    <h4 class="nombre pb-3">{{ producto.nombre }}<span v-if="producto.new"
+                                            class="badge bg-danger">NEW</span></h4>
+                                    <p class="card-text d-flex justify-content-center align-items-center h-100">
+                                        {{ producto.descripcion }}
+                                    </p>
+                                    <div class="botones d-flex gap-2 justify-content-center mt-auto pt-3">
+                                        <button class="btn btn-sm" type="button"
+                                            @click="annadirAlPedido(producto.id)">Comprar</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </section>
 </template>
 
@@ -57,11 +66,20 @@ function annadirAlPedido(idProducto) {
     height: 100%;
     background: linear-gradient(to top, rgba(255, 255, 255, 0)60%, rgb(255, 255, 255, .3));
     pointer-events: none;
-    /* Asegura que el overlay no capture eventos del ratón */
 }
 
 .store {
     padding: 8rem 0rem;
+}
+
+.botones {
+    width: 100%;
+    border-top: 1px solid #d9803268;
+}
+
+.nombre {
+    width: 100%;
+    border-bottom: 1px solid #d9803268;
 }
 
 .beers h1 {

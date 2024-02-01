@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\Cliente;
 use App\Models\Producto;
-use App\Models\Formato;
 use App\Models\formato_producto;
-
-use Database\Seeders\Formatos;
-
+use App\Models\FormatoPedido;
 use Illuminate\Http\Request;
 
 class PedidoCotroller extends Controller
@@ -47,19 +44,34 @@ class PedidoCotroller extends Controller
 
     public function store(Request $request)
     {
-        // Validation logic goes here
-        $request->validate([
-            'id_cliente' => 'required|exists:clientes,id',
-            'estado' => 'required|string|max:255',
-            'fecha_entrega' => 'required|date',
-            'precio' => 'required|numeric|max:8',
+        $pedido = $request->validate([
+            'pedido.id_cliente' => 'required|exists:clientes,id',
+            'pedido.estado' => 'required|string|max:255',
+            'pedido.fecha_entrega' => 'required|date',
+            'pedido.precio' => 'required|max:8',
         ]);
 
-        // Create a new Pedido record
-        Pedido::create($request->all());
 
-        return redirect()->route('pedidos.index')->with('success', 'Pedido created successfully');
+
+        // Crear un nuevo pedido en la base de datos
+        $pedido = Pedido::create($pedido['pedido']);
+
+
+        // Procesar la inserción de los productos asociados al pedido
+        $productos = $request->input('productos');
+
+        foreach ($productos as $producto) {
+            $producto['id_pedido'] = $pedido->id;
+            $producto["id_formato_producto"] = formato_producto::where("id_formatos", "=", $producto["id_formatos"])
+                ->where("id_productos", "=", $producto["id_productos"])
+                ->firstOrFail()
+                ->id;
+            FormatoPedido::create($producto);
+        }
+
+        return response()->json(["ok" => true]);
     }
+
 
     public function show($id)
     {
