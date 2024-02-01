@@ -69,14 +69,26 @@ class ProductoController extends Controller
         return redirect(route("productos.index"));
     }
 
+
     public function filtrar(Producto $producto)
     {
+        $formatosConPrecio = $producto->formatos()->withPivot('precio')->get();
 
+        $data = [];
 
+        foreach ($formatosConPrecio as $formato) {
+            $data[] = [
+                'id' => $formato->id,
+                'tipo' => $formato->tipo,
+                'precio' => $formato->pivot->precio
+            ];
+        }
         return response()->json([
-            "formatos" => $producto->formatos
+            "formatos" => $data
         ]);
     }
+
+
 
 
     public function update(Producto $producto, Request $request)
@@ -124,14 +136,15 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function pedido(Request $request) {
+    public function pedido(Request $request)
+    {
 
         if (!ClienteControler::sessionCheck()) {
             return response()->json(["logged" => false]);
         }
 
         $consulta = Producto::query();
-        
+
         $consulta->whereIn("id", $request["pedido"]);
 
         return response()->json([

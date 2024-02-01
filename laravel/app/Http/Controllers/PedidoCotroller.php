@@ -47,18 +47,23 @@ class PedidoCotroller extends Controller
 
     public function store(Request $request)
     {
-        // Validation logic goes here
         $request->validate([
             'id_cliente' => 'required|exists:clientes,id',
             'estado' => 'required|string|max:255',
             'fecha_entrega' => 'required|date',
-            'precio' => 'required|numeric|max:8',
+            'precio' => 'required|max:8',
         ]);
 
-        // Create a new Pedido record
-        Pedido::create($request->all());
+        $pedido = Pedido::create($request->all());
 
-        return redirect()->route('pedidos.index')->with('success', 'Pedido created successfully');
+        $pedidoID = $pedido->id;
+
+        $productos = $request->input('productos');
+
+        foreach ($productos as $producto) {
+        }
+
+        return redirect()->route('pedidos.index')->with('success', 'Pedido creado exitosamente');
     }
 
     public function show($id)
