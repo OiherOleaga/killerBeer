@@ -16,7 +16,7 @@ class ImgController extends Controller
         $rutaImg = $ruta . "." . $extension;
         file_put_contents(".$rutaImg", base64_decode($img));
 
-        $url = "http://localhost";
+        $url = "http://localhost:8000";
         return $url . $rutaImg;
     }
     private static function analizarImg(&$img) {

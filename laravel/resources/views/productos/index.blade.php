@@ -30,7 +30,8 @@
     </div>
     @endif
     </form> --}}
-    <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div
+        class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="w-full mb-1">
             <div class="mb-4">
                 <nav class="flex mb-5" aria-label="Breadcrumb">
@@ -108,7 +109,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                       ID
+                        ID
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Imagen
@@ -129,40 +130,52 @@
             </thead>
             <tbody>
                 @foreach ($productos as $producto)
-                <form action={{route("productos.update", $producto["id"])}} method="POST">
-                    @csrf
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                            {{ $producto->id }}
-                        </td>
-                        <td class="px-6 py-4 flex items-center flex-col gap-2 font-semibold w-100 text-gray-900 dark:text-white">
-                            <canvas class="insertCanvas" src={{ $producto['foto'] }} style="width:150px; border-radius:10px; object-fit:contain;"></canvas>
-                            <input type="file" class="fotoInput">
-                            <input type="hidden" class="foto" id="foto" name="foto">
-                        </td>
-                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
-                            <input type="text" value="{{ $producto['nombre'] }}" name="nombre">
-                        </td>
+                    <form action={{ route('productos.update', $producto['id']) }} method="POST">
+                        @csrf
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                                {{ $producto->id }}
+                            </td>
+                            <td
+                                class="px-6 py-4 flex items-center flex-col gap-2 font-semibold w-100 text-gray-900 dark:text-white">
+                                <canvas class="insertCanvas" src={{ $producto['foto'] }}
+                                    style="width:150px; border-radius:10px; object-fit:contain;"></canvas>
+                                <input type="file" class="fotoInput">
+                                <input type="hidden" class="foto" id="foto" name="foto">
+                            </td>
+                            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
+                                <input type="text" value="{{ $producto['nombre'] }}" name="nombre">
+                            </td>
 
-                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
-                            <textarea name="descripcion">{{ $producto['descripcion'] }} </textarea>
-                        </td>
+                            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
+                                <textarea name="descripcion">{{ $producto['descripcion'] }} </textarea>
+                            </td>
 
-                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
-                            <select name="id_categoria" > 
-                                @foreach ($categorias as $categoria)
-                                    <option value={{$categoria["id"]}} {{$categoria["id"] == $producto["id_categoria"]? "selected" : "" }}>{{ $categoria["nombre"] }}</option> 
-                                @endforeach
-                            </select>
-                        </td>
-
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
-                        </td>
+                            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-gray-900">
+                                <select name="id_categoria">
+                                    @foreach ($categorias as $categoria)
+                                        <option value={{ $categoria['id'] }}
+                                            {{ $categoria['id'] == $producto['id_categoria'] ? 'selected' : '' }}>
+                                            {{ $categoria['nombre'] }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button type="submit" value="Cambiar"
+                                    class="px-5 py-2.5 hover:bg-blue-500 hover:text-blue-900 text-blue-500 rounded-lg text-sm font-semibold">
+                                    Cambiar
+                                </button>
+                    </form>
+                    <form action={{ route('productos.destroy', $producto['id']) }} method="POST">
+                        @csrf
+                        <button type="submit" value="Borrar"
+                            class="px-5 py-2.5 hover:bg-red-500 hover:text-red-900 text-red-500 rounded-lg text-sm font-semibold">
+                            Borrar
+                        </button>
+                    </form>
                     </tr>
                 @endforeach
-
             </tbody>
         </table>
         <div class="m-2">

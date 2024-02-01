@@ -82,14 +82,20 @@ function enviarCervezas() {
             <h1 class="display-2 text-center">DESTACADAS</h1>
             <section class="d-flex flex-wrap justify-content-center align-items-center gap-5 text-center py-3">
               <div v-for="(producto, index) in objeto" :key="index"
-                class="card col-10 col-lg-3 d-flex justify-content-center align-items-center">
-                <img :src="producto.foto" class="card-img-top" :alt="producto.nombre" />
+                class="card col-10 col-lg-3 d-flex justify-content-center align-items-center"
+                style="width: 350px; height: 730px; overflow: hidden;">
+                <!-- Establece la anchura y altura fija para la tarjeta -->
+                <div class="img" style="width: 400px; height: 400px; padding-top: 390px; position: relative;">
+                  <!-- Ajusta el padding-top para fijar la relación de aspecto (75% en este ejemplo, puedes ajustarlo según tus necesidades) -->
+                  <img :src="producto.foto" class="card-img-top" :alt="producto.nombre"
+                    style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;" />
+                  <!-- Aplica object-fit: cover para la imagen y posición absoluta para cubrir el contenedor -->
+                </div>
                 <div class="gradient-overlay"></div>
-                <div class="card-body">
-                  <h4>{{ producto.nombre }}</h4>
-                  <p class="card-text">{{ producto.descripcion }}</p>
-                  <hr class="hr">
-                  <div class="botones d-flex gap-2 justify-content-center">
+                <div class="card-body" style="max-height: 400px; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; align-items: center; justify-content: center;">
+                  <h4 class="nombre pb-3">{{ producto.nombre }}</h4>
+                  <p class="card-text d-flex justify-content-center align-items-center h-100">{{ producto.descripcion }}</p>
+                  <div class="botones d-flex gap-2 justify-content-center mt-auto pt-3">
                     <button class="btn btn-sm" type="button" @click="enviarCervezas">Comprar</button>
                   </div>
                 </div>
@@ -139,9 +145,18 @@ h1 {
   background-color: #212226;
   color: #D98032;
   gap: 10px;
-  width: 350px;
   border: 3px solid #D98032;
   box-shadow: 0px 0px 30px #A65221;
+}
+
+.botones{
+  width: 100%;
+  border-top: 1px solid #d9803268;
+}
+
+.nombre{
+  width: 100%;
+  border-bottom: 1px solid #d9803268;
 }
 
 .beers {
@@ -150,10 +165,6 @@ h1 {
   background-position: bottom;
 }
 
-.card img {
-  object-fit: cover;
-  width: 100%;
-}
 
 .container {
   position: relative;
