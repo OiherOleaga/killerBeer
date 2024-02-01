@@ -22,7 +22,7 @@ class PedidoCotroller extends Controller
             $pedidos->where('estado', $estado);
         }
 
-        $pedidos = $pedidos->paginate(3);
+        $pedidos = $pedidos->paginate(10);
 
         return view('pedidos.index', compact('pedidos', 'estado'));
     }
