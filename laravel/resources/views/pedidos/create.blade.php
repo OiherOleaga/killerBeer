@@ -15,7 +15,7 @@
 <body>
     @include('partials.header')
     <main class="h-dvh">
-        <form action="{{ route('pedidos.store') }}" method="POST" id="formulario">
+            <form action={{route("pedidos.store")}} method="POST" id="formulario">
             @csrf
             <div class="flex items-center justify-center">
                 <div class="container max-w-screen-lg mx-auto">
@@ -71,14 +71,14 @@
                                                                 <option value="{{ $producto->id }}">{{ $producto->nombre }}</option>
                                                             @endforeach
                                                         </select>
-                                                        
-                                                            <select id="formato" name="formato_id" class="h-10 text-fourth border mt-1 rounded px-4 bg-lightdark">
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
+                                                        <select id="formato" class="h-10 text-fourth border mt-1 rounded px-4 bg-lightdark">
 
-                                                            </select>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+
+                                                         </select>
                                                         
                                                         
 
@@ -93,7 +93,7 @@
                                                 
                                                 
                                                 
-                                                <table id="pedidoTable" class=" text-sm rtl:text-right  text-second dark:text-gray-400 text-center">
+                                                <table class=" text-sm rtl:text-right  text-second dark:text-gray-400 text-center">
                                                     <thead class="text-xs text-fourth uppercase bg-lightdark dark:bg-gray-700 dark:text-gray-400">
                                                         <tr>
                                                             <th scope="col" class="px-6 py-3">
@@ -113,6 +113,9 @@
                                                             </th>
                                                         </tr>
                                                     </thead>
+                                                    <tbody id="pedidoTable">
+
+                                                    </tbody>
                                                 </table>
                                                 
 

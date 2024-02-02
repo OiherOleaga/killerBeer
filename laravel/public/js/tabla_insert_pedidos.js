@@ -11,8 +11,8 @@ function actualizarPrecioTotal() {
 
 
 function enviarDatos(event) {
-    event.preventDefault();
-    fetch('/pedidos/insert', {
+    /*event.preventDefault();
+    fetch('/pedidosInsert', {
         method: 'POST',
         credentials: "include",
         headers: {
@@ -40,7 +40,7 @@ function enviarDatos(event) {
         })
         .catch(error => {
             console.error('Error al enviar los productos al servidor:', error);
-        });
+        });*/
 }
 document.getElementById('insert').addEventListener('click', enviarDatos);
 
@@ -50,13 +50,20 @@ document.addEventListener('DOMContentLoaded', function () {
     cargarFormatos();
 
     const agregarBtn = document.querySelector('#agregarBtn');
-    const tablaPedido = document.querySelector('#pedidoTable');
+    const tablaPedido = document.getElementById('pedidoTable');
 
     agregarBtn.addEventListener('click', function () {
         const producto = document.querySelector('#producto').options[document.querySelector('#producto').selectedIndex].text;
-        const formato = document.querySelector('#formato').options[document.querySelector('#formato').selectedIndex].text;
-        const unidades = parseInt(document.querySelector('#unidades').value);
+        const selectProducto = document.getElementById('producto');
+        const idProducto = selectProducto.options[selectProducto.selectedIndex].value
+
         const selectFormato = document.getElementById('formato');
+        const formato = selectFormato.options[selectFormato.selectedIndex].text;
+        const idFormato = selectFormato.options[selectFormato.selectedIndex].value;
+
+        const unidades = parseInt(document.querySelector('#unidades').value);
+
+
         const opcionSeleccionada = selectFormato.options[selectFormato.selectedIndex];
         const precioFormato = parseFloat(opcionSeleccionada.getAttribute('data-precio'));
 
@@ -72,42 +79,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
         productos.push(nuevoProducto);
 
-        const fila = document.createElement('tr');
+        tablaPedido.innerHTML += `
+        <tr>
+            <td><input type="hidden" name="id_producto[]" value="${idProducto}">${producto}</td>
+            <td><input type="hidden" name="id_formato[]" value="${idFormato}">${formato}</td>
+            <td><input type="hidden" name="unidades[]" value="${unidades}">${unidades}</td>
+            <td><input type="hidden" name="precios[]" value="${precioTotal.toFixed(2)}">${precioTotal.toFixed(2)}</td>
+            <td><button class="boton">Eliminar</button></td>
+        </tr>        
+        `
 
-        const celdaProducto = document.createElement('td');
-        celdaProducto.textContent = producto;
-        fila.appendChild(celdaProducto);
+        for (let boton of document.getElementsByClassName('boton')) {
+            boton.addEventListener('click', function (event) {
+                event.preventDefault();
+                console.log(tablaPedido)
+                console.log(this.parentElement.parentElement)
+                tablaPedido.removeChild(this.parentElement.parentElement);
+                const index = productos.indexOf(nuevoProducto);
+                if (index !== -1) {
+                    productos.splice(index, 1);
+                }
+                actualizarPrecioTotal();
+            });
+        }
 
-        const celdaFormato = document.createElement('td');
-        celdaFormato.textContent = formato;
-        fila.appendChild(celdaFormato);
-        const celdaUnidades = document.createElement('td');
-        celdaUnidades.textContent = unidades;
-        fila.appendChild(celdaUnidades);
-
-        const celdaPrecio = document.createElement('td');
-        celdaPrecio.textContent = precioTotal.toFixed(2);
-        fila.appendChild(celdaPrecio);
-
-        const celdaEliminar = document.createElement('td');
-        const botonEliminar = document.createElement('button');
-        botonEliminar.textContent = 'Eliminar';
-        botonEliminar.addEventListener('click', function () {
-            tablaPedido.removeChild(fila);
-            // Elimina el producto del array productos
-            const index = productos.indexOf(nuevoProducto);
-            if (index !== -1) {
-                productos.splice(index, 1);
-            }
-            // Actualiza el precio total después de eliminar un producto
-            actualizarPrecioTotal();
-        });
-        celdaEliminar.appendChild(botonEliminar);
-        fila.appendChild(celdaEliminar);
-
-        tablaPedido.appendChild(fila);
-
-        // Actualiza el precio total después de agregar un producto
         actualizarPrecioTotal();
     });
 
