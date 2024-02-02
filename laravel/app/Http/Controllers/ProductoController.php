@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\Formato;
+use App\Models\formato_producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProductoController extends Controller {
+class ProductoController extends Controller
+{
 
     public function index(Request $request)
     {
         $search = $request->input('search');
 
+        $formatos = Formato::all();
+        $formatosProductos = formato_producto::all();
         $productos = Producto::query();
 
         if (!empty($search)) {
@@ -22,15 +27,19 @@ class ProductoController extends Controller {
 
         $productos = $productos->paginate(5);
 
-        return view("productos.index",  compact('productos', 'search'), [
-            "productos" => Producto::all(),
+        return view("productos.index",  [
+            "productos" => $productos,
             "categorias" => Categoria::all(),
+            "formatos" => $formatos,
+            "formatosProductos" => $formatosProductos,
+            "search" => $search
         ]);
     }
 
+
     public function create()
     {
-        return view('productos.create', ["categorias" => Categoria::all() ]);
+        return view('productos.create', ["categorias" => Categoria::all()]);
     }
 
     public function store(Request $request)
@@ -155,6 +164,7 @@ class ProductoController extends Controller {
             $conditions .= "p.id = ?" . ($length - 1 !== $i ? " OR " : "");
         }
 
+
         $pedido = DB::select(
             "SELECT p.*,
             JSON_ARRAYAGG(
@@ -169,8 +179,9 @@ class ProductoController extends Controller {
             LEFT JOIN formatos_productos fp ON p.id = fp.id_productos
             LEFT JOIN formatos f ON f.id = fp.id_formatos
             WHERE $conditions
-            GROUP BY p.id"
-        , $request["pedido"]);
+            GROUP BY p.id",
+            $request["pedido"]
+        );
 
         return response()->json([
             "logged" => true,
