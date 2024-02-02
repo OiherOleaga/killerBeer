@@ -1,24 +1,37 @@
 function actualizarPrecioTotal() {
     let precioTotalPedido = 0;
     productos.forEach(producto => {
-        precioTotalPedido += parseFloat(producto.precioTotal);
+        precioTotalPedido += parseFloat(producto.precio);
     });
 
     let campoPrecioPedido = document.getElementById('precio');
     campoPrecioPedido.value = precioTotalPedido.toFixed(2);
 }
 
-function enviarDatos() {
-    fetch('/pedidos', {
+
+
+function enviarDatos(event) {
+    event.preventDefault();
+    fetch('/pedidos/insert', {
         method: 'POST',
+        credentials: "include",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ productos: productos })
+        body: JSON.stringify({
+            _token: document.querySelector('input[name="_token"]').value,
+            productos: productos,
+            pedido: {
+                id_cliente: document.getElementById('cliente').value,
+                estado: document.getElementById('estado').value,
+                fecha_entrega: document.getElementById('fecha').value,
+                precio: document.getElementById('precio').value
+            }
+        })
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error al enviar los productos al servidor');
+                return response.text();
             }
             return response.json();
         })
@@ -32,6 +45,7 @@ function enviarDatos() {
 document.getElementById('insert').addEventListener('click', enviarDatos);
 
 const productos = [];
+const pedido = [];
 document.addEventListener('DOMContentLoaded', function () {
     cargarFormatos();
 
@@ -49,10 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const precioTotal = precioFormato * unidades;
 
         const nuevoProducto = {
-            producto: producto,
-            formato: formato,
+            id_productos: producto,
+            id_formatos: formato,
             unidades: unidades,
-            precioTotal: precioTotal
+
+            precio: precioTotal
         };
 
         productos.push(nuevoProducto);
@@ -119,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     selectFormato.appendChild(option);
                 });
-
 
             })
 

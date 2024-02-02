@@ -30,7 +30,7 @@
                                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                         <div class="md:col-span-5">
                                             <label for="id_cliente">Cliente</label>
-                                            <select name="id_cliente" class="h-10 text-fourth border mt-1 rounded px-4 w-full bg-lightdark">
+                                            <select id="cliente" name="id_cliente" class="h-10 text-fourth border mt-1 rounded px-4 w-full bg-lightdark">
                                                 @foreach($clientes as $cliente)
                                                     <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>
                                                 @endforeach
@@ -39,7 +39,7 @@
 
                                         <div class="md:col-span-5">
                                             <label for="estado">Estado</label>
-                                            <select name="estado" class="h-10 text-fourth border mt-1 rounded px-4 w-full bg-lightdark">
+                                            <select id="estado" name="estado" class="h-10 text-fourth border mt-1 rounded px-4 w-full bg-lightdark">
                                                     <option value="solicitado" selected>Solicitado</option>
                                                     <option value="preparacion" >Preparacion</option>
                                                     <option value="entrega" >Entrega</option>
@@ -49,7 +49,7 @@
 
                                         <div class="md:col-span-5">
                                             <label for="fecha_entrega">Fecha de entrega</label>
-                                            <input type="date" name="fecha_entrega"
+                                            <input id="fecha" type="date" name="fecha_entrega"
                                                 class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
                                                 placeholder="" />
                                         </div>
@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="md:col-span-5"> 
                                                         <label for="id_unidades">Unidades</label>
-                                                        <input id="unidades" type="number" class="h-8 w-24 text-fourth border mt-1 rounded px-3 bg-lightdark">
+                                                        <input id="unidades" type="number" min="1" class="h-8 w-24 text-fourth border mt-1 rounded px-3 bg-lightdark">
                                                     </div>
                                                     <button type="button" id="agregarBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded mt-6">Agregar</button>
                                                 </div>
@@ -130,7 +130,7 @@
                                             <div class="inline-flex items-end gap-2">
                                                 <button type="submit"
                                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="insert">Insertar</button>
-                                                <a href="/clientes"
+                                                <a href="/pedidos"
                                                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                                     Cancelar
                                                 </a>

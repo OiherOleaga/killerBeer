@@ -4,6 +4,7 @@ use App\Http\Controllers\ClienteControler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PedidoCotroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,4 @@ Route::get("/cervezasMain", [ProductoController::class, "cargar"]);
 
 Route::get("/categoriasProducto", [ProductoController::class, "categoriasProducto"]);
 
-Route::post("/getPedido", [ProductoController::class, "pedido"]);
+Route::post("/getPedido", [ProductoController::class, "getPedido"]);

@@ -6,9 +6,9 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ProductoController extends Controller
-{
+class ProductoController extends Controller {
 
     public function index(Request $request)
     {
@@ -27,10 +27,12 @@ class ProductoController extends Controller
             "categorias" => Categoria::all(),
         ]);
     }
+
     public function create()
     {
         return view('productos.create', ["categorias" => Categoria::all() ]);
     }
+
     public function store(Request $request)
     {
         $datos = $request->validate([
@@ -111,7 +113,7 @@ class ProductoController extends Controller
             if (!($datos["foto"] = ImgController::descargarImagen($request["foto"], "/fotosProducto/" . md5($datos["nombre"])))) {
                 return redirect(route('productos.index'))->withErrors(["Error al subir la foto"]);
             }
-        $producto->foto = $datos["foto"];
+            $producto->foto = $datos["foto"];
         }
 
 
@@ -139,20 +141,39 @@ class ProductoController extends Controller
         ]);
     }
 
-    public function pedido(Request $request)
+    public function getPedido(Request $request)
     {
 
         if (!ClienteControler::sessionCheck()) {
             return response()->json(["logged" => false]);
         }
 
-        $consulta = Producto::query();
+        $conditions = "";
+        $length = count($request["pedido"]);
 
-        $consulta->whereIn("id", $request["pedido"]);
+        for ($i = 0; $i < $length; $i++) {
+            $conditions .= "p.id = ?" . ($length - 1 !== $i ? " OR " : "");
+        }
+
+        $pedido = DB::select(
+            "SELECT p.*,
+            JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'tipo', f.tipo,
+                    'precio', fp.precio
+                )
+            ) AS formatos,
+            \"1\" as unidades
+            FROM productos p
+            LEFT JOIN formatos_productos fp ON p.id = fp.id_productos
+            LEFT JOIN formatos f ON f.id = fp.id_formatos
+            WHERE $conditions
+            GROUP BY p.id"
+        , $request["pedido"]);
 
         return response()->json([
             "logged" => true,
-            "pedido" => $consulta->get()
+            "pedido" => $pedido
         ]);
     }
 }

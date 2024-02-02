@@ -50,13 +50,12 @@ Route::middleware('auth')->group(function () {
     Route::post("/productosStore", [ProductoController::class, "store"])->middleware([])->name("productos.store");
     Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");
     Route::post("/productosDestroy/{producto}", [ProductoController::class, "destroy"])->middleware([])->name("productos.destroy");
-    Route::get("/productos/filtrar/{producto}", [ProductoController::class, "filtrar"])->name("productos.filtrar");
 
     Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
-    Route::get("/pedidos/{filtro}", [PedidoCotroller::class, "filtro"]);
-    Route::post("/pedidos", [PedidoCotroller::class, "store"])->middleware([])->name("pedidos.store");
+    Route::get("/pedidos/{filtro}", [PedidoCotroller::class, "  filtro"]);
     Route::get('/pedidos/view/create', [PedidoCotroller::class, 'create'])->name('pedidos.create');
     Route::delete("/pedidos/{pedido}", [PedidoCotroller::class, "destroy"])->middleware([])->name("pedidos.destroy");
+    Route::post('/pedidos/insert', [PedidoCotroller::class, 'store'])->middleware([])->name('pedidos.store'); //NO VA
 
     Route::get("/clientes", [ClienteControler::class, "index"])->middleware([])->name("clientes.index");
     Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
