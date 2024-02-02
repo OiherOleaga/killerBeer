@@ -8,6 +8,7 @@ use App\Models\Producto;
 use App\Models\formato_producto;
 use App\Models\FormatoPedido;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PedidoCotroller extends Controller
 {
@@ -44,33 +45,40 @@ class PedidoCotroller extends Controller
 
     public function store(Request $request)
     {
-        $pedido = $request->validate([
-            'pedido.id_cliente' => 'required|exists:clientes,id',
-            'pedido.estado' => 'required|string|max:255',
-            'pedido.fecha_entrega' => 'required|date',
-            'pedido.precio' => 'required|max:8',
+        //return response()->json($request->all());
+        $validatedData = $request->validate([
+            'id_cliente' => 'required',
+            'estado' => 'required|string|max:255',
+            'fecha_entrega' => 'required|date',
+            'precio' => 'required|max:8',
         ]);
 
 
+        $request->validate([
+            'id_producto' => 'required|array',
+            'id_producto.*' => 'required|exists:productos,id',
+            'id_formato' => 'required|array',
+            'id_formato.*' => 'required|numeric',
+            'unidades' => 'required|array',
+            'unidades.*' => 'required|numeric',
+            'precios' => 'required|array',
+            'precios.*' => 'required|numeric',
+        ]);
 
-        // Crear un nuevo pedido en la base de datos
-        $pedido = Pedido::create($pedido['pedido']);
 
+        $idPedido = Pedido::create($validatedData)->id;
 
-        // Procesar la inserción de los productos asociados al pedido
-        $productos = $request->input('productos');
-
-        foreach ($productos as $producto) {
-            $producto['id_pedido'] = $pedido->id;
-            $producto["id_formato_producto"] = formato_producto::where("id_formatos", "=", $producto["id_formatos"])
-                ->where("id_productos", "=", $producto["id_productos"])
-                ->firstOrFail()
-                ->id;
-            FormatoPedido::create($producto);
+        for ($i = 00; $i < count($request['id_producto']); $i++) {
+            DB::statement(
+                'INSERT INTO formatos_pedidos (id_pedido, id_formato_producto, precio, cantidad, created_at, updated_at)
+                values (?, (SELECT ID FROM formatos_productos WHERE id_productos = ? AND id_formatos = ? ), ?, ?, sysdate(), sysdate())',
+                [$idPedido, $request['id_producto'][$i], $request['id_formato'][$i], $request['precios'][$i], $request['unidades'][$i]]
+            );
         }
 
-        return response()->json(["ok" => true]);
+        return redirect()->route('pedidos.index')->with('success', 'Pedido creado exitosamente.');
     }
+
 
 
     public function show($id)
