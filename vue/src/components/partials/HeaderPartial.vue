@@ -43,8 +43,7 @@ initMDB({ Collapse, Ripple });
                                         CUENTA
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
-                                        <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+                                        <li><a class="dropdown-item" href="/historial">Mis pedidos</a></li>
                                     </ul>
                                 </li>
                                 <li class="tb-megamenu-item level-2 mega px-2">
