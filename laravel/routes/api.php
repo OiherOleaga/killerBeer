@@ -31,5 +31,6 @@ Route::get("/cervezasMain", [ProductoController::class, "cargar"]);
 Route::get("/categoriasProducto", [ProductoController::class, "categoriasProducto"]);
 
 Route::post("/getPedido", [ProductoController::class, "getPedido"]);
+Route::get("/getPedidos", [ProductoController::class, "getPedidos"]);
 
 Route::post("/tramitarPedido", [PedidoCotroller::class, "tramitar"]);

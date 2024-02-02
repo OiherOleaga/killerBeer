@@ -30,7 +30,6 @@
 
         let json = await res.json();
 
-        console.log(json);
         if (!json.logged) {
           window.location.pathname = "/login";
         }

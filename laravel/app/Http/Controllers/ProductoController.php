@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Categoria;
+use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\Formato;
 use App\Models\formato_producto;
@@ -186,6 +187,18 @@ class ProductoController extends Controller
         return response()->json([
             "logged" => true,
             "pedido" => $pedido
+        ]);
+    }
+
+    public function getPedidos() {
+
+        if (!ClienteControler::sessionCheck()) {
+            return response()->json(["logged" => false]);
+        }
+
+        return response()->json([
+            "logged" => true,
+            "pedidos" => Pedido::where("id_cliente", $_SESSION["id"])->get()
         ]);
     }
 }
