@@ -7,7 +7,7 @@ const pedido = ref("");
 
 const precioTotal = computed(() => {
     let total = 0;
-    
+
     for (let producto of pedido.value) {
         total += producto.precio * producto.unidades;
     }
@@ -24,7 +24,6 @@ if (pedidoJson && pedidoJson !== '[]') {
         console.log(pedido.value)
         setTimeout(() => {
             for (let i = 0; pedido.value.length; i++) {
-            //console.log("a")
                 setPrecio(i);
             }
         }, 200);
@@ -36,9 +35,7 @@ if (pedidoJson && pedidoJson !== '[]') {
 
 function setPrecio(index) {
     let select = document.getElementById("selectFormatos" + index);
-    if (select) {
-        pedido.value[index].precio = select.options[select.selectedIndex].value;
-    }
+    pedido.value[index].precio = select.options[select.selectedIndex].value;
 }
 
 function quitar(index, id) {
@@ -83,13 +80,13 @@ function quitar(index, id) {
                                         <input type="checkbox">
                                     </div>
                                     <div>
-                                        <img :src="producto.foto"
-                                            alt="foto producto">
+                                        <img :src="producto.foto" alt="foto producto">
                                     </div>
                                     <div class="col-5">
                                         <div class="row">
-                                            <h1>{{ producto.nombre}}</h1>
-                                            <p v-if="producto.envioGratis">Envio <span  class="h6">GRATIS</span> disponible</p>
+                                            <h1>{{ producto.nombre }}</h1>
+                                            <p v-if="producto.envioGratis">Envio <span class="h6">GRATIS</span> disponible
+                                            </p>
                                         </div>
                                         <div class="row">
                                             <p>{{ producto.descripcion }}</p>
@@ -98,7 +95,8 @@ function quitar(index, id) {
                                     <div class="col">
                                         <div class="row">
                                             <select @change="setPrecio(index)" :id="'selectFormatos' + index">
-                                                <option v-for="formato in JSON.parse(producto.formatos)" :value="formato.precio">{{ formato.tipo }}</option>
+                                                <option v-for="formato in JSON.parse(producto.formatos)"
+                                                    :value="formato.precio">{{ formato.tipo }}</option>
                                             </select>
                                         </div>
                                         <div class="row">
@@ -107,9 +105,11 @@ function quitar(index, id) {
                                     </div>
                                     <div class="col">
                                         <div class="row">
-                                            <h4 class="h4 text-end">{{ (producto.precio * producto.unidades).toFixed(2)}} €</h4>
+                                            <h4 class="h4 text-end">{{ (producto.precio * producto.unidades).toFixed(2) }} €
+                                            </h4>
                                         </div>
-                                        <div class="row p-2 justify-content-end"> <button class="btn" @click="quitar(index, producto.id)">Quitar</button>
+                                        <div class="row p-2 justify-content-end"> <button class="btn"
+                                                @click="quitar(index, producto.id)">Quitar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@ function quitar(index, id) {
                 </div>
                 <div class="col-10 col-md-2 comprar">
                     <h1>Pedido</h1>
-                    <p>Subtotal (de {{pedido.length}} productos): <span class="h5">{{ precioTotal }}</span></p>
+                    <p>Subtotal (de {{ pedido.length }} productos): <span class="h5">{{ precioTotal }}</span></p>
                     <button class="btn w-100 mb-2">Tramitar pedido</button>
                 </div>
             </div>
