@@ -3,7 +3,9 @@ import { ref, computed } from 'vue';
 
 
 const emit = defineEmits("changeCarrito");
-const pedido = ref("");
+const pedido = ref([]);
+
+const mensaje = ref("No hay productos en el pedido");
 
 const precioTotal = computed(() => {
     let total = 0;
@@ -32,10 +34,23 @@ if (pedidoJson && pedidoJson !== '[]') {
 
 
 
+function tramitarPedido() {
+    POST("/tramitarPedido", pedido.value).then((res) => {
+        if (res.insertado) {
+            pedido.value = [];
+            mensaje.value = "Pedido realizado";
+            localStorage.setItem("pedido", "[]");
+        } else {
+            alert("error al hacer el pedido")
+        }
+    })
+}
 
 function setPrecio(index) {
     let select = document.getElementById("selectFormatos" + index);
-    pedido.value[index].precio = select.options[select.selectedIndex].value;
+    let option = select[select.selectedIndex];
+    pedido.value[index].precio = option.value;
+    pedido.value[index].id_formato_producto = parseInt(option.getAttribute("idFormatoProducto"));
 }
 
 function quitar(index, id) {
@@ -72,13 +87,10 @@ function quitar(index, id) {
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div v-if="!(pedido.length)">No hay productos en el pedido</div>
+                            <div v-if="!(pedido.length)">{{ mensaje }}</div>
                             <div v-else v-for="(producto, index) in pedido" :key="index" class="row">
                                 <hr class="hr">
                                 <div class="col d-flex flex-wrap gap-4 align-items-center">
-                                    <div>
-                                        <input type="checkbox">
-                                    </div>
                                     <div>
                                         <img :src="producto.foto" alt="foto producto">
                                     </div>
@@ -95,8 +107,8 @@ function quitar(index, id) {
                                     <div class="col">
                                         <div class="row">
                                             <select @change="setPrecio(index)" :id="'selectFormatos' + index">
-                                                <option v-for="formato in JSON.parse(producto.formatos)"
-                                                    :value="formato.precio">{{ formato.tipo }}</option>
+                                                <option v-if="producto.formatos" v-for="formato in JSON.parse(producto.formatos)"
+                                                    :value="formato.precio" :idFormatoProducto="formato.idFormatoProducto">{{ formato.tipo }}</option>
                                             </select>
                                         </div>
                                         <div class="row">
@@ -119,8 +131,8 @@ function quitar(index, id) {
                 </div>
                 <div class="col-10 col-md-2 comprar">
                     <h1>Pedido</h1>
-                    <p>Subtotal (de {{ pedido.length }} productos): <span class="h5">{{ precioTotal }}</span></p>
-                    <button class="btn w-100 mb-2">Tramitar pedido</button>
+                    <p>Subtotal (de {{ pedido.length }} productos): <span class="h5">{{ precioTotal }} €</span></p>
+                    <button class="btn w-100 mb-2" @click="tramitarPedido">Tramitar pedido</button>
                 </div>
             </div>
         </div>

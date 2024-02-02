@@ -160,7 +160,8 @@ class ProductoController extends Controller {
             JSON_ARRAYAGG(
                 JSON_OBJECT(
                     'tipo', f.tipo,
-                    'precio', fp.precio
+                    'precio', fp.precio,
+                    'idFormatoProducto', fp.id
                 )
             ) AS formatos,
             \"1\" as unidades

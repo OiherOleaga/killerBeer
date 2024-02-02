@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id('id');
             $table->unsignedBigInteger('id_cliente');
             $table->enum('estado', ['solicitado', 'preparacion', 'entrega', 'entregado'])->default('solicitado');
-            $table->date('fecha_entrega');
+            $table->date('fecha_entrega')->default(Carbon::now()->addMonth()); ;
             $table->float('precio');
             $table->timestamps();
 

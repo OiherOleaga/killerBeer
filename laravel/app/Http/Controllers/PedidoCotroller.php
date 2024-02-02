@@ -40,7 +40,34 @@ class PedidoCotroller extends Controller
 
 
 
+    public function tramitar(Request $request) {
+        if (!ClienteControler::sessionCheck()) {
+            return response()->json(["logged" => false]);
+        }
 
+        $precioTotal = 0;
+        foreach ($request->all() as $producto) {
+            $precioTotal += formato_producto::where("id", $producto["id_formato_producto"])->value("precio") * $producto["unidades"];
+        }
+        
+        $pedido["id_cliente"] = $_SESSION["id"];
+        $pedido["precio"] = $precioTotal;
+
+        $idPedido = Pedido::create($pedido)->id;
+
+        foreach ($request->all() as $producto) {
+            DB::statement(
+                'INSERT INTO formatos_pedidos (id_pedido, id_formato_producto, precio, cantidad, created_at, updated_at)
+                values (?, ?, ?, ?, sysdate(), sysdate())',
+                [$idPedido, $producto['id_formato_producto'], $producto['precio'], $producto['unidades']]
+            );
+        }
+
+        return response()->json([
+            "logged" => true,
+            "insertado" => true
+        ]);
+    }
 
 
     public function store(Request $request)

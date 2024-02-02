@@ -52,6 +52,7 @@ class ClienteControler extends Controller
 
         session_start();
         $_SESSION["logged"] = true;
+        $_SESSION["id"] = $id;
 
         return response()->json(["logged" => true]);
     }
@@ -59,7 +60,7 @@ class ClienteControler extends Controller
 
     public function registro(Request $request)
     {
-        $logged = true;
+        $logged = false;
         try {
 
             $datosValidados = $request->validate([
@@ -82,11 +83,6 @@ class ClienteControler extends Controller
             }
         } catch (\Exception $e) {
             $logged = false;
-        }
-
-        if ($logged) {
-            session_start();
-            $_SESSION["logged"] = true;
         }
 
         return response()->json(["logged" => $logged]);
