@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteControler;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\PedidoCotroller;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
@@ -24,18 +25,6 @@ use App\Http\Controllers\ProductoCotroller;
 Route::get('/', function () {
     return view('index');
 })->middleware(['auth'])->name('home');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
 
 Route::middleware('auth')->group(function () {
 
@@ -64,8 +53,12 @@ Route::middleware('auth')->group(function () {
     Route::post("/clientes/aceptar/{cliente}", [ClienteControler::class, "aceptar"])->middleware([])->name("clientes.aceptar");
 
     Route::get("/formatos", [FormatosController::class, "index"])->middleware([])->name("formato.index");
+    Route::get("/formatos/create", [FormatosController::class, "create"])->middleware([])->name("formato.create");
     Route::post("/formatos", [FormatosController::class, "store"])->middleware([])->name("formato.store");
-    Route::post("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->middleware([])->name("formato.destroy");
+    Route::delete("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->middleware([])->name("formato.destroy");
+
+    Route::get("/estadisticas", [EstadisticasController::class, "index"])->middleware([])->name("estadisticas.index");
+
 });
 
 require __DIR__ . '/auth.php';

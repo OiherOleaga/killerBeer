@@ -1,35 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    {{-- <form action={{route("productos.store")}} method="post" enctype="multipart/form-data">
-        @csrf
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre"> 
-
-        <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
-
-        <label for="categoria">Categoria</label>
-        <select name="id_categoria" id="categoria"> 
-            @foreach ($categorias as $categoria)
-                <option value={{$categoria["id"]}}>{{ $categoria["nombre"] }}</option> 
-            @endforeach
-        </select>
-
-        <input type="file" accept="image/*" class="fotoInput">
-        <canvas class="insertCanvas" style="border: 1px solid black"></canvas>
-        <input type="hidden" id="foto" class="foto">
-
-        <input type="submit" value="Crear">
-            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-    </form> --}}
     <div
         class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="w-full mb-1">

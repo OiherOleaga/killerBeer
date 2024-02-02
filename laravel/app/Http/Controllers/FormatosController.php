@@ -15,7 +15,7 @@ class FormatosController extends Controller
 
     public function create()
     {
-        return view('formatos.create');
+        return view('formato.create');
     }
 
     public function store(Request $request)

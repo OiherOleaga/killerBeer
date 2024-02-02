@@ -61,7 +61,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'David',
             'password' => '$2y$12$bUzTHAMP.dnv/XFLgxprIuLFTG970eqszUdwlMIsY0vHXNCUdDyT2', //12345678
             'email' => 'david.moreno@ikasle.egibide.org',
-            'rol' => 'comercial'
+            'rol' => 'responsable'
+        ]);
+
+        User::create([
+            'name' => 'Oiher',
+            'password' => '$2y$12$bUzTHAMP.dnv/XFLgxprIuLFTG970eqszUdwlMIsY0vHXNCUdDyT2', //12345678
+            'email' => 'oiher.oleaga@ikasle.egibide.org',
+            'rol' => 'responsable'
+        ]);
+
+        User::create([
+            'name' => 'Anartz',
+            'password' => '$2y$12$bUzTHAMP.dnv/XFLgxprIuLFTG970eqszUdwlMIsY0vHXNCUdDyT2', //12345678
+            'email' => 'anartz.pagaldai@ikasle.egibide.org',
+            'rol' => 'responsable'
         ]);
 
         Cliente::create([
