@@ -24,9 +24,10 @@ if (pedidoJson && pedidoJson !== '[]') {
         console.log(pedido.value)
         setTimeout(() => {
             for (let i = 0; pedido.value.length; i++) {
+            //console.log("a")
                 setPrecio(i);
             }
-        }, 100);
+        }, 200);
     })
 }
 
@@ -35,7 +36,9 @@ if (pedidoJson && pedidoJson !== '[]') {
 
 function setPrecio(index) {
     let select = document.getElementById("selectFormatos" + index);
-    pedido.value[index].precio = select.options[select.selectedIndex].value;
+    if (select) {
+        pedido.value[index].precio = select.options[select.selectedIndex].value;
+    }
 }
 
 function quitar(index, id) {
