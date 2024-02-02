@@ -5,11 +5,14 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\PedidoCotroller;
 use App\Http\Controllers\ProductoController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormatosController;
 use App\Http\Controllers\emailController;
 use App\Http\Controllers\ProductoCotroller;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,11 +43,11 @@ Route::middleware('auth')->group(function () {
     Route::post("/productosUpdate/{producto}", [ProductoController::class, "update"])->middleware([])->name("productos.update");
     Route::post("/productosDestroy/{producto}", [ProductoController::class, "destroy"])->middleware([])->name("productos.destroy");
 
+    Route::post("/pedidosInsert", [PedidoCotroller::class, 'store'])->middleware([])->name('pedidos.store'); //NO VA
     Route::get("/pedidos", [PedidoCotroller::class, "index"])->middleware([])->name("pedidos.index");
     Route::get("/pedidos/{filtro}", [PedidoCotroller::class, "  filtro"]);
     Route::get('/pedidos/view/create', [PedidoCotroller::class, 'create'])->name('pedidos.create');
     Route::delete("/pedidos/{pedido}", [PedidoCotroller::class, "destroy"])->middleware([])->name("pedidos.destroy");
-    Route::post('/pedidos/insert', [PedidoCotroller::class, 'store'])->middleware([])->name('pedidos.store'); //NO VA
 
     Route::get("/clientes", [ClienteControler::class, "index"])->middleware([])->name("clientes.index");
     Route::post("/clientes", [ClienteControler::class, "store"])->middleware([])->name("clientes.store");
