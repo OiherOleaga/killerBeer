@@ -19,6 +19,7 @@ function enviarDatos(event) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            _token: document.querySelector('input[name="_token"]').value,
             productos: productos,
             pedido: {
                 id_cliente: document.getElementById('cliente').value,

@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="md:col-span-5"> 
                                                         <label for="id_unidades">Unidades</label>
-                                                        <input id="unidades" type="number" class="h-8 w-24 text-fourth border mt-1 rounded px-3 bg-lightdark">
+                                                        <input id="unidades" type="number" min="1" class="h-8 w-24 text-fourth border mt-1 rounded px-3 bg-lightdark">
                                                     </div>
                                                     <button type="button" id="agregarBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded mt-6">Agregar</button>
                                                 </div>
