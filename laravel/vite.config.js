@@ -12,7 +12,7 @@ export default defineConfig({
         }),
     ],
     server: {
-        host: 'killebeer.blog',
+        host: '0.0.0.0',
         port: 5173
     }
 });
