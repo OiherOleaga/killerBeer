@@ -6,7 +6,7 @@ sleep 10;
 npm run dev &
 
 cd ../vue
-npm run dev &
+sudo npm run dev &
 
 cd ../
 
