@@ -137,17 +137,27 @@
 
                             <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white dark:text-gray-900">
                                 @foreach($formatos as $formato)
-                                <?php $checked = false; ?>
-                                @foreach ($producto->formatos as $prod_formato)
-                                    @if ($formato->tipo == $prod_formato->tipo)
-                                        <?php $checked = true; ?>
-                                        @break
-                                    @endif
+                                    <?php $checked = false; ?>
+                                    <?php $precio = ""?>
+                                    @foreach ($producto->formatos as $prod_formato)
+                                        @if ($formato->tipo == $prod_formato->tipo)
+                                            @foreach ($formatosProductos as $formatoProducto)
+                                                @if ($formatoProducto->id_formatos == $prod_formato->id && $formatoProducto->id_productos == $producto->id)
+                                                    <?php $precio = $formatoProducto->precio; ?>
+                                                @endif
+                                            @endforeach
+                                            <?php $checked = true; ?>
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    
+                                    <input type="number" min="0.01" step="0.01" value="{{$precio}}" name="precios[]" style="color: black" />
+                                    <input id="{{ $formato->tipo }}" type="checkbox" name="formatos[]" value="{{ $formato->id }}" {{ $checked ? 'checked' : '' }}>
+                                    <label class="p-2" for="{{ $formato->tipo }}">{{ $formato->tipo }}</label> 
+                                    @if ($checked) 
+                                        <input type="hidden" name="borrarFormato[]" value="-1">
+                                    @endif 
                                 @endforeach
-                            
-                                <input id="{{ $formato->tipo }}" type="checkbox" name="formatos[]" value="{{ $formato->tipo }}" {{ $checked ? 'checked' : '' }}>
-                                <label class="p-2" for="{{ $formato->tipo }}">{{ $formato->tipo }}</label> 
-                            @endforeach
                             </td>
                             <td class="px-6 py-4">
                                 <button type="submit" value="Cambiar"

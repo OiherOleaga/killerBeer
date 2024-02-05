@@ -7,7 +7,6 @@
     <title>KillerBeer</title>
     <link rel="icon"
         href="{{ asset('img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png') }}">
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

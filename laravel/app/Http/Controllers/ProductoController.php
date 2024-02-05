@@ -126,8 +126,43 @@ class ProductoController extends Controller
             $producto->foto = $datos["foto"];
         }
 
-
         $producto->save();
+
+        $formatosId = $request["formatos"];
+        $precios = $request["precios"];
+        $precioIndex = 0;
+        for ($i = 0; $i < count($formatosId); $i++) {
+            
+            $precio = 0;
+
+            $formatoProducto = formato_producto::where("id_productos", $producto->id)->where("id_formatos", $formatosId[$i])->first();
+
+            for (; $precioIndex < count($precios) ;$precioIndex++) {
+                if ($precios[$precioIndex]) {
+                    $precio = $precios[$precioIndex];
+                    $precioIndex++;
+                    break;
+                }
+            }
+
+            if ($formatoProducto && $formatoProducto->precio != $precio) {
+
+                $formatoProducto->precio = $precio;
+                $formatoProducto->save();
+            } else if (!$formatoProducto) {
+
+                formato_producto::create(["id_formatos" => $formatosId[$i], "id_productos" => $producto->id, "precio" => $precio]);
+            }
+        }
+
+        foreach ($request["borrarFormato"] as $id) {
+            if ($id != -1) {
+                $formatoProducto = formato_producto::where("id_productos", $producto->id)->where("id_formatos", $id)->first();
+                if ($formatoProducto) {
+                    $formatoProducto->delete();
+                }
+            }
+        }
 
         return redirect(route("productos.index"));
     }
