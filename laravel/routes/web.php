@@ -31,10 +31,11 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get("/categorias", [CategoriaController::class, "index"])->name("categorias.index");
-    Route::post("/categorias", [CategoriaController::class, "store"])->name("categorias.store");
-    Route::post("/categoriaDestroy/{categoria}", [CategoriaController::class, "destroy"])->name("categorias.destroy");
-    Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->name("categorias.update");
+    Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
+    Route::get("/categorias/create", [CategoriaController::class, "create"])->middleware([])->name("categorias.create");
+    Route::post("/categorias/insert", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
+    Route::post("/categoriaDestroy/{categoria}", [CategoriaController::class, "destroy"])->middleware([])->name("categorias.destroy");
+    Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
 
     Route::get("/productos", [ProductoController::class, "index"])->name("productos.index");
     Route::get("/productos/view/create", [ProductoController::class, "create"])->name("productos.create");
@@ -60,8 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::post("/formatos", [FormatosController::class, "store"])->name("formato.store");
     Route::delete("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->name("formato.destroy");
 
-    Route::get("/estadisticas", [EstadisticasController::class, "index"])->name("estadisticas.index");
-
+    Route::get("/estadisticas", [EstadisticasController::class, "index"])->middleware([])->name("estadisticas.index");
 });
 
 require __DIR__ . '/auth.php';

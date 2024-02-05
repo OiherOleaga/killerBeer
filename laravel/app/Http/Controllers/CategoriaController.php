@@ -8,11 +8,18 @@ use Illuminate\Http\Request;
 class CategoriaController extends Controller
 {
 
-    public function index() {
+    public function index()
+    {
         return view("categorias.index", ["categorias" => Categoria::all()]);
     }
-    
-    public function store(Request $request) {
+
+    public function create()
+    {
+        return view('categorias.create');
+    }
+
+    public function store(Request $request)
+    {
         $datos = $request->validate([
             'nombre' => 'required|string|max:255'
         ]);
@@ -22,13 +29,15 @@ class CategoriaController extends Controller
         return redirect(route("categorias.index"));
     }
 
-    public function destroy(Categoria $categoria) {
+    public function destroy(Categoria $categoria)
+    {
         $categoria->delete();
 
         return redirect(route("categorias.index"));
     }
 
-    public function update(Categoria $categoria, Request $request) {
+    public function update(Categoria $categoria, Request $request)
+    {
         $request->validate([
             'nombre' => 'required|string|max:255'
         ]);
