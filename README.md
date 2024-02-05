@@ -14,7 +14,7 @@
   <p align="center">Bienvenido al repositorio oficial de KillerBeer, en este repositorio podras encontrarte todo el codigo de nuestra aplicación web.</p>
 </div>
 
-<div style="display:flex; align-items:center; justify-content:center;">
+<div align="center">
 
 [![Vue][Vue.js]][Vue-url] [![Laravel][Laravel.com]][Laravel-url] [![Tailwind][Tailwind.com]][Tailwind-url] [![Bootstrap][Bootstrap.com]][Bootstrap-url] ![MySQL]
 
