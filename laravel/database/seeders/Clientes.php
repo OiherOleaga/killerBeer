@@ -13,7 +13,7 @@ class Clientes extends Seeder
         Cliente::create([
             'correo' => 'david.moreno@ikasle.egibide.org',
             'direccion' => 'Coronela Ibaibarriaga',
-            'telefono' => '692484269',
+            'telefono' => '123456789',
             'nombre' => 'David',
             'codigo' => '123456789',
             'estado' => 'aceptado',
@@ -22,8 +22,8 @@ class Clientes extends Seeder
         Cliente::create([
             'correo' => 'david.moreno@ikasle.egibide.org',
             'direccion' => 'Coronela Ibaibarriaga',
-            'telefono' => '692484269',
-            'nombre' => 'Fernando',
+            'telefono' => '123456789',
+            'nombre' => 'Fernando Alonso',
             'codigo' => '123456789',
             'estado' => 'en cola',
         ]);
@@ -31,8 +31,8 @@ class Clientes extends Seeder
         Cliente::create([
             'correo' => 'david.moreno@ikasle.egibide.org',
             'direccion' => 'Coronela Ibaibarriaga',
-            'telefono' => '692484269',
-            'nombre' => 'Jaime',
+            'telefono' => '123456789',
+            'nombre' => 'Di Grefg',
             'codigo' => '123456789',
             'estado' => 'en cola',
         ]);
