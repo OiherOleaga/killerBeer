@@ -92,16 +92,16 @@ class DatabaseSeeder extends Seeder
             'direccion' => 'Coronela Ibaibarriaga',
             'telefono' => '123456789',
             'nombre' => 'Fernando Alonso',
-            'codigo' => '123456789',
+            'codigo' => '333333333',
             'estado' => 'en cola',
         ]);
 
         Cliente::create([
             'correo' => 'david.moreno@ikasle.egibide.org',
-            'direccion' => 'Coronela Ibaibarriaga',
+            'direccion' => 'Andorra La Vella',
             'telefono' => '123456789',
             'nombre' => 'Di Grefg',
-            'codigo' => '123456789',
+            'codigo' => '111111111',
             'estado' => 'en cola',
         ]);
 

@@ -1,6 +1,9 @@
-[![Contributors][contributors-shield]][contributors-url]
-
-# 
+<p align="center">
+  <a href="https://github.com/OiherOleaga/killerBeer/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/OiherOleaga/killerBeer.svg" alt="Contributors" />
+  </a>
+</p>
+<p style="text-align: center; border-bottom: 2px solid lightgray;">&nbsp;</p>
 <div align="center">
     <a href="https://github.com/OiherOleaga/killerBeer">
     <img src="laravel/public/img/Leonardo_Diffusion_XL_dibuja_un_logo_para_una_empresa_de_cerve_2__2_-ai-brush-removebg-2vzply9.png" alt="Logo" width="300" height="300">
@@ -11,22 +14,20 @@
   <p align="center">Bienvenido al repositorio oficial de KillerBeer, en este repositorio podras encontrarte todo el codigo de nuestra aplicación web.</p>
 </div>
 
+<div style="display:flex; align-items:center; justify-content:center;">
 
+[![Vue][Vue.js]][Vue-url] [![Laravel][Laravel.com]][Laravel-url] [![Tailwind][Tailwind.com]][Tailwind-url] [![Bootstrap][Bootstrap.com]][Bootstrap-url] ![MySQL]
 
+</div>
 
-#### Creada en
-
-* [![Vue][Vue.js]][Vue-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![Tailwind][Tailwind.com]][Tailwind-url]
-* ![MySQL]
 
 # Índice
 * [Como desplegar el repositorio](#como-desplegar-el-repositorio)
 * [Ejecutar aplicacion backend en local](#ejecutar-aplicacion-backend-en-local)
 * [Ejecutar aplicacion frontend en local](#ejecutar-aplicacion-frontend-en-local)
 * [Usuarios](#usuarios)
+    * [Administradores](#administradores)
+    * [Clientes](#clientes)
 
 # Como desplegar el repositorio
 
@@ -35,7 +36,7 @@ Para desplegar el repositorio lo podras realizar con el siguiente comando de doc
 git clone https://github.com/OiherOleaga/KillerBeer
 ```
 
-# Ejecutar aplicacion backend en local [![Laravel][Laravel.com]][Laravel-url]
+# Ejecutar aplicacion backend en local [![Laravel][Laravel.com]][Laravel-url] [![Tailwind][Tailwind.com]][Tailwind-url]
 Una vez clonado el repositorio oficial tendras que ejecutar los siguientes comandos en una **terminal linux**:
 
 * Crear carpeta vendor:
@@ -56,9 +57,25 @@ _La terminal Linux ha de estar vinculada a la terminal wsl. Mirar [aqui](https:/
 ```sh
 ./vendor/bin/sail up -d
 ```
+* Ejecutar los migrates:
+``` sh
+./vendor/bin/sail artisan migrate:fresh
+```
+o
+``` sh
+php artisan migrate:fresh
+```
+* Ejecutar los seeders:
+``` sh
+./vendor/bin/sail artisan db:seed
+```
+o
+``` sh
+php artisan db:seed
+```
 * Ejecutar un servidor:
 ``` sh
-./vendor/bin/sail artisan serve  php artisan serve
+./vendor/bin/sail artisan serve
 ```
 o
 ``` sh
@@ -68,7 +85,7 @@ php artisan serve
 ``` sh
 npm run dev
 ```
-# Ejecutar aplicacion frontend en local [![Vue][Vue.js]][Vue-url]
+# Ejecutar aplicacion frontend en local [![Vue][Vue.js]][Vue-url] [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 
 Instalar [node.js](https://nodejs.org/en) si no esta instalado.
 
@@ -87,14 +104,21 @@ Instalar [node.js](https://nodejs.org/en) si no esta instalado.
   npm run dev
 ```
 
+# Usuarios ![MySQL]
 
+#### Administradores
+| Correo  | Contraseña | Rol |
+| ------------- | ------------- | ------------- |
+| david.moreno@ikasle.egibide.org | 12345678  | responsable  |
+| oiher.oleaga@ikasle.egibide.org  | 12345678  | responsable  |
+| anartz.pagaldai@ikasle.egibide.org  | 12345678  | responsable  |
 
-
-
-
-
-
-
+#### Clientes
+| Correo  | Direccion | Telefono |Nombre | Codigo | Estado |
+| ------------- | ------------- | ------------- | ------------- |------------- |------------- |
+| david.moreno@ikasle.egibide.org | Coronela Ibaibarriaga | 123456789  | David  | 123456789  |Aceptado  |
+| david.moreno@ikasle.egibide.org | Asturias | 333333333  | Fernando Alonso  | 123456789  | en cola  |
+| david.moreno@ikasle.egibide.org | Andorra La Vella | 123456789  | Di Grefg  | 123456789  | en cola  |
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
