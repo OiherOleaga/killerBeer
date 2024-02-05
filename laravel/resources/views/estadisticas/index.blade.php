@@ -21,7 +21,7 @@
             </div>
             <div id="main-chart" style="min-height: 435px;">
                 <div id="apexchartsv83loncz" class="apexcharts-canvas apexchartsv83loncz apexcharts-theme-light"
-                    style="width: 808px; height: 420px;"><svg id="SvgjsSvg1837" width="808" height="420"
+                    style="width: 100%; height: 420px;"><svg id="SvgjsSvg1837" width="100%" height="420"
                         xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
                         xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS"
                         transform="translate(0, 0)" style="background: transparent;">
@@ -462,16 +462,7 @@
                 <div data-popper-arrow="" style="position: absolute; left: 0px; transform: translate3d(271px, 0px, 0px);">
                 </div>
             </div>
-            <div class="sm:hidden">
-                <label for="tabs" class="sr-only">Select tab</label>
-                <select id="tabs"
-                    class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    <option>Statistics</option>
-                    <option>Services</option>
-                    <option>FAQ</option>
-                </select>
-            </div>
-            <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400"
+            <ul class="text-sm font-medium flex text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400"
                 id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
                 <li class="w-full">
                     <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq"
