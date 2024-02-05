@@ -32,7 +32,8 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get("/categorias", [CategoriaController::class, "index"])->middleware([])->name("categorias.index");
-    Route::post("/categorias", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
+    Route::get("/categorias/create", [CategoriaController::class, "create"])->middleware([])->name("categorias.create");
+    Route::post("/categorias/insert", [CategoriaController::class, "store"])->middleware([])->name("categorias.store");
     Route::post("/categoriaDestroy/{categoria}", [CategoriaController::class, "destroy"])->middleware([])->name("categorias.destroy");
     Route::post("/categoriaUpdate/{categoria}", [CategoriaController::class, "update"])->middleware([])->name("categorias.update");
 
@@ -61,7 +62,6 @@ Route::middleware('auth')->group(function () {
     Route::delete("/formatosDestroy/{formato}", [FormatosController::class, "destroy"])->middleware([])->name("formato.destroy");
 
     Route::get("/estadisticas", [EstadisticasController::class, "index"])->middleware([])->name("estadisticas.index");
-
 });
 
 require __DIR__ . '/auth.php';
