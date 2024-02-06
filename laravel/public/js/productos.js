@@ -5,7 +5,7 @@ let insertCanvas = document.getElementsByClassName("insertCanvas")
 let fotos = document.getElementsByClassName("foto")
 
 for (let i = 0; i < fotosInput.length; i++) {
-    initializeCanvas(fotosInput[i], insertCanvas[i], fotos[i],450,850);
+    initializeCanvas(fotosInput[i], insertCanvas[i], fotos[i], 1024 ,1024);
 }
 
 for (let input of document.querySelectorAll('input[name="formatos[]"]')) {
