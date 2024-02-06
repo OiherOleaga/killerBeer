@@ -12,7 +12,7 @@
                                 <p>Rellene todos los campos.</p>
                             </div>
                             <div class="lg:col-span-2">
-                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-12">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1">
                                     <div class="md:col-span-5">
                                         <label for="id_cliente">Cliente</label>
                                         <select id="cliente" name="id_cliente"
