@@ -1,39 +1,31 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
+// tailwind.config.js
 
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
     purge: [
-        './resources/**/*.blade.php',
-        './resources/**/*.js',
-        './resources/**/*.vue'
+      './resources/**/*.blade.php',
+      './resources/**/*.js',
+      './resources/**/*.vue',
     ],
-    content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-    ],
-    darkMode: 'class',
+    darkMode: 'class', // Opcional: habilita el modo oscuro
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
-            colors: {
-                transparent: 'transparent',
-                current: 'currentColor',
-                'white': '#ffffff',
-                'lightdark': '#212226',
-                'first': '#F2CC85 ',
-                'second': '#F2A74B',
-                'third': '#D98032',
-                'fourth': '#A65221',
-            }
+      extend: {
+        fontFamily: {
+          sans: ['Figtree', 'sans-serif'],
         },
+        colors: {
+          transparent: 'transparent',
+          current: 'currentColor',
+          white: '#ffffff',
+          lightdark: '#212226',
+          first: '#F2CC85',
+          second: '#F2A74B',
+          third: '#D98032',
+          fourth: '#A65221',
+        },
+      },
     },
-
     plugins: [
-        forms,
-
+      // Agrega plugins personalizados aquí si es necesario
     ],
-};
+  };
+  
