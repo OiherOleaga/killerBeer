@@ -25,7 +25,7 @@ module.exports = {
       },
     },
     plugins: [
-      // Agrega plugins personalizados aquí si es necesario
+      require('tailwindcss-plugins/pagination')
     ],
   };
   
