@@ -67,7 +67,7 @@ initMDB({ Collapse, Ripple });
         </nav>
         <div class="collapse" id="navbarSupportedContent">
             <div class="bg-dark p-4">
-                <ul class="tb d-block-megamenu-nav nav level-0 items-6">
+                <ul class="tb-megamenu-nav d-block nav level-0 items-6">
                     <li class="tb-megamenu-item level-2 mega px-2">
                         <a href="/pedido">Cesta</a>
                     </li>
@@ -78,7 +78,7 @@ initMDB({ Collapse, Ripple });
                         <a href="/about">Sobre Nosotros</a>
                     </li>
                     <li class="tb-megamenu-item level-2 mega px-2">
-                        <a href="/historial">Mis pedidos</a>
+                        <a href="/pedidos">Mis pedidos</a>
                     </li>
                 </ul>
             </div>
