@@ -26,7 +26,11 @@ function registrar() {
 
         .then((res) => res.json())
         .then((res) => {
-            router.push("/login");
+            if (res.registro) {
+                router.push("/login");
+            } else {
+                alert("error al registrar");
+            }
         })
         .catch((error) => {
             alert("ocurrio un error en el registro");

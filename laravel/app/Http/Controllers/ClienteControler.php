@@ -82,10 +82,10 @@ class ClienteControler extends Controller
                 $logged = false;
             }
         } catch (\Exception $e) {
-            $logged = false;
+            return response()->json(["logged" => $logged, "registro" => false]);
         }
 
-        return response()->json(["logged" => $logged]);
+        return response()->json(["logged" => $logged, "registro" => true]);
     }
 
     public function create()
