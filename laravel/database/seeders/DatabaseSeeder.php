@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
             'direccion' => 'Coronela Ibaibarriaga',
             'telefono' => '123456789',
             'nombre' => 'David',
-            'codigo' => '123456789',
+            'codigo' => 'davidmoreno',
             'estado' => 'aceptado',
         ]);
 
