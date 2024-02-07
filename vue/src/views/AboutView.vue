@@ -55,7 +55,7 @@
                 alt="..." /></div>
           </div>
           <div class="col-lg-6 order-lg-1">
-            <div class="p-5 texto">
+            <div class="p-5 texto mb-4">
               <h2 class="display-4">Nuestros empleados</h2>
               <hr>
               <p>Los trabajadores de KillerBeer son el corazón y el alma de la empresa, dedicados a perfeccionar el arte
