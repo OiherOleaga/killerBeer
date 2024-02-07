@@ -35,15 +35,19 @@ if (pedidoJson && pedidoJson !== '[]') {
 
 
 function tramitarPedido() {
-    POST("/tramitarPedido", pedido.value).then((res) => {
-        if (res.insertado) {
-            pedido.value = [];
-            mensaje.value = "Pedido realizado";
-            localStorage.setItem("pedido", "[]");
-        } else {
-            alert("error al hacer el pedido")
-        }
-    })
+
+    if (pedido.value.length != 0) {
+
+        POST("/tramitarPedido", pedido.value).then((res) => {
+            if (res.insertado) {
+                pedido.value = [];
+                mensaje.value = "Pedido realizado";
+                localStorage.setItem("pedido", "[]");
+            } else {
+                alert("error al hacer el pedido")
+            }
+        })
+    }
 }
 
 function setPrecio(index) {
