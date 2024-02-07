@@ -78,7 +78,7 @@ initMDB({ Collapse, Ripple });
                         <a href="/about">Sobre Nosotros</a>
                     </li>
                     <li class="tb-megamenu-item level-2 mega px-2">
-                        <a href="/pedidos">Mis pedidos</a>
+                        <a href="/historial">Mis pedidos</a>
                     </li>
                 </ul>
             </div>

@@ -82,7 +82,7 @@ function enviarRegistro() {
                   <h4 class="mb-4">¡Bienvenido de nuevo!</h4>
                   <p class="small mb-0">¿Eres un amante de la cerveza que busca experiencias únicas y una
                     amplia variedad de opciones para satisfacer tu paladar? ¡Entonces estás en el lugar
-                    correcto! En BeerHaven, no solo vendemos cervezas, creamos un paraíso cervecero para
+                    correcto! En KillerBeer, no solo vendemos cervezas, creamos un paraíso cervecero para
                     los apasionados de esta bebida tan especial.</p>
                 </div>
               </div>
