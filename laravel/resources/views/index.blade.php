@@ -18,29 +18,29 @@
                 <div class="flex w-1/2 flex-wrap">
                     <div class="w-1/2 p-1 md:p-2">
                         <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
-                            src="http://localhost:8000/fotosProducto/KillerCásica.jpg" />
+                            src="http://killerbeer.blog:8000/fotosProducto/KillerCásica.jpg" />
                     </div>
                     <div class="w-1/2 p-1 md:p-2">
                         <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
-                            src="http://localhost:8000/fotosProducto/KillerTostada.jpg" />
+                            src="http://killerbeer.blog:8000/fotosProducto/KillerTostada.jpg" />
                     </div>
                     <div class="w-full p-1 md:p-2">
                         <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
-                            src="http://localhost:8000/fotosProducto/Killer_Tostada_0_0.jpg" />
+                            src="http://killerbeer.blog:8000/fotosProducto/Killer_Tostada_0_0.jpg" />
                     </div>
                 </div>
                 <div class="flex w-1/2 flex-wrap">
                     <div class="w-full p-1 md:p-2">
                         <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
-                            src="http://localhost:8000/fotosProducto/KillerMagna.jpg" />
+                            src="http://killerbeer.blog:8000/fotosProducto/KillerMagna.jpg" />
                     </div>
                     <div class="w-1/2 p-1 md:p-2">
                         <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
-                            src="http://localhost:8000/fotosProducto/aguabasicKillerBeer.jpg" />
+                            src="http://killerbeer.blog:8000/fotosProducto/aguabasicKillerBeer.jpg" />
                     </div>
                     <div class="w-1/2 p-1 md:p-2">
                         <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
-                            src="http://localhost:8000/fotosProducto/KillerPremium.jpg" />
+                            src="http://killerbeer.blog:8000/fotosProducto/KillerPremium.jpg" />
                     </div>
                 </div>
             </div>
