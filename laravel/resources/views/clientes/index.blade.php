@@ -164,7 +164,7 @@
                         {{ $cliente->correo }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $cliente->codigo }}
+                       .........
                     </td>
                     <td class="px-6 py-4">
                         {{ $cliente->estado }}

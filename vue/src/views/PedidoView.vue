@@ -94,7 +94,7 @@ function quitar(index, id) {
                                     <div>
                                         <img :src="producto.foto" alt="foto producto">
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-12 col-md-5">
                                         <div class="row">
                                             <h1>{{ producto.nombre }}</h1>
                                             <p v-if="producto.envioGratis">Envio <span class="h6">GRATIS</span> disponible

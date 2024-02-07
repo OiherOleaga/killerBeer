@@ -33,7 +33,7 @@ GET("/getPedidos").then((res) => {
                 <hr>
                 <div v-for="(pedido, index) in pedidos" :key="index" class="row">
                     <div class="pedidos col d-block d-md-flex flex-wrap align-items-center justify-content-around m-2 p-2 gap-2">
-                        <div class="pedido col-12 d-flex justify-content-around">
+                        <div class="pedido col-12 d-flex flex-wrap justify-content-around">
                             <div class="row">
                                 <div class="col-12 ">
                                     <p>
