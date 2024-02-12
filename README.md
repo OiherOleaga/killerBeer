@@ -12,8 +12,8 @@
   <h3 align="center">KillerBeer</h3>
 
   <p align="center">Bienvenido al repositorio oficial de KillerBeer, en este repositorio podras encontrarte todo el codigo de nuestra aplicación web.</p>
-  <p align="center"><a href="killerbeer.blog">Vue: KillerBeer.blog</a></p>
-    <p align="center"><a href="killerbeer.blog:8000">Laravel: KillerBeer.blog</a></p>
+  <p align="center"><a href="killerbeer.blog">Vue</a></p>
+    <p align="center"><a href="killerbeer.blog:8000">Laravel</a></p>
 
 
 </div>
