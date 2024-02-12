@@ -116,7 +116,7 @@ Instalar [node.js](https://nodejs.org/en) si no esta instalado.
 #### Clientes
 | Correo  | Direccion | Telefono |Nombre | Codigo | Estado |
 | ------------- | ------------- | ------------- | ------------- |------------- |------------- |
-| david.moreno@ikasle.egibide.org | Coronela Ibaibarriaga | 123456789  | David  | 123456789  |Aceptado  |
+| david.moreno@ikasle.egibide.org | Coronela Ibaibarriaga | 123456789  | David  | 123456780  |Aceptado  |
 | david.moreno@ikasle.egibide.org | Asturias | 333333333  | Fernando Alonso  | 123456789  | en cola  |
 | david.moreno@ikasle.egibide.org | Andorra La Vella | 123456789  | Di Grefg  | 123456789  | en cola  |
 
